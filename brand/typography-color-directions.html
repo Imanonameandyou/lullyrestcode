@@ -1,0 +1,547 @@
+<title>LullyRest Brand Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Zilla+Slab:wght@400;500;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --shell-bg: #FAFAF7;
+    --shell-surface: #FFFFFF;
+    --shell-text: #1C1C1A;
+    --shell-muted: #6B6B62;
+    --shell-border: #E3E1D9;
+    --shell-accent: #1B7A73;
+    --shell-accent-soft: #E4EFEE;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --shell-bg: #16171A;
+      --shell-surface: #1D1F21;
+      --shell-text: #EDEDE6;
+      --shell-muted: #9B9B91;
+      --shell-border: #2C2E2F;
+      --shell-accent: #4FD1C5;
+      --shell-accent-soft: #1E2E2C;
+    }
+  }
+  :root[data-theme="dark"] {
+    --shell-bg: #16171A;
+    --shell-surface: #1D1F21;
+    --shell-text: #EDEDE6;
+    --shell-muted: #9B9B91;
+    --shell-border: #2C2E2F;
+    --shell-accent: #4FD1C5;
+    --shell-accent-soft: #1E2E2C;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--shell-bg);
+    color: var(--shell-text);
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    line-height: 1.55;
+  }
+  a { color: inherit; }
+  ::selection { background: var(--shell-accent-soft); }
+  :focus-visible { outline: 2px solid var(--shell-accent); outline-offset: 2px; }
+
+  .shell { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- intro ---------- */
+  .intro { padding: 72px 0 40px; border-bottom: 1px solid var(--shell-border); }
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--shell-accent);
+    margin: 0 0 16px;
+  }
+  .intro h1 {
+    font-size: clamp(30px, 4.4vw, 44px);
+    line-height: 1.1;
+    margin: 0 0 18px;
+    text-wrap: balance;
+    max-width: 16ch;
+  }
+  .intro p { max-width: 62ch; color: var(--shell-muted); font-size: 16px; margin: 0 0 14px; }
+  .intro p strong { color: var(--shell-text); font-weight: 600; }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+  .nav a {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12.5px;
+    text-decoration: none;
+    border: 1px solid var(--shell-border);
+    background: var(--shell-surface);
+    padding: 7px 12px;
+    color: var(--shell-text);
+    letter-spacing: 0.01em;
+  }
+  .nav a:hover { border-color: var(--shell-accent); color: var(--shell-accent); }
+
+  /* ---------- direction section shell ---------- */
+  .direction {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--shell-border);
+    scroll-margin-top: 24px;
+  }
+  .dir-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px 32px; margin-bottom: 8px; }
+  .dir-label { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--shell-muted); }
+  .dir-thesis { max-width: 56ch; color: var(--shell-muted); font-size: 15px; margin: 6px 0 28px; }
+
+  .card {
+    border: 1px solid var(--shell-border);
+    overflow: hidden;
+  }
+
+  /* ============================================================
+     Each .card carries its OWN fixed token set — these are exact
+     proposed brand colors/type, not remapped by viewer theme.
+     ============================================================ */
+
+  .swatches { display: flex; flex-wrap: wrap; }
+  .swatch { flex: 1 1 110px; min-width: 110px; padding: 16px 14px; }
+  .swatch .name { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.75; margin: 0 0 30px; }
+  .swatch .hex { font-family: var(--mono, monospace); font-variant-numeric: tabular-nums; font-size: 13px; margin: 0; }
+
+  .specimen { padding: 36px 32px 8px; }
+  .specimen .h1 { font-family: var(--display); margin: 0 0 14px; text-wrap: balance; }
+  .specimen .h2 { font-family: var(--display); margin: 28px 0 10px; font-weight: 600; }
+  .specimen .body { font-family: var(--body); max-width: 60ch; margin: 0 0 18px; }
+  .specimen .label { font-family: var(--mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.09em; opacity: 0.7; }
+
+  .mock {
+    margin: 8px 32px 32px;
+    padding: 32px 28px;
+    display: grid;
+    gap: 18px;
+  }
+  .mock .icon { width: 96px; height: auto; }
+  .mock h3 { font-family: var(--display); margin: 0; text-wrap: balance; }
+  .mock .sub { font-family: var(--body); margin: 0; max-width: 48ch; }
+  .mock .cta {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    display: inline-block;
+    width: max-content;
+    padding: 11px 20px;
+    text-decoration: none;
+    border: 1px solid transparent;
+  }
+  .mock .trust { display: flex; flex-wrap: wrap; gap: 10px 22px; padding: 0; margin: 4px 0 0; list-style: none; }
+  .mock .trust li { font-family: var(--mono); font-size: 12px; padding-left: 14px; position: relative; }
+  .mock .trust li::before { content: "—"; position: absolute; left: 0; }
+
+  .psych { padding: 8px 32px 36px; display: grid; gap: 16px; }
+  .psych .principle { display: grid; grid-template-columns: 160px 1fr; gap: 4px 20px; }
+  .psych .pname { font-family: var(--mono); font-size: 12.5px; font-weight: 600; }
+  .psych .papp { font-size: 14.5px; opacity: 0.88; margin: 0; }
+  @media (max-width: 620px) {
+    .psych .principle { grid-template-columns: 1fr; }
+  }
+
+  /* ---- A: Cervical Blueprint ---- */
+  #a .card {
+    --display: "Newsreader", Georgia, serif;
+    --body: "IBM Plex Sans", ui-sans-serif, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+    background: #F7F5F0; color: #14213D;
+  }
+  #a .swatch.s1 { background: #14213D; color: #F7F5F0; }
+  #a .swatch.s2 { background: #F7F5F0; color: #14213D; border-right: 1px solid #E5E2D8; }
+  #a .swatch.s3 { background: #5C6B73; color: #F7F5F0; }
+  #a .swatch.s4 { background: #1B7A73; color: #F7F5F0; }
+  #a .swatch.s5 { background: #E85D4C; color: #14213D; }
+  #a .specimen .h1 { font-size: 38px; font-weight: 500; }
+  #a .specimen .h2 { font-size: 18px; }
+  #a .specimen .body { font-size: 16px; }
+  #a .mock { background: #14213D; color: #F7F5F0; }
+  #a .mock .icon { color: #1B7A73; }
+  #a .mock .sub { color: #C7CEDB; }
+  #a .mock .cta { background: #1B7A73; color: #F7F5F0; }
+  #a .mock .trust { color: #8FA0B8; }
+  #a .psych { background: #F7F5F0; }
+  #a .psych .pname { color: #1B7A73; }
+
+  /* ---- B: Painless Morning ---- */
+  #b .card {
+    --display: "Fraunces", Georgia, serif;
+    --body: "Public Sans", ui-sans-serif, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+    background: #FAF7F2; color: #1B1B2F;
+  }
+  #b .swatch.s1 { background: #1B1B2F; color: #FAF7F2; }
+  #b .swatch.s2 { background: #E8A33D; color: #1B1B2F; }
+  #b .swatch.s3 { background: #3D5A80; color: #FAF7F2; }
+  #b .swatch.s4 { background: #A8A8B3; color: #1B1B2F; }
+  #b .swatch.s5 { background: #FAF7F2; color: #1B1B2F; border-right: 1px solid #E9E3D8; }
+  #b .specimen .h1 { font-size: 40px; font-weight: 500; font-style: italic; }
+  #b .specimen .h2 { font-size: 19px; }
+  #b .specimen .body { font-size: 16px; }
+  #b .mock { background: linear-gradient(120deg, #1B1B2F 0%, #1B1B2F 42%, #3D5A80 78%, #E8A33D 130%); color: #FAF7F2; border-radius: 2px; }
+  #b .mock .icon { color: #E8A33D; }
+  #b .mock .sub { color: #D9D9E4; }
+  #b .mock .cta { background: #E8A33D; color: #1B1B2F; border-radius: 2px; }
+  #b .mock .trust { color: #C6C6D6; }
+  #b .psych { background: #FAF7F2; }
+  #b .psych .pname { color: #B8752A; }
+
+  /* ---- C: Skeptic's Proof ---- */
+  #c .card {
+    --display: "Archivo", ui-sans-serif, sans-serif;
+    --body: "Archivo", ui-sans-serif, sans-serif;
+    --mono: "Space Mono", ui-monospace, monospace;
+    background: #FCFCFA; color: #23262B;
+  }
+  #c .swatch.s1 { background: #23262B; color: #FCFCFA; }
+  #c .swatch.s2 { background: #FCFCFA; color: #23262B; border-right: 1px solid #DAD8D0; }
+  #c .swatch.s3 { background: #C9C7C0; color: #23262B; }
+  #c .swatch.s4 { background: #0E7C86; color: #FCFCFA; }
+  #c .specimen .h1 { font-size: 36px; font-weight: 700; letter-spacing: -0.01em; }
+  #c .specimen .h2 { font-size: 17px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+  #c .specimen .body { font-size: 15.5px; }
+  #c .mock { background: #23262B; color: #FCFCFA; }
+  #c .mock .icon { color: #29C2CC; }
+  #c .mock .sub { color: #B7B7B1; }
+  #c .mock .cta { background: #0E7C86; color: #FCFCFA; }
+  #c .mock .trust { color: #9A9A93; }
+  #c .psych { background: #FCFCFA; }
+  #c .psych .pname { color: #0E7C86; }
+
+  /* ---- D: Exam Room Calm ---- */
+  #d .card {
+    --display: "Zilla Slab", Georgia, serif;
+    --body: "Work Sans", ui-sans-serif, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+    background: #1E2420; color: #EDEAE2;
+  }
+  #d .swatch.s1 { background: #1E2420; color: #EDEAE2; }
+  #d .swatch.s2 { background: #8FA891; color: #1E2420; }
+  #d .swatch.s3 { background: #EDEAE2; color: #1E2420; }
+  #d .swatch.s4 { background: #C97B4A; color: #1E2420; }
+  #d .specimen .h1 { font-size: 36px; font-weight: 500; }
+  #d .specimen .h2 { font-size: 18px; }
+  #d .specimen .body { font-size: 16px; color: #C8CFC9; }
+  #d .mock { background: #171C19; }
+  #d .mock .icon { color: #C97B4A; }
+  #d .mock .sub { color: #B7C0BA; }
+  #d .mock .cta { background: #8FA891; color: #12160F; }
+  #d .mock .trust { color: #93A093; }
+  #d .psych { background: #1E2420; }
+  #d .psych .pname { color: #C97B4A; }
+
+  /* ---------- decision guide ---------- */
+  .guide { padding: 56px 0 80px; }
+  .guide h2 { font-size: 22px; margin: 0 0 6px; }
+  .guide > p { color: var(--shell-muted); max-width: 60ch; margin: 0 0 28px; font-size: 15px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  caption { text-align: left; margin-bottom: 8px; }
+  th, td { text-align: left; padding: 10px 14px 10px 0; border-bottom: 1px solid var(--shell-border); vertical-align: top; }
+  th { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--shell-muted); font-weight: 500; }
+  .table-wrap { overflow-x: auto; }
+
+  .open-note {
+    margin-top: 28px;
+    padding: 16px 18px;
+    border: 1px solid var(--shell-border);
+    background: var(--shell-surface);
+    font-size: 14.5px;
+    color: var(--shell-muted);
+  }
+  .open-note strong { color: var(--shell-text); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .direction { transition: none; }
+  }
+</style>
+
+<div class="shell">
+  <header class="intro">
+    <p class="eyebrow">Internal reference — not customer-facing</p>
+    <h1>Four directions for LullyRest's visual identity</h1>
+    <p>Built for the audience in <strong>research/AUDIENCE.md</strong>: skeptical, analytical, high-earning knowledge workers who've already been failed by "plush comfort" bedding marketing. Each direction pairs a color system with a type system and shows both applied to real brand copy — headline, trust bullets, and the "kinked cable" mechanism motif from <strong>brand/BRAND_GUIDE.md</strong>.</p>
+    <p>Naming and domain are still unresolved per the brand guide — none of this locks in a public-facing asset. Pick a direction (or mix an ink/paper pairing from one with the accent from another), then bring it back here to draft the full guide.</p>
+    <nav class="nav">
+      <a href="#a">A — Cervical Blueprint</a>
+      <a href="#b">B — Painless Morning</a>
+      <a href="#c">C — Skeptic's Proof</a>
+      <a href="#d">D — Exam Room Calm</a>
+    </nav>
+  </header>
+
+  <!-- ============ A ============ -->
+  <section class="direction" id="a">
+    <div class="dir-head">
+      <div>
+        <p class="dir-label">Direction A</p>
+        <h2 style="margin:0;font-size:22px;">Cervical Blueprint</h2>
+      </div>
+      <p class="dir-thesis">Navy-on-bone clinical authority — reads like a medical journal, not a bedding catalog.</p>
+    </div>
+
+    <div class="card">
+      <div class="swatches">
+        <div class="swatch s1"><p class="name">Ink</p><p class="hex">#14213D</p></div>
+        <div class="swatch s2"><p class="name">Paper</p><p class="hex">#F7F5F0</p></div>
+        <div class="swatch s3"><p class="name">Steel</p><p class="hex">#5C6B73</p></div>
+        <div class="swatch s4"><p class="name">Signal Teal</p><p class="hex">#1B7A73</p></div>
+        <div class="swatch s5"><p class="name">Alert Coral</p><p class="hex">#E85D4C</p></div>
+      </div>
+
+      <div class="specimen">
+        <p class="label">Newsreader / IBM Plex Sans / IBM Plex Mono</p>
+        <p class="h1">Engineered around C1–C3.</p>
+        <p class="h2">Not comfort marketing.</p>
+        <p class="body">Four zones. Two planes. One mechanical fix for the nerve compression that turns a flat pillow into a locked neck by 6AM. The kink happens at the base of the skull — the fix has to happen there too.</p>
+        <p class="label">60-Night Guarantee — Zero-VOC — Dual-Plane Loft</p>
+      </div>
+
+      <div class="mock">
+        <svg class="icon" viewBox="0 0 120 54" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <polyline points="4,18 28,18 44,6 58,32 72,6 88,18 116,18" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="58" cy="32" r="4" fill="currentColor"/>
+          <line x1="58" y1="32" x2="50" y2="46" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+          <line x1="58" y1="32" x2="58" y2="48" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+          <line x1="58" y1="32" x2="66" y2="46" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+        </svg>
+        <h3>Engineered around C1–C3. Not comfort marketing.</h3>
+        <p class="sub">Dual-plane loft unloads the nerve compression that undoes your daytime PT gains every single night.</p>
+        <a class="cta" href="#a">See the mechanism →</a>
+        <ul class="trust">
+          <li>60-night in-home adaptation guarantee</li>
+          <li>Zero-VOC vacuum-baked foam</li>
+          <li>Orthopedic research, not focus groups</li>
+        </ul>
+      </div>
+
+      <div class="psych">
+        <div class="principle">
+          <p class="pname">Authority bias</p>
+          <p class="papp">Navy ink + an editorial serif reads institutional — closer to a journal than a mattress-store flyer. Matters more here than "friendly," since friendly is what already failed this buyer.</p>
+        </div>
+        <div class="principle">
+          <p class="pname">Processing fluency</p>
+          <p class="papp">A spare grid with one measured accent reads as more truthful than a saturated, decorative page. Skeptical buyers infer credibility from restraint, not enthusiasm.</p>
+        </div>
+        <div class="principle">
+          <p class="pname">Von Restorff effect</p>
+          <p class="papp">Signal teal is used nowhere except mechanism content, so the C1–C3 diagram is the one thing on the page the eye can't skip past.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ B ============ -->
+  <section class="direction" id="b">
+    <div class="dir-head">
+      <div>
+        <p class="dir-label">Direction B</p>
+        <h2 style="margin:0;font-size:22px;">Painless Morning</h2>
+      </div>
+      <p class="dir-thesis">The palette runs midnight-to-dawn — the guarantee's name, felt before it's read.</p>
+    </div>
+
+    <div class="card">
+      <div class="swatches">
+        <div class="swatch s1"><p class="name">Midnight</p><p class="hex">#1B1B2F</p></div>
+        <div class="swatch s2"><p class="name">Dawn Amber</p><p class="hex">#E8A33D</p></div>
+        <div class="swatch s3"><p class="name">Nerve Blue</p><p class="hex">#3D5A80</p></div>
+        <div class="swatch s4"><p class="name">Fog</p><p class="hex">#A8A8B3</p></div>
+        <div class="swatch s5"><p class="name">Cloudline</p><p class="hex">#FAF7F2</p></div>
+      </div>
+
+      <div class="specimen">
+        <p class="label">Fraunces / Public Sans / JetBrains Mono</p>
+        <p class="h1">Wake up without the clamp.</p>
+        <p class="h2">The ache starts at 3AM.</p>
+        <p class="body">Base of the skull, one side frozen — and it's not stress, and it's not aging. It's eight hours on a pillow that re-kinks your neck the moment you fall asleep. Relief has to happen overnight, structurally, or it doesn't happen.</p>
+        <p class="label">Painless Morning Guarantee — 60 Nights</p>
+      </div>
+
+      <div class="mock">
+        <svg class="icon" viewBox="0 0 120 54" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <polyline points="4,18 28,18 44,6 58,32 72,6 88,18 116,18" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="58" cy="32" r="4" fill="currentColor"/>
+          <line x1="58" y1="32" x2="50" y2="46" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+          <line x1="58" y1="32" x2="58" y2="48" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+          <line x1="58" y1="32" x2="66" y2="46" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+        </svg>
+        <h3>Wake up without the clamp.</h3>
+        <p class="sub">The 3AM ache at the base of your skull has a mechanical cause — and a 60-night guarantee to prove the fix.</p>
+        <a class="cta" href="#b">Start your 60 nights →</a>
+        <ul class="trust">
+          <li>60 nights, in your own bed</li>
+          <li>7–14 nights to structurally adapt</li>
+          <li>Built for the mornings that cost you the day</li>
+        </ul>
+      </div>
+
+      <div class="psych">
+        <div class="principle">
+          <p class="pname">Narrative framing</p>
+          <p class="papp">The palette itself moves from midnight to amber, so "Painless Morning" is felt before it's read — the guarantee name isn't just copy, it's the color system.</p>
+        </div>
+        <div class="principle">
+          <p class="pname">Color-emotion association</p>
+          <p class="papp">Amber reads as dawn and relief without borrowing the soft-pastel "plush comfort" cues this audience has learned to distrust.</p>
+        </div>
+        <div class="principle">
+          <p class="pname">Peak-end rule</p>
+          <p class="papp">Because every section resolves toward warmth, the lasting impression is relief — not the clinical problem the page opened with.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ C ============ -->
+  <section class="direction" id="c">
+    <div class="dir-head">
+      <div>
+        <p class="dir-label">Direction C</p>
+        <h2 style="margin:0;font-size:22px;">Skeptic's Proof</h2>
+      </div>
+      <p class="dir-thesis">One accent, no ornament — built for a buyer who trusts spec sheets over mood boards.</p>
+    </div>
+
+    <div class="card">
+      <div class="swatches">
+        <div class="swatch s1"><p class="name">Graphite</p><p class="hex">#23262B</p></div>
+        <div class="swatch s2"><p class="name">Paper White</p><p class="hex">#FCFCFA</p></div>
+        <div class="swatch s3"><p class="name">Line Grey</p><p class="hex">#C9C7C0</p></div>
+        <div class="swatch s4"><p class="name">Proof Cyan</p><p class="hex">#0E7C86</p></div>
+      </div>
+
+      <div class="specimen">
+        <p class="label">Archivo / Archivo / Space Mono</p>
+        <p class="h1">You've tried 10 pillows.</p>
+        <p class="h2">NONE OF THEM WERE STRUCTURAL</p>
+        <p class="body">Dual-plane loft unloads C1–C3 while you sleep — the one mechanism daytime physical therapy can't reach, because PT can't follow you into eight hours of flat, unzoned foam.</p>
+        <p class="label">60 Nights / 0 Obligation</p>
+      </div>
+
+      <div class="mock">
+        <svg class="icon" viewBox="0 0 120 54" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <polyline points="4,18 28,18 44,6 58,32 72,6 88,18 116,18" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="58" cy="32" r="4" fill="currentColor"/>
+          <line x1="58" y1="32" x2="50" y2="46" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+          <line x1="58" y1="32" x2="58" y2="48" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+          <line x1="58" y1="32" x2="66" y2="46" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+        </svg>
+        <h3>You've tried 10 pillows. None of them were structural.</h3>
+        <p class="sub">Dual-plane loft, measured C1–C3 unloading, and a trial built to be checked, not trusted on faith.</p>
+        <a class="cta" href="#c">Read the mechanism →</a>
+        <ul class="trust">
+          <li>60 nights / 0 obligation</li>
+          <li>C1–C3 unloading, measured</li>
+          <li>No plush. No pastel. No claims we can't show you</li>
+        </ul>
+      </div>
+
+      <div class="psych">
+        <div class="principle">
+          <p class="pname">Fluency as trust</p>
+          <p class="papp">This audience "dismisses generic plush comfort claims" per the audience research. A page with almost no ornamentation reads like a mechanism they can verify, not a mood they're meant to buy into.</p>
+        </div>
+        <div class="principle">
+          <p class="pname">Contrast effect</p>
+          <p class="papp">After a category of soft, centered, pastel bedding pages, a page built like a spec sheet is itself the differentiator — no claim required.</p>
+        </div>
+        <div class="principle">
+          <p class="pname">Choice architecture</p>
+          <p class="papp">One accent color, one job — proof numbers. Removes the ambiguity a paradox-of-choice-prone skimmer would otherwise stall on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ D ============ -->
+  <section class="direction" id="d">
+    <div class="dir-head">
+      <div>
+        <p class="dir-label">Direction D</p>
+        <h2 style="margin:0;font-size:22px;">Exam Room Calm</h2>
+      </div>
+      <p class="dir-thesis">Dark, sage-clinical, and quiet — the visual opposite of every bright bedding competitor page.</p>
+    </div>
+
+    <div class="card">
+      <div class="swatches">
+        <div class="swatch s1"><p class="name">Charcoal-Green</p><p class="hex">#1E2420</p></div>
+        <div class="swatch s2"><p class="name">Sage</p><p class="hex">#8FA891</p></div>
+        <div class="swatch s3"><p class="name">Bone</p><p class="hex">#EDEAE2</p></div>
+        <div class="swatch s4"><p class="name">Clay</p><p class="hex">#C97B4A</p></div>
+      </div>
+
+      <div class="specimen">
+        <p class="label">Zilla Slab / Work Sans / IBM Plex Mono</p>
+        <p class="h1">The pillow graveyard has a common cause.</p>
+        <p class="h2">One height. One plane. Zero zoning.</p>
+        <p class="body">Every foam and contour pillow you've discarded made the same mistake. This one doesn't — four zones, two planes, built around the anatomy that's actually compressing at 3AM.</p>
+        <p class="label">4-Zone Dual-Loft — Zero-VOC — 60 Nights</p>
+      </div>
+
+      <div class="mock">
+        <svg class="icon" viewBox="0 0 120 54" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <polyline points="4,18 28,18 44,6 58,32 72,6 88,18 116,18" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="58" cy="32" r="4" fill="currentColor"/>
+          <line x1="58" y1="32" x2="50" y2="46" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+          <line x1="58" y1="32" x2="58" y2="48" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+          <line x1="58" y1="32" x2="66" y2="46" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+        </svg>
+        <h3>The pillow graveyard has a common cause.</h3>
+        <p class="sub">Zero-VOC, 4-zone dual-loft support — engineered against the exact failure mode of the eight pillows already in your closet.</p>
+        <a class="cta" href="#d">See what's different →</a>
+        <ul class="trust">
+          <li>Zero-VOC, vacuum-baked</li>
+          <li>4-zone dual-loft support</li>
+          <li>60 nights to prove it, or it's free</li>
+        </ul>
+      </div>
+
+      <div class="psych">
+        <div class="principle">
+          <p class="pname">Color-emotion association</p>
+          <p class="papp">Sage reads as clinical-calm — exam room, not spa — which fits "clinical, not clinical-cold" without sliding into soft DTC-bedding pastel.</p>
+        </div>
+        <div class="principle">
+          <p class="pname">Pattern interrupt</p>
+          <p class="papp">A dark, slab-serif page breaks the visual pattern of every competitor's bright, airy bedding site — the mass bedding industry the brand guide names as the actual antagonist.</p>
+        </div>
+        <div class="principle">
+          <p class="pname">Von Restorff effect</p>
+          <p class="papp">Clay is isolated to the kink diagram only, so the one visual "aha" — nerve compression — is the one thing that pops off an otherwise quiet page.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ decision guide ============ -->
+  <section class="guide">
+    <h2>Choosing between them</h2>
+    <p>All four use the same mechanism motif and the same trial/VOC facts — only the emotional entry point changes. None of them are mutually exclusive: the ink/paper pairing from one can run with the accent from another.</p>
+    <div class="table-wrap">
+      <table>
+        <caption class="dir-label">If you want the brand to lead with…</caption>
+        <thead>
+          <tr><th>Emphasis</th><th>Direction</th><th>Why</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Clinical credibility, first impression</td><td>A — Cervical Blueprint</td><td>Reads like a medical reference before it reads like a product</td></tr>
+          <tr><td>Emotional relief, the guarantee itself</td><td>B — Painless Morning</td><td>The palette dramatizes the before/after the guarantee promises</td></tr>
+          <tr><td>Proof over persuasion</td><td>C — Skeptic's Proof</td><td>Fewest design choices to distrust; closest to a spec sheet</td></tr>
+          <tr><td>Standing apart from bedding-industry visuals</td><td>D — Exam Room Calm</td><td>Darkest, least "DTC bedding" of the four</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="open-note"><strong>Still open:</strong> product name and domain (see <em>brand/BRAND_GUIDE.md</em>) — decide those before any direction here touches a public-facing asset, since a rename after launch is expensive. This file is a working reference only; nothing in it is published or store-facing.</p>
+  </section>
+</div>
