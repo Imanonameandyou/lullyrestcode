@@ -1,0 +1,64 @@
+{%- comment -%}
+  Reserved social-proof slots, deliberately empty.
+
+  The Dosaze swipes lean on a chiropractor endorsement, UGC video testimonials,
+  a star-rating summary and a comment wall. LullyRest has no customers and no
+  clinical reviewer yet, so those slots are held open and visibly labelled
+  rather than filled with invented content or silently deleted.
+
+  When real, permissioned proof exists, replace this section with Elixir's own
+  customer-reviews / video-carousel-standalone / customer-reviews-carousel
+  sections, which are already present in this theme.
+{%- endcomment -%}
+
+{{ 'lullyrest.css' | asset_url | stylesheet_tag }}
+
+<div class="lr">
+  <section class="lr__section">
+    <div class="lr__wrap">
+      <div class="lr__col">
+        <p class="lr__kicker">Reserved</p>
+        <h2>{{ section.settings.heading }}</h2>
+        <p>{{ section.settings.intro }}</p>
+
+        <div class="lr__qa">
+          {%- for block in section.blocks -%}
+            <div {{ block.shopify_attributes }}>
+              <h3>{{ block.settings.slot_name }}</h3>
+              <p>{{ block.settings.slot_note }}</p>
+              <span class="lr__verify">{{ block.settings.slot_status }}</span>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "LullyRest proof slots",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Proof slots — held open, not filled" },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro",
+      "default": "These are the places real social proof goes once it exists. They are intentionally empty. Nothing on this page claims a review, rating, endorsement or result that has not actually happened."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slot",
+      "name": "Reserved slot",
+      "settings": [
+        { "type": "text", "id": "slot_name", "label": "Slot name" },
+        { "type": "textarea", "id": "slot_note", "label": "What goes here" },
+        { "type": "text", "id": "slot_status", "label": "Status marker", "default": "[EMPTY]" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "LullyRest proof slots" }]
+}
+{% endschema %}

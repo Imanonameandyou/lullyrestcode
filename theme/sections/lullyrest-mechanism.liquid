@@ -1,0 +1,57 @@
+{%- comment -%}
+  PDP section: the kinked-cable mechanism, compressed for a product page.
+  Copy source: marketing/PDP_COPY.md § Section B.
+{%- endcomment -%}
+
+{{ 'lullyrest.css' | asset_url | stylesheet_tag }}
+
+<div class="lr">
+  <section class="lr__section {% if section.settings.wash %}lr__section--wash{% endif %}">
+    <div class="lr__wrap">
+      <div class="lr__col">
+        {%- if section.settings.kicker != blank -%}<p class="lr__kicker">{{ section.settings.kicker }}</p>{%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+        {{ section.settings.body }}
+      </div>
+
+      <figure class="lr__figure">
+        {% render 'lullyrest-kink-diagram' %}
+        {%- if section.settings.caption != blank -%}
+          <figcaption class="lr__figcaption">{{ section.settings.caption }}</figcaption>
+        {%- endif -%}
+      </figure>
+
+      {%- if section.settings.show_verify -%}
+        <div class="lr__col">
+          <span class="lr__verify">[VERIFY] Cite peer-reviewed sources for trigeminocervical convergence (Bogduk et al.) before publishing.</span>
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "LullyRest mechanism",
+  "tag": "section",
+  "settings": [
+    { "type": "checkbox", "id": "wash", "label": "Tinted background", "default": true },
+    { "type": "checkbox", "id": "show_verify", "label": "Show VERIFY notes", "default": true },
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "The mechanism" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The pinched cable" },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body",
+      "default": "<p>Think of your neck as a heavy-duty power cable running up into a junction box at the base of your skull. It's built to run along a gentle curve — not straight, not folded.</p><p>Kink it, the way a garden hose folds when you drag it around a corner, and pressure builds at the fold. That's what an unsupportive pillow does for eight hours a night: the top segments compress, and the small suboccipital muscles clamp down and stay clamped.</p><p>And here's why you feel it in your face: the nerves from the top of your neck feed into the same brainstem relay that handles sensation for your forehead, temples and eyes. One shared fuse box, two rooms. Trip it from the neck, and the alarm sounds in the face — which is why head-directed medication underperforms and head imaging comes back clean.</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "caption",
+      "label": "Diagram caption",
+      "default": "Left: a flat, single-height pillow leaves the neck unsupported, so it sags and then turns a hard corner at the base of the skull. Right: a recessed cavity lets the skull settle while a raised roll holds the neck, so the same cable runs one continuous curve."
+    }
+  ],
+  "presets": [{ "name": "LullyRest mechanism" }]
+}
+{% endschema %}

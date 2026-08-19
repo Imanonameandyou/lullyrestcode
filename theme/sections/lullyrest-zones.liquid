@@ -1,0 +1,75 @@
+{%- comment -%}
+  PDP section: the geometry argument, the four zones, and the material.
+  Copy source: marketing/PDP_COPY.md §§ A, C, D.
+{%- endcomment -%}
+
+{{ 'lullyrest.css' | asset_url | stylesheet_tag }}
+
+<div class="lr">
+  <section class="lr__section">
+    <div class="lr__wrap">
+      <div class="lr__col">
+        <h2>{{ section.settings.geometry_heading }}</h2>
+        {{ section.settings.geometry_body }}
+      </div>
+
+      <div class="lr__media lr__media--2">
+        <img src="{{ 'lullyrest-side.png' | asset_url }}" width="1200" height="1200" loading="lazy"
+             alt="Side profile of the LullyRest pillow: tall outer wings for side sleeping, low recessed centre for back sleeping.">
+        <img src="{{ 'lullyrest-top.png' | asset_url }}" width="1200" height="1200" loading="lazy"
+             alt="Overhead view of the LullyRest pillow showing the central occipital cavity and the ear depression in each wing.">
+      </div>
+
+      <div class="lr__col">
+        <h2>{{ section.settings.zones_heading }}</h2>
+      </div>
+
+      {% render 'lullyrest-zones' %}
+
+      <div class="lr__col" style="margin-top:2rem">
+        <h2>{{ section.settings.material_heading }}</h2>
+        {{ section.settings.material_body }}
+
+        <div class="lr__voc">
+          <blockquote>"I too have a pillow graveyard. And can someone please make a pillow that doesn't come with an instant migraine scent."</blockquote>
+        </div>
+        <p class="lr__voc-note">From public patient forums — not a LullyRest customer review.</p>
+
+        {%- if section.settings.show_verify -%}
+          <span class="lr__verify">
+            [VERIFY] Confirm all zone dimensions against the final manufacturing spec. Obtain
+            actual VOC emissions test results. If the foam carries a certification
+            (CertiPUR-US / OEKO-TEX / GREENGUARD Gold), name it and its number. If it does not,
+            describe only the vacuum-baking process and make no certification claim.
+          </span>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "LullyRest zones",
+  "tag": "section",
+  "settings": [
+    { "type": "checkbox", "id": "show_verify", "label": "Show VERIFY notes", "default": true },
+    { "type": "text", "id": "geometry_heading", "label": "Geometry heading", "default": "You don't sleep in one position. So why does your pillow have one height?" },
+    {
+      "type": "richtext",
+      "id": "geometry_body",
+      "label": "Geometry body",
+      "default": "<p>Lie on your back. The back of your skull sticks out further than your neck does, so your head needs somewhere to drop into while your neck stays supported underneath. Low head, supported neck.</p><p>Now roll onto your side. Your entire shoulder width is underneath you, and the gap from your ear to the mattress just got several inches taller. To keep your head level with your spine you need substantially more height.</p><p>One height cannot serve both. That's not a quality issue — it's geometry. And you roll over all night, which is why the pillow that felt perfect in the store is wrong for half of every night.</p>"
+    },
+    { "type": "text", "id": "zones_heading", "label": "Zones heading", "default": "Four zones, four jobs" },
+    { "type": "text", "id": "material_heading", "label": "Material heading", "default": "High-density open-cell viscoelastic foam" },
+    {
+      "type": "richtext",
+      "id": "material_body",
+      "label": "Material body",
+      "default": "<p><strong>Dense enough to hold its shape.</strong> The most common complaint about contour pillows is that the middle collapses after a few weeks and you're back where you started. Density determines whether the geometry above still exists in month six.</p><p><strong>Open-celled so heat moves through it.</strong> Closed-cell foam traps heat under your head. Open-cell structure lets it pass.</p><p><strong>Vacuum-baked before packing.</strong> Residual volatile compounds are driven off at the factory rather than in your bedroom. For someone whose migraines are triggered by chemical odour, an off-gassing pillow isn't an inconvenience — it's a total product failure on night one.</p>"
+    }
+  ],
+  "presets": [{ "name": "LullyRest zones" }]
+}
+{% endschema %}

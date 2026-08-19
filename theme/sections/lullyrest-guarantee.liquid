@@ -1,0 +1,78 @@
+{%- comment -%}
+  PDP section: objections, then the two windows kept explicitly separate.
+
+  The 7–14 night adaptation window and the 60-night refund window are different
+  things and research/OFFER.md flags conflating them as a live risk. They are
+  rendered side by side, labelled, and never merged into one number.
+{%- endcomment -%}
+
+{{ 'lullyrest.css' | asset_url | stylesheet_tag }}
+
+<div class="lr">
+  <section class="lr__section lr__section--wash">
+    <div class="lr__wrap">
+      <div class="lr__col">
+        <h2>{{ section.settings.objections_heading }}</h2>
+
+        <div class="lr__qa">
+          <div>
+            <h3>&ldquo;I already own ten pillows that didn&rsquo;t work.&rdquo;</h3>
+            <p>They were the wrong geometry, not the wrong brand. If every one of them had a single height, none ever addressed the side-sleeping half of your night. That&rsquo;s a design-category difference &mdash; and you can test it on your own bed inside a week.</p>
+          </div>
+          <div>
+            <h3>&ldquo;Memory foam gives me an instant migraine.&rdquo;</h3>
+            <p>The most common complaint in every competitor&rsquo;s negative reviews, and the reason the vacuum-baking step exists. If it still bothers you, return it. No argument required.</p>
+          </div>
+          <div>
+            <h3>&ldquo;It looks firm &mdash; it&rsquo;ll hurt my ears and jaw.&rdquo;</h3>
+            <p>That&rsquo;s Zone 4. Firm under the neck, relieved under the ears. The pillows that wrecked your ear cartilage were firm everywhere, uniformly.</p>
+          </div>
+          <div>
+            <h3>&ldquo;My case is more severe than most.&rdquo;</h3>
+            <p>It might be. Some cervicogenic pain has drivers a pillow can&rsquo;t reach, and if that&rsquo;s you, no pillow &mdash; this one included &mdash; is your answer. That&rsquo;s exactly why the trial runs 60 nights with an unconditional refund. You shouldn&rsquo;t pay to find out.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lr__col">
+        <h2 style="margin-top:2.5rem">{{ section.settings.windows_heading }}</h2>
+
+        <div class="lr__windows">
+          <div class="lr__window">
+            <span class="lr__window-num">7&ndash;14</span>
+            <h3>nights &mdash; the adaptation window</h3>
+            <p>If your suboccipital muscles have been contracted for years, correct alignment feels unfamiliar at first, sometimes mildly sore. That&rsquo;s tissue adjusting to a position it hasn&rsquo;t held in a long time. It typically settles inside two weeks. <strong>Don&rsquo;t judge the pillow on night two.</strong></p>
+          </div>
+          <div class="lr__window lr__window--proof">
+            <span class="lr__window-num">60</span>
+            <h3>nights &mdash; the money-back window</h3>
+            <p>The full &ldquo;Painless Morning&rdquo; in-home trial. Two months. If your mornings aren&rsquo;t measurably better, return it for a full refund.</p>
+          </div>
+        </div>
+
+        <p>The first sets your expectations. The second means you carry none of the risk.</p>
+
+        {%- if section.settings.show_verify -%}
+          <span class="lr__verify">
+            [VERIFY] State exact return mechanics before publishing &mdash; who pays return shipping,
+            whether the pillow must be shipped back, refund processing time. Vague guarantee terms
+            lose skeptical buyers faster than no guarantee at all.
+          </span>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "LullyRest guarantee",
+  "tag": "section",
+  "settings": [
+    { "type": "checkbox", "id": "show_verify", "label": "Show VERIFY notes", "default": true },
+    { "type": "text", "id": "objections_heading", "label": "Objections heading", "default": "The objections worth taking seriously" },
+    { "type": "text", "id": "windows_heading", "label": "Windows heading", "default": "Two windows, two different jobs" }
+  ],
+  "presets": [{ "name": "LullyRest guarantee" }]
+}
+{% endschema %}

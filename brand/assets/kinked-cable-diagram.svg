@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" role="img" aria-labelledby="kc-title kc-desc" width="900" height="300">
+  <title id="kc-title">The neck as a power cable: kinked versus supported</title>
+  <desc id="kc-desc">Two side-by-side side-view diagrams of a head resting on a pillow. On the left, a flat single-height pillow leaves the neck unsupported so the cable sags and folds back on itself at the base of the skull; the compression point is marked and a dashed line traces the referred alarm forward to the eye. On the right, the LullyRest contoured pillow — a recessed occipital cavity and a raised lordotic neck roll — holds the same cable along one continuous curve with no fold and no compression.</desc>
+
+  <style>
+    .ink    { stroke: #23262B; fill: none; }
+    .line   { stroke: #C9C7C0; fill: none; }
+    .proof  { stroke: #0E7C86; fill: none; }
+    .proof-f{ fill: #0E7C86; }
+    .fillpad{ fill: #EFEEEA; stroke: #C9C7C0; stroke-width: 2; }
+    .cable  { fill: none; stroke-width: 3; stroke-linecap: butt; stroke-linejoin: miter; }
+    .anat   { fill: none; stroke-width: 1.5; }
+    .frame  { stroke: #C9C7C0; fill: none; stroke-width: 1; }
+    .lbl    { fill: #23262B; font-family: "Space Mono", ui-monospace, SFMono-Regular, monospace; font-size: 13px; letter-spacing: .08em; }
+    .lbl-p  { fill: #0E7C86; font-family: "Space Mono", ui-monospace, SFMono-Regular, monospace; font-size: 12px; letter-spacing: .08em; }
+    .sub    { fill: #23262B; opacity: .55; font-family: "Space Mono", ui-monospace, SFMono-Regular, monospace; font-size: 11px; letter-spacing: .06em; }
+
+    @media (prefers-color-scheme: dark) {
+      .ink     { stroke: #FCFCFA; }
+      .line    { stroke: #3C3F45; }
+      .proof   { stroke: #29C2CC; }
+      .proof-f { fill: #29C2CC; }
+      .fillpad { fill: #2C3036; stroke: #3C3F45; }
+      .frame   { stroke: #3C3F45; }
+      .lbl     { fill: #FCFCFA; }
+      .lbl-p   { fill: #29C2CC; }
+      .sub     { fill: #FCFCFA; }
+    }
+  </style>
+
+  <!-- ================= PANEL A — FLAT PILLOW, CABLE KINKED ================= -->
+  <g>
+    <rect class="frame" x="16" y="16" width="404" height="224"/>
+
+    <line class="line" x1="34" y1="216" x2="404" y2="216" stroke-width="2"/>
+
+    <!-- flat pillow: one height, ends well short of the neck -->
+    <rect class="fillpad" x="56" y="184" width="148" height="32"/>
+
+    <!-- torso -->
+    <path class="anat line" d="M368 240 L368 212 C368 204 380 200 398 199 L416 198"/>
+
+    <!-- cranium + face direction -->
+    <circle class="anat ink" cx="150" cy="122" r="62"/>
+    <path class="anat ink" d="M92 110 L78 122 L92 134"/>
+
+    <!-- junction box at the base of the skull -->
+    <rect class="anat ink" x="194" y="138" width="24" height="24"/>
+
+    <!-- THE CABLE — sags through the unsupported gap, then turns a hard corner
+         into the base of the skull instead of arriving along a curve -->
+    <path class="cable ink" d="M406 198 C368 208 330 216 296 208 L216 196 L206 150"/>
+
+    <!-- compression at the corner: opposing arrows, the standard notation -->
+    <path class="proof" stroke-width="2" d="M216 166 L216 180"/>
+    <polygon class="proof-f" points="210,180 222,180 216,188"/>
+    <path class="proof" stroke-width="2" d="M216 232 L216 214"/>
+    <polygon class="proof-f" points="210,214 222,214 216,205"/>
+    <text class="lbl-p" x="236" y="176">C1–C3 COMPRESSION</text>
+
+    <!-- referral: compression -> shared brainstem relay -> face -->
+    <path class="proof" stroke-width="2" stroke-dasharray="5 5" d="M206 190 C186 172 160 142 130 112"/>
+
+    <!-- the alarm, ringing at the eye -->
+    <circle class="proof-f" cx="120" cy="102" r="5"/>
+    <path class="proof" stroke-width="2" d="M109.6 96 A 12 12 0 0 0 109.6 108"/>
+    <path class="proof" stroke-width="2" d="M103.5 92.5 A 19 19 0 0 0 103.5 111.5"/>
+    <path class="proof" stroke-width="2" d="M97.5 89 A 26 26 0 0 0 97.5 115"/>
+    <text class="lbl-p" x="34" y="44">REFERRED ALARM</text>
+
+    <text class="lbl" x="16" y="270">FLAT PILLOW — CABLE KINKED</text>
+    <text class="sub" x="16" y="288">One height. The neck hangs unsupported all night.</text>
+  </g>
+
+  <!-- ================= PANEL B — LULLYREST, CABLE SUPPORTED ================= -->
+  <g transform="translate(464,0)">
+    <rect class="frame" x="16" y="16" width="404" height="224"/>
+
+    <line class="line" x1="34" y1="216" x2="404" y2="216" stroke-width="2"/>
+
+    <!-- contoured pillow: a raised front lip, a recessed occipital cavity the skull
+         drops into, then the lordotic roll standing proud under the neck -->
+    <path class="fillpad" d="M50 216 L50 186 C72 178 92 208 132 208 C168 208 186 166 210 162 C238 157 252 184 260 202 L260 216 Z"/>
+
+    <!-- torso -->
+    <path class="anat line" d="M368 240 L368 214 C368 206 380 202 398 201 L416 200"/>
+
+    <!-- cranium, settled into the cavity — note it sits BELOW the roll crest -->
+    <circle class="anat ink" cx="136" cy="146" r="62"/>
+    <path class="anat ink" d="M78 134 L64 146 L78 158"/>
+
+    <!-- junction box, open rather than pinched -->
+    <rect class="anat ink" x="180" y="151" width="24" height="24"/>
+
+    <!-- THE CABLE — one continuous curve riding the roll, no fold, no pinch -->
+    <path class="cable ink" d="M406 202 C358 200 320 190 286 180 C256 172 226 162 196 160"/>
+
+    <text class="lbl" x="16" y="270">LULLYREST — CABLE SUPPORTED</text>
+    <text class="sub" x="16" y="288">Roll holds the arc. Skull settles below it.</text>
+  </g>
+</svg>

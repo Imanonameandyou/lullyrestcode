@@ -14,15 +14,31 @@ This file records the standing rules for how Claude Code operates on this Shopif
 
 ## Store access
 
-- Connection method: `shopify-ai-toolkit` plugin (v1.6.1) + Shopify CLI v4.6.1. Store-scoped API operations run via `shopify store auth --store <domain> --scopes <scopes>` + `shopify store execute --store <domain> --query '...'` — no custom app / manually-generated Admin API token needed.
+- Connection method: Shopify CLI v4.6.1. Store-scoped API operations run via `shopify store auth --store <domain> --scopes <scopes>` + `shopify store execute --store <domain> --query '...'` — no custom app / manually-generated Admin API token needed.
 - Store domain: eug1kz-w0.myshopify.com ("My Store", Basic plan, admin: https://admin.shopify.com/store/eug1kz-w0)
-- Primary theme in use: **Horizon** (`gid://shopify/OnlineStoreTheme/162844639446`) — role **MAIN** (live), confirmed 2026-08-19 via direct `themes` query. Only theme on the store — no customization yet. Rule 2 applies: any theme/code changes need a new duplicated draft theme first.
+- **CLI is not guaranteed present.** On 2026-08-19 the working machine had no `shopify` binary and no cached auth despite this file claiming otherwise. Installing to the npm global prefix fails with EACCES (`/usr/local/lib` is root-owned); install to a user prefix instead: `npm install -g --prefix ~/.npm-global @shopify/cli@latest`, then use `~/.npm-global/bin/shopify`.
+- Themes on the store (verified 2026-08-19):
+  - **Horizon** (`162844639446`) — role **MAIN** (live). Never written to.
+  - `elixir-1-6-1-{bodysculpt,clinical,electrolytes,matcha,pillow}` (`162845098198`, `162845130966`, `162845163734`, `162845196502`, `162845229270`) — UNPUBLISHED. Elixir is a DTC/advertorial theme; the `pillow` variant ships `page.advertorial.json`, `page.listicle.json` and a conversion PDP.
+  - **`LullyRest — Presell + PDP (draft)`** (`162852077782`) — UNPUBLISHED. Duplicated from `elixir-1-6-1-pillow`. **This is the working theme.** See `theme/README.md`.
+- Store objects: product `9482045522134` (DRAFT, `templateSuffix: lullyrest`), page `139003166934` handle `presell` (unpublished, `templateSuffix: presell`).
+
+## Swipe files
+
+Two competitor captures live in the **parent** folder (one level above this repo), not in git:
+`FireShot Capture 001 — Dosaze Contoured Orthopedic Pillow` (their PDP) and
+`FireShot Capture 002 — 10 Reasons Chiropractors Recommend The Dosaze Pillow` (their presell listicle).
+**Read these before writing any page copy or choosing a page format.** They are image-only PDFs with no text layer — render with `pdftoppm -r 150` to read. Structural breakdowns are in `marketing/PRESELL_LISTICLE.md`.
+
+## Claim integrity (standing rule)
+
+Never ship a review, star rating, review count, testimonial, named endorsement, certification, or clinical result that does not actually exist. The swipes rely heavily on all of these; the Elixir theme ships demo versions of all of them. Hold the slots open and label them `[EMPTY]` instead. Keep product language structural ("supports", "designed to") rather than therapeutic ("treats", "cures", "relieves migraines"). Unverified claims carry an inline `[VERIFY: …]` marker.
 
 ## Session objectives (current)
 
-DTC launch prep for the LullyRest Orthopedic Cervical Pillow (target: knowledge workers 30–46 with cervicogenic morning headaches). No products or theme customization started yet. See `README.md` for the project index, `research/` for audience/offer research, and `brand/BRAND_GUIDE.md` for positioning/voice — those are the working references for any copy or product-listing work in this project.
+DTC launch prep for the LullyRest Orthopedic Cervical Pillow (target: knowledge workers 30–46 with cervicogenic morning headaches). Presell listicle and PDP built on the draft theme 2026-08-19; both draft/hidden. See `README.md` for the project index, `research/` for audience/offer research, and `brand/BRAND_GUIDE.md` for positioning/voice — those are the working references for any copy or product-listing work in this project.
 
-Open decisions blocking launch-facing work (product name, domain, visual identity) are tracked in `brand/BRAND_GUIDE.md`.
+Name, price and visual identity are now locked. **Domain remains unresolved and still blocks public launch** — see `brand/BRAND_GUIDE.md`.
 
 ## Git / version control
 

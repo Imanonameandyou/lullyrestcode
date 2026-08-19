@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 160" width="380" height="160" role="img" aria-label="lullyrest">
+  <title>lullyrest — typographic wordmark placeholder</title>
+  <desc>PLACEHOLDER, NOT FINAL ARTWORK. Archivo 800, lowercase, -0.01em tracking, single colour, per BRAND_GUIDELINES.html section 04. Live text, not outlines — it will fall back to a system sans wherever Archivo is not loaded. Replace with a designed mark before any public-facing use.</desc>
+
+  <!-- Clear space on all sides is 46px = the height of the lowercase "l" at this size,
+       which is the minimum the spec requires. Do not crop into it. -->
+  <text x="46" y="106"
+        fill="currentColor"
+        font-family="Archivo, ui-sans-serif, system-ui, -apple-system, sans-serif"
+        font-weight="800"
+        font-size="64"
+        letter-spacing="-0.64">lullyrest</text>
+</svg>

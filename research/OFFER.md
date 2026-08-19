@@ -81,7 +81,9 @@ trylullyrest.com · lullyrestorthopedic.com · fixmorningmigraines.com · lordot
 
 ## Open Decisions Before Launch
 
-- [ ] Final product name (see naming candidates above)
-- [ ] Domain / store URL
-- [ ] Which headline direction leads the sales page
+- [x] **Final product name** — LullyRest Orthopedic Cervical Pillow (locked 2026-08-19)
+- [x] **Price** — $149, compare-at $199 (locked 2026-08-19; not previously specified anywhere in this research)
+- [x] **Presell format** — 10-item listicle matching the Dosaze swipe, not long-form narrative (locked 2026-08-19; see `marketing/PRESELL_LISTICLE.md`)
+- [ ] Domain / store URL — **still blocks public launch**
+- [ ] Which headline direction leads the *main sales page* (the presell listicle leads mechanism-first)
 - [ ] Adaptation window messaging: docs give both "60 nights" (guarantee) and "7–14 nights" (adaptation) — keep both, don't conflate: 7–14 nights is when muscles adapt, 60 nights is the money-back window

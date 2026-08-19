@@ -1,0 +1,77 @@
+{%- comment -%}
+  The "kinked cable" mechanism diagram — the single recurring illustration for
+  this brand (BRAND_GUIDELINES.html §05). Stroke-based only; Proof Cyan appears
+  nowhere except the compression point and its referred alarm.
+
+  Source of truth: brand/assets/kinked-cable-diagram.svg. That standalone file
+  carries a prefers-color-scheme block for viewing on its own; this copy
+  deliberately drops it, because the storefront background is controlled by the
+  theme and would not invert alongside the visitor's OS setting.
+
+  Class names are prefixed lrk- to avoid collisions with theme CSS.
+{%- endcomment -%}
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" role="img"
+     aria-labelledby="lrk-title lrk-desc">
+  <title id="lrk-title">The neck as a power cable: kinked versus supported</title>
+  <desc id="lrk-desc">Two side-view diagrams. Left: on a flat single-height pillow the neck is left unsupported, so it sags and then turns a hard corner at the base of the skull; the compression point is marked and a dashed line traces the referred pain signal forward to the eye. Right: on the LullyRest pillow, a recessed cavity lets the skull settle and a raised roll holds the neck, so the same cable follows one continuous curve with no compression.</desc>
+
+  <style>
+    .lrk-ink    { stroke: #23262B; fill: none; }
+    .lrk-line   { stroke: #C9C7C0; fill: none; }
+    .lrk-proof  { stroke: #0E7C86; fill: none; }
+    .lrk-proof-f{ fill: #0E7C86; }
+    .lrk-pad    { fill: #EFEEEA; stroke: #C9C7C0; stroke-width: 2; }
+    .lrk-cable  { fill: none; stroke-width: 3; stroke-linecap: butt; stroke-linejoin: miter; }
+    .lrk-anat   { fill: none; stroke-width: 1.5; }
+    .lrk-frame  { stroke: #C9C7C0; fill: none; stroke-width: 1; }
+    .lrk-lbl    { fill: #23262B; font-family: "Space Mono", ui-monospace, monospace; font-size: 13px; letter-spacing: .08em; }
+    .lrk-lbl-p  { fill: #0E7C86; font-family: "Space Mono", ui-monospace, monospace; font-size: 12px; letter-spacing: .08em; }
+    .lrk-sub    { fill: #23262B; opacity: .55; font-family: "Space Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: .06em; }
+  </style>
+
+  <!-- PANEL A — flat pillow, cable kinked -->
+  <g>
+    <rect class="lrk-frame" x="16" y="16" width="404" height="224"/>
+    <line class="lrk-line" x1="34" y1="216" x2="404" y2="216" stroke-width="2"/>
+    <rect class="lrk-pad" x="56" y="184" width="148" height="32"/>
+    <path class="lrk-anat lrk-line" d="M368 240 L368 212 C368 204 380 200 398 199 L416 198"/>
+    <circle class="lrk-anat lrk-ink" cx="150" cy="122" r="62"/>
+    <path class="lrk-anat lrk-ink" d="M92 110 L78 122 L92 134"/>
+    <rect class="lrk-anat lrk-ink" x="194" y="138" width="24" height="24"/>
+
+    <path class="lrk-cable lrk-ink" d="M406 198 C368 208 330 216 296 208 L216 196 L206 150"/>
+
+    <path class="lrk-proof" stroke-width="2" d="M216 166 L216 180"/>
+    <polygon class="lrk-proof-f" points="210,180 222,180 216,188"/>
+    <path class="lrk-proof" stroke-width="2" d="M216 232 L216 214"/>
+    <polygon class="lrk-proof-f" points="210,214 222,214 216,205"/>
+    <text class="lrk-lbl-p" x="236" y="176">C1–C3 COMPRESSION</text>
+
+    <path class="lrk-proof" stroke-width="2" stroke-dasharray="5 5" d="M206 190 C186 172 160 142 130 112"/>
+    <circle class="lrk-proof-f" cx="120" cy="102" r="5"/>
+    <path class="lrk-proof" stroke-width="2" d="M109.6 96 A 12 12 0 0 0 109.6 108"/>
+    <path class="lrk-proof" stroke-width="2" d="M103.5 92.5 A 19 19 0 0 0 103.5 111.5"/>
+    <path class="lrk-proof" stroke-width="2" d="M97.5 89 A 26 26 0 0 0 97.5 115"/>
+    <text class="lrk-lbl-p" x="34" y="44">REFERRED ALARM</text>
+
+    <text class="lrk-lbl" x="16" y="270">FLAT PILLOW — CABLE KINKED</text>
+    <text class="lrk-sub" x="16" y="288">One height. The neck hangs unsupported all night.</text>
+  </g>
+
+  <!-- PANEL B — LullyRest, cable supported -->
+  <g transform="translate(464,0)">
+    <rect class="lrk-frame" x="16" y="16" width="404" height="224"/>
+    <line class="lrk-line" x1="34" y1="216" x2="404" y2="216" stroke-width="2"/>
+    <path class="lrk-pad" d="M50 216 L50 186 C72 178 92 208 132 208 C168 208 186 166 210 162 C238 157 252 184 260 202 L260 216 Z"/>
+    <path class="lrk-anat lrk-line" d="M368 240 L368 214 C368 206 380 202 398 201 L416 200"/>
+    <circle class="lrk-anat lrk-ink" cx="136" cy="146" r="62"/>
+    <path class="lrk-anat lrk-ink" d="M78 134 L64 146 L78 158"/>
+    <rect class="lrk-anat lrk-ink" x="180" y="151" width="24" height="24"/>
+
+    <path class="lrk-cable lrk-ink" d="M406 202 C358 200 320 190 286 180 C256 172 226 162 196 160"/>
+
+    <text class="lrk-lbl" x="16" y="270">LULLYREST — CABLE SUPPORTED</text>
+    <text class="lrk-sub" x="16" y="288">Roll holds the arc. Skull settles below it.</text>
+  </g>
+</svg>

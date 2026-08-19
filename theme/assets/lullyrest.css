@@ -1,0 +1,289 @@
+/* ==========================================================================
+   LullyRest — scoped styles for the presell advertorial and PDP sections.
+
+   Everything is namespaced under .lr- so it cannot leak into Horizon's own
+   components, and nothing here overrides theme globals. Tokens are the locked
+   Direction C ("Skeptic's Proof") palette from brand/BRAND_GUIDELINES.html.
+
+   Deliberately NO prefers-color-scheme block: the Shopify theme owns the page
+   background, so reacting to the visitor's OS theme here would invert our text
+   against a background that did not move with it.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+.lr {
+  --lr-ink: #23262B;
+  --lr-paper: #FCFCFA;
+  --lr-line: #C9C7C0;
+  --lr-proof: #0E7C86;
+  --lr-proof-ink: #0A5F67;      /* darker cyan for text on paper — meets AA */
+  --lr-wash: #F2F1ED;
+
+  --lr-display: Archivo, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --lr-mono: "Space Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --lr-measure: 68ch;
+  --lr-gutter: clamp(1.25rem, 4vw, 3rem);
+
+  color: var(--lr-ink);
+  background: var(--lr-paper);
+  font-family: var(--lr-display);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.lr *,
+.lr *::before,
+.lr *::after { box-sizing: border-box; }
+
+/* ---------- layout ---------- */
+
+.lr__wrap {
+  max-width: 78rem;
+  margin-inline: auto;
+  padding-inline: var(--lr-gutter);
+}
+
+.lr__col {
+  max-width: var(--lr-measure);
+  margin-inline: auto;
+}
+
+.lr__section { padding-block: clamp(3rem, 8vw, 6rem); }
+.lr__section--wash { background: var(--lr-wash); }
+.lr__section--ink { background: var(--lr-ink); color: var(--lr-paper); }
+.lr__section--ink .lr__kicker { color: #29C2CC; }
+
+/* ---------- type ---------- */
+
+.lr__kicker {
+  font-family: var(--lr-mono);
+  font-size: .75rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--lr-proof-ink);
+  margin: 0 0 1rem;
+}
+
+.lr h1, .lr h2, .lr h3 {
+  font-family: var(--lr-display);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  line-height: 1.1;
+  margin: 0 0 1rem;
+  text-wrap: balance;
+}
+
+.lr h1 { font-size: clamp(2rem, 5.2vw, 3.5rem); }
+.lr h2 { font-size: clamp(1.6rem, 3.4vw, 2.5rem); margin-top: 0; }
+.lr h3 { font-size: clamp(1.15rem, 2vw, 1.4rem); font-weight: 700; }
+
+.lr__dek {
+  font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+  line-height: 1.5;
+  opacity: .82;
+  max-width: 60ch;
+}
+
+.lr p { margin: 0 0 1.15em; }
+.lr strong { font-weight: 700; }
+
+.lr__lede::first-letter {
+  font-size: 3.4em;
+  font-weight: 800;
+  float: left;
+  line-height: .82;
+  padding: .06em .12em 0 0;
+}
+
+/* ---------- byline ---------- */
+
+.lr__byline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1rem;
+  align-items: baseline;
+  padding-block: 1rem;
+  border-block: 1px solid var(--lr-line);
+  font-family: var(--lr-mono);
+  font-size: .8rem;
+  letter-spacing: .04em;
+}
+
+/* ---------- quotes: voice-of-customer, NOT product reviews ---------- */
+
+.lr__voc {
+  margin: 2rem 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.lr__voc blockquote {
+  margin: 0;
+  padding: 1.1rem 1.35rem;
+  border-left: 3px solid var(--lr-proof);
+  background: var(--lr-wash);
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.lr__voc-note {
+  font-family: var(--lr-mono);
+  font-size: .72rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  opacity: .6;
+}
+
+/* ---------- the mechanism diagram ---------- */
+
+.lr__figure {
+  margin: 2.5rem 0;
+  border: 1px solid var(--lr-line);
+  padding: clamp(1rem, 3vw, 2rem);
+  background: var(--lr-paper);
+}
+
+.lr__figure svg { display: block; width: 100%; height: auto; }
+
+.lr__figcaption {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--lr-line);
+  font-family: var(--lr-mono);
+  font-size: .78rem;
+  line-height: 1.5;
+  letter-spacing: .03em;
+  opacity: .75;
+}
+
+/* ---------- zone table ---------- */
+
+.lr__zones { display: grid; gap: 1px; background: var(--lr-line); border: 1px solid var(--lr-line); }
+
+@media (min-width: 48rem) {
+  .lr__zones { grid-template-columns: repeat(2, 1fr); }
+}
+
+.lr__zone { background: var(--lr-paper); padding: clamp(1.25rem, 3vw, 2rem); }
+
+.lr__zone-num {
+  font-family: var(--lr-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--lr-proof);
+  line-height: 1;
+  display: block;
+  margin-bottom: .75rem;
+}
+
+.lr__zone p { margin-bottom: 0; opacity: .85; }
+
+/* ---------- objections ---------- */
+
+.lr__qa { border-top: 1px solid var(--lr-line); }
+.lr__qa > div { padding-block: 1.5rem; border-bottom: 1px solid var(--lr-line); }
+.lr__qa h3 { margin-bottom: .5rem; }
+.lr__qa p { margin-bottom: 0; opacity: .85; }
+
+/* ---------- the two guarantee windows ---------- */
+
+.lr__windows { display: grid; gap: 1.5rem; margin: 2rem 0; }
+
+@media (min-width: 48rem) { .lr__windows { grid-template-columns: 1fr 1fr; } }
+
+.lr__window { border: 2px solid var(--lr-ink); padding: clamp(1.25rem, 3vw, 1.75rem); }
+.lr__window--proof { border-color: var(--lr-proof); }
+
+.lr__window-num {
+  font-family: var(--lr-mono);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1;
+  display: block;
+  margin-bottom: .5rem;
+}
+
+.lr__window--proof .lr__window-num { color: var(--lr-proof); }
+
+/* ---------- CTA ---------- */
+
+.lr__cta { margin: 2.5rem 0; text-align: center; }
+
+.lr__btn {
+  display: inline-block;
+  background: var(--lr-proof);
+  color: #fff;
+  font-family: var(--lr-display);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  letter-spacing: .01em;
+  padding: 1rem 2.25rem;
+  border: 2px solid var(--lr-proof);
+  border-radius: 0;            /* sharp corners — brand rule */
+  text-decoration: none;
+  transition: background .15s ease, color .15s ease;
+}
+
+.lr__btn:hover, .lr__btn:focus-visible { background: transparent; color: var(--lr-proof-ink); }
+
+.lr__btn--ghost { background: transparent; color: var(--lr-ink); border-color: var(--lr-ink); }
+.lr__btn--ghost:hover { background: var(--lr-ink); color: var(--lr-paper); }
+
+.lr__trust {
+  font-family: var(--lr-mono);
+  font-size: .78rem;
+  letter-spacing: .04em;
+  margin-top: .9rem;
+  opacity: .72;
+}
+
+/* ---------- price ---------- */
+
+.lr__price { display: flex; align-items: baseline; gap: .75rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.lr__price-now { font-family: var(--lr-mono); font-size: 2rem; font-weight: 700; }
+.lr__price-was { font-family: var(--lr-mono); font-size: 1.1rem; text-decoration: line-through; opacity: .55; }
+.lr__price-save {
+  font-family: var(--lr-mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
+  background: var(--lr-proof); color: #fff; padding: .25rem .6rem;
+}
+
+/* ---------- included list ---------- */
+
+.lr__included { list-style: none; margin: 1.5rem 0; padding: 0; display: grid; gap: .85rem; }
+.lr__included li { padding-left: 1.75rem; position: relative; }
+.lr__included li::before {
+  content: "";
+  position: absolute; left: 0; top: .55em;
+  width: .75rem; height: .75rem;
+  border: 2px solid var(--lr-proof);
+}
+
+/* ---------- verify markers: visible in draft, must not survive to launch ---------- */
+
+.lr__verify {
+  display: block;
+  font-family: var(--lr-mono);
+  font-size: .72rem;
+  line-height: 1.5;
+  letter-spacing: .03em;
+  background: #FFF4CC;
+  border-left: 3px solid #B8860B;
+  color: #4A3A00;
+  padding: .6rem .8rem;
+  margin: 1rem 0;
+}
+
+/* ---------- responsive images ---------- */
+
+.lr__media { display: grid; gap: 1rem; margin: 2rem 0; }
+@media (min-width: 48rem) { .lr__media--2 { grid-template-columns: 1fr 1fr; } }
+.lr__media img { display: block; width: 100%; height: auto; border: 1px solid var(--lr-line); }
+
+/* ---------- a11y ---------- */
+
+.lr :focus-visible { outline: 3px solid var(--lr-proof); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .lr * { transition: none !important; } }

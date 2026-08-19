@@ -1,0 +1,21 @@
+{%- comment -%}
+  Advertorial block: the four-zone breakdown.
+  Registered in blocks/cs-content.liquid alongside lullyrest-mechanism.
+{%- endcomment -%}
+
+{{ 'lullyrest.css' | asset_url | stylesheet_tag }}
+
+<div {{ block.shopify_attributes }} style="margin-block: {{ block.settings.padding_top }}px {{ block.settings.padding_bottom }}px">
+  {% render 'lullyrest-zones' %}
+</div>
+
+{% schema %}
+{
+  "name": "LullyRest four zones",
+  "settings": [
+    { "type": "number", "id": "padding_top", "label": "Padding top", "default": 24 },
+    { "type": "number", "id": "padding_bottom", "label": "Padding bottom", "default": 24 }
+  ],
+  "presets": [{ "name": "LullyRest four zones" }]
+}
+{% endschema %}

@@ -28,15 +28,16 @@ Not the customer's body, not aging — the **mass bedding industry**, which opti
 - **7th-grade reading level for mechanism explanations.** The "pinched power cable" analogy exists specifically so non-clinical readers grasp C1–C3/TCC referral without a biology lecture.
 - Avoid: generic comfort/luxury bedding language ("cloud-like," "hotel-quality plush"), miracle-cure framing, urgency-only hooks with no mechanism behind them.
 
-## Naming Status — UNRESOLVED
+## Naming Status — LOCKED (2026-08-19)
 
-Product name is not locked. Candidates in `research/OFFER.md`:
-- LullyRest Orthopedic Cervical Pillow (default/working name)
+**Product name: LullyRest Orthopedic Cervical Pillow.** Chosen for category search intent ("orthopedic cervical pillow" is the term buyers actually type) and plainness for a skeptical audience. Live on the DRAFT product (`gid://shopify/Product/9482045522134`).
+
+Alternates considered and set aside, retained in case of a repositioning:
 - LullyRest Lordotic Align
 - LullyRest Craniocervical Restoration Pillow
 - LullyRest Biomechanical Dual-Loft Support
 
-Domain candidates also unresolved (trylullyrest.com, lullyrestorthopedic.com, fixmorningmigraines.com, lordoticrest.com, cervicalreset.com). Decide before any public-facing asset (store domain, packaging, ad accounts) locks in — renaming after launch is expensive.
+**Domain remains UNRESOLVED** and still blocks any public launch. Candidates (trylullyrest.com, lullyrestorthopedic.com, fixmorningmigraines.com, lordoticrest.com, cervicalreset.com). Decide before any public-facing asset (store domain, packaging, ad accounts) locks in — renaming after launch is expensive.
 
 ## Visual Identity — LOCKED (Direction C: Skeptic's Proof)
 
@@ -49,11 +50,15 @@ Full system in `brand/BRAND_GUIDELINES.html` (color, type, wordmark spec, imager
 
 Three alternates (Direction A "Cervical Blueprint", B "Painless Morning", D "Exam Room Calm") remain saved in `brand/typography-color-directions.html` if Skeptic's Proof doesn't hold up in testing.
 
-Asset folders are scaffolded and empty, ready for the logo file, product photography, social templates, and lifestyle imagery as they're produced:
-- `brand/assets/logo/`
-- `brand/assets/product-photos/`
-- `brand/assets/social/`
-- `brand/assets/lifestyle/`
+Assets produced so far (2026-08-19):
+- `brand/assets/kinked-cable-diagram.svg` — **the motif**, built. Stroke-only, Proof Cyan restricted to the compression point and its referred alarm. Inlined into the storefront via `theme/snippets/lullyrest-kink-diagram.liquid`.
+- `brand/assets/logo/wordmark-placeholder.svg` — Archivo 800 lowercase, live text not outlines. **Placeholder, not final artwork.**
+- `brand/assets/product-photos/` — 4 AI-generated renders (hero 3/4, side profile, overhead, cross-section). **Stand-ins: replace with studio photography of the real product before launch.**
+- `brand/assets/social/`, `brand/assets/lifestyle/` — still empty.
+
+## Price — LOCKED (2026-08-19)
+
+**$149.00**, compare-at **$199.00** (save $50). Positioned above Dosaze/Cushion Lab (~$99–129) to support the "engineered, not bedding" frame. Live on the DRAFT product variant, SKU `LR-OCP-001`.
 
 ## Guarantee & Trust Mechanics
 

@@ -1,0 +1,36 @@
+{%- comment -%}
+  Advertorial block: the kinked-cable mechanism diagram.
+
+  Exists because cs-content only accepts a fixed list of Elixir block types and
+  none of them can carry inline SVG (cs-image is an image_picker, richtext strips
+  markup). Registered by adding {"type": "lullyrest-mechanism"} to the blocks
+  array in blocks/cs-content.liquid.
+{%- endcomment -%}
+
+{{ 'lullyrest.css' | asset_url | stylesheet_tag }}
+
+<div class="lr" {{ block.shopify_attributes }}>
+  <figure class="lr__figure" style="margin-block: {{ block.settings.padding_top }}px {{ block.settings.padding_bottom }}px">
+    {% render 'lullyrest-kink-diagram' %}
+    {%- if block.settings.caption != blank -%}
+      <figcaption class="lr__figcaption">{{ block.settings.caption }}</figcaption>
+    {%- endif -%}
+  </figure>
+</div>
+
+{% schema %}
+{
+  "name": "LullyRest mechanism",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "caption",
+      "label": "Caption",
+      "default": "Left: a flat, single-height pillow leaves the neck unsupported, so it sags and then turns a hard corner at the base of the skull. Right: a recessed cavity lets the skull settle while a raised roll holds the neck, so the same cable runs one continuous curve."
+    },
+    { "type": "number", "id": "padding_top", "label": "Padding top", "default": 24 },
+    { "type": "number", "id": "padding_bottom", "label": "Padding bottom", "default": 24 }
+  ],
+  "presets": [{ "name": "LullyRest mechanism" }]
+}
+{% endschema %}

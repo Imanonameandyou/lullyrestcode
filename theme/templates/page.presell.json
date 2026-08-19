@@ -1,0 +1,159 @@
+{
+  "sections": {
+    "listicle": {
+      "type": "listicle",
+      "blocks": {
+        "header": {
+          "type": "listicle-header",
+          "settings": {
+            "title": "10 Reasons Your Morning Neck Pain Starts Hours Before Your Alarm Goes Off",
+            "title_size": 44,
+            "alignment": "left",
+            "show_author_info": true,
+            "author_name": "By [NAME PENDING], [CREDENTIAL]",
+            "author_date": "[DATE PENDING] — must be a real credentialed reviewer before publish"
+          }
+        },
+        "summary": {
+          "type": "listicle-summary",
+          "settings": {
+            "content": "<p><strong>TL;DR —</strong> The pain you wake up with isn't caused by your desk, your age, or your stress levels. It's caused by eight hours of mechanical compression at the top of your neck — and it's fixable with geometry, not medication.</p>"
+          }
+        },
+        "item_1": {
+          "type": "listicle-item",
+          "settings": {
+            "title": "1. It isn't your desk. It's the eight hours nobody examined.",
+            "content": "<p>You've raised the monitor, bought the chair, done the physical therapy. Some of it even worked — for a few hours. Then you slept, and by 6:00 AM it was all back.</p><p>Look at the arithmetic. <strong>A great PT session is 45 minutes. Sleep is eight hours.</strong> You spend roughly ten times longer in your sleeping position than in every correction combined. If those eight hours hold your neck wrong, they don't just cancel out the therapy — they overwrite it. Every night.</p>",
+            "image": "shopify://shop_images/lullyrest-hero.png"
+          }
+        },
+        "item_2": {
+          "type": "listicle-item",
+          "settings": {
+            "title": "2. Your neck is a power cable — and a flat pillow kinks it.",
+            "content": "<p>Your neck runs from your body up into a junction box at the base of your skull. Inside are bundles of nerves carrying signals into your head, and the whole thing is built to run along a gentle curve. Not straight. Not folded.</p><p>Fold it — the way a garden hose folds when you drag it round a corner — and pressure builds at the pinch. The C1–C3 segments compress, the small suboccipital muscles clamp down and stay clamped, and the nerves get squeezed against the tissue around them <strong>for eight straight hours</strong>.</p>"
+          }
+        },
+        "mechanism": {
+          "type": "lullyrest-mechanism",
+          "settings": {
+            "caption": "Left: a flat, single-height pillow leaves the neck unsupported, so it sags and then turns a hard corner at the base of the skull. Right: a recessed cavity lets the skull settle while a raised roll holds the neck, so the same cable runs one continuous curve."
+          }
+        },
+        "item_3": {
+          "type": "listicle-item",
+          "settings": {
+            "title": "3. [AWAITING CLINICAL REVIEW]",
+            "content": "<p><em>This slot is reserved for a named, credentialed reviewer — a DPT, DC or ergonomics researcher — and their actual assessment of the design.</em></p><p><em>It is deliberately empty. The swipe this page is modelled on carries a chiropractor endorsement here; ours stays blank until a real one exists. Do not fill this with an invented name.</em></p>"
+          }
+        },
+        "item_4": {
+          "type": "listicle-item",
+          "settings": {
+            "title": "4. That's why the pain shows up behind your eyes.",
+            "content": "<p>If the compression is at the back of your neck, why does your forehead hurt?</p><p>Because the nerves from the top of your neck feed into the same brainstem relay that handles sensation for your face. <strong>One shared fuse box, two rooms.</strong> Trip it from the neck and the alarm rings in the temple, the forehead, behind the eye.</p><p>Which is why medication aimed at your head underperforms — it's chasing the alarm, not the fault — and why head imaging keeps coming back clean.</p>"
+          }
+        },
+        "item_5": {
+          "type": "listicle-item",
+          "settings": {
+            "title": "5. One height cannot serve two sleeping positions.",
+            "content": "<p>This is why the pillow graveyard exists.</p><p>On your back, the back of your skull sticks out further than your neck — you need a low spot for your head and support underneath your neck. On your side, your whole shoulder width is beneath you, and the gap from ear to mattress is several inches taller.</p><p>One height cannot do both. A pillow tuned for back sleeping lets your head sag sideways when you turn. A pillow tuned for side sleeping pushes your chin to your chest when you turn back. <strong>And you roll over all night.</strong></p><p>You weren't buying badly. You were buying from a category that never solved the problem.</p>",
+            "image": "shopify://shop_images/lullyrest-side.png"
+          }
+        },
+        "item_6": {
+          "type": "listicle-item",
+          "settings": {
+            "title": "6. Four zones, four jobs.",
+            "content": "<p><strong>01 — Lordotic Cervical Extension Roll.</strong> Holds the 30°–35° arc so the cable stays curved.</p><p><strong>02 — Recessed Central Occipital Cavity.</strong> Set 1.5–2in below the roll, so on your back the base of the skull opens instead of compressing.</p><p><strong>03 — Dual-Loft Lateral Sleeping Wings.</strong> Outer thirds at 4.5–5.5in to match shoulder width — roll onto your side and you land on a surface already the right height.</p><p><strong>04 — Integrated Ear Depressions.</strong> So your outer ear isn't crushed against firm foam all night.</p>",
+            "image": "shopify://shop_images/lullyrest-top.png"
+          }
+        },
+        "zones": {
+          "type": "lullyrest-zones",
+          "settings": {}
+        },
+        "item_7": {
+          "type": "listicle-item",
+          "settings": {
+            "title": "7. The ear-and-jaw problem most contour pillows never fixed.",
+            "content": "<p>Ear pain and jaw soreness are what kill firm contour pillows by week two — the reason a &ldquo;closet full of expensive, useless foam shapes&rdquo; exists.</p><p>The fix isn't a softer pillow. It's firm support under the <em>neck</em> with pressure deliberately relieved under the <em>ears</em>. The pillows that hurt you were uniformly firm everywhere. Zone 4 exists specifically for this.</p>"
+          }
+        },
+        "item_8": {
+          "type": "listicle-item",
+          "settings": {
+            "title": "8. It still has to hold its shape in month six.",
+            "content": "<p><em>&ldquo;Every brand advertises an orthopedic contour, but after three weeks the foam collapses in the middle and you're right back to waking up with a stiff neck.&rdquo;</em> — from public patient forums, not a LullyRest customer</p><p>Geometry is worthless if it flattens. High-density open-cell viscoelastic foam is dense enough to hold the zone structure rather than sagging out from under you by hour three, and open-celled so heat moves through it instead of pooling under your head.</p>",
+            "image": "shopify://shop_images/lullyrest-cross.png"
+          }
+        },
+        "item_9": {
+          "type": "listicle-item",
+          "settings": {
+            "title": "9. The smell is the dealbreaker — so the foam is vacuum-baked.",
+            "content": "<p><em>&ldquo;I too have a pillow graveyard. And can someone please make a pillow that doesn't come with an instant migraine scent.&rdquo;</em> — from public patient forums, not a LullyRest customer</p><p>For someone whose migraines are triggered by chemical odour, an off-gassing pillow isn't an annoyance. It's the entire product failing on night one — and it's the single most common complaint across every competitor studied.</p><p>Residual volatile compounds are driven off at the factory rather than in your bedroom.</p>"
+          }
+        },
+        "item_10": {
+          "type": "listicle-item",
+          "settings": {
+            "title": "10. 60 nights to decide — and 7–14 nights is a different number.",
+            "content": "<p><strong>7–14 nights: the adaptation window.</strong> Muscles contracted for years feel strange in correct alignment at first, sometimes mildly sore. That's tissue adjusting. Don't judge the pillow on night two.</p><p><strong>60 nights: the money-back window.</strong> The full &ldquo;Painless Morning&rdquo; in-home trial. If your mornings aren't measurably better, return it for a full refund.</p><p>Two numbers, two jobs. We keep them separate on purpose — conflating them is how customers quit on night three and how brands get accused of moving the goalposts.</p>"
+          }
+        },
+        "offer": {
+          "type": "listicle-callout-quote",
+          "settings": {
+            "content": "<p><strong>LullyRest Orthopedic Cervical Pillow — $149</strong> (was $199, save $50)</p><p>Includes the ThermaFlow Phase-Change Cooling Cover and the 5-Minute Craniocervical Reset Protocol.</p><p>60-night in-home trial · Full refund if your mornings aren't better · Zero-VOC vacuum-baked foam</p>"
+          }
+        },
+        "sticky_atc": {
+          "type": "listicle-sticky-atc",
+          "settings": {
+            "button_text": "See the four zones →",
+            "button_link": "/products/lullyrest-orthopedic-cervical-pillow",
+            "show_subtext": true,
+            "subtext": "60-night in-home trial · Full refund if your mornings aren't better",
+            "sticky": true
+          }
+        },
+        "footer": {
+          "type": "advertorial-footer",
+          "settings": {
+            "disclaimer_text": "This page describes how the LullyRest pillow is built and what it is designed to support. It does not claim to treat, cure or prevent any medical condition. Individual results vary. [VERIFY] Legal review required before publish.",
+            "copyright_text": "© LullyRest",
+            "show_links": false
+          }
+        }
+      },
+      "block_order": [
+        "header",
+        "summary",
+        "item_1",
+        "item_2",
+        "mechanism",
+        "item_3",
+        "item_4",
+        "item_5",
+        "item_6",
+        "zones",
+        "item_7",
+        "item_8",
+        "item_9",
+        "item_10",
+        "offer",
+        "sticky_atc",
+        "footer"
+      ],
+      "settings": {
+        "section_max_width": 900
+      }
+    }
+  },
+  "order": [
+    "listicle"
+  ]
+}
