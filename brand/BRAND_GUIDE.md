@@ -38,14 +38,18 @@ Product name is not locked. Candidates in `research/OFFER.md`:
 
 Domain candidates also unresolved (trylullyrest.com, lullyrestorthopedic.com, fixmorningmigraines.com, lordoticrest.com, cervicalreset.com). Decide before any public-facing asset (store domain, packaging, ad accounts) locks in — renaming after launch is expensive.
 
-## Visual Identity — NOT YET ESTABLISHED
+## Visual Identity — LOCKED (Direction C: Skeptic's Proof)
 
-No logo, color palette, typography, or product photography exists yet. This is intentionally empty pending direction from the user. Suggested starting constraints based on positioning:
-- Should read *clinical/credible*, not soft/plush DTC-bedding-generic — differentiate from Tempur-Pedic/Cushion Lab/Dosaze's typical soft-pastel bedding aesthetic.
-- Needs to support anatomical diagrams (C1–C3, lordotic curve, dual-loft cross-section) as a recurring visual motif — this is the core proof mechanism, so the visual system should make room for it.
-- Photography needs to service both product (contour/zones legible) and lifestyle (target avatar: 30s–40s corporate/remote professional).
+Full system in `brand/BRAND_GUIDELINES.html` (color, type, wordmark spec, imagery, voice/tone, applied examples). Core tokens, for reference without opening the file:
 
-Asset folders are scaffolded and empty, ready for logo files, product photography, social templates, and lifestyle imagery as they're produced:
+- **Color:** Graphite `#23262B` (ink) / Paper White `#FCFCFA` (ground) / Line Grey `#C9C7C0` (dividers only, fails contrast as text) / Proof Cyan `#0E7C86` (the single accent — CTAs, links, proof numbers, mechanism-diagram highlight)
+- **Type:** Archivo (400–800) for everything display-to-body; Space Mono for anything that's a number, label, or checkable claim
+- **Logo:** no artwork yet — `BRAND_GUIDELINES.html` §04 specs a lowercase Archivo 800 wordmark placeholder ("lullyrest") pending an actual designed mark
+- **Recurring motif:** the "kinked cable" mechanism diagram (Graphite stroke, Proof Cyan compression point) — the one illustration system, reused everywhere, never redrawn decoratively
+
+Three alternates (Direction A "Cervical Blueprint", B "Painless Morning", D "Exam Room Calm") remain saved in `brand/typography-color-directions.html` if Skeptic's Proof doesn't hold up in testing.
+
+Asset folders are scaffolded and empty, ready for the logo file, product photography, social templates, and lifestyle imagery as they're produced:
 - `brand/assets/logo/`
 - `brand/assets/product-photos/`
 - `brand/assets/social/`

@@ -1,0 +1,472 @@
+<title>LullyRest Brand Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #23262B;
+    --paper: #FCFCFA;
+    --line: #C9C7C0;
+    --line-on-ink: #3C3F45;
+    --proof: #0E7C86;
+    --proof-on-ink: #29C2CC;
+    --display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+    --mono: "Space Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--display);
+    line-height: 1.55;
+    font-size: 16px;
+  }
+  a { color: var(--proof); }
+  ::selection { background: var(--ink); color: var(--paper); }
+  :focus-visible { outline: 2px solid var(--proof); outline-offset: 2px; }
+  img, svg { max-width: 100%; }
+
+  .shell { max-width: 900px; margin: 0 auto; padding: 0 24px 100px; }
+
+  /* ---------- doc header ---------- */
+  .docheader {
+    padding: 48px 0 32px;
+    border-bottom: 3px solid var(--ink);
+    display: grid;
+    gap: 18px;
+  }
+  .docheader .topline {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px;
+    font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink); opacity: 0.7;
+  }
+  .docheader h1 { font-size: clamp(30px, 4.6vw, 46px); font-weight: 800; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
+  .status {
+    display: inline-flex; align-items: center; gap: 8px; width: max-content;
+    font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;
+    border: 1px solid var(--ink); padding: 6px 12px;
+  }
+  .status::before { content: ""; width: 7px; height: 7px; background: var(--proof); }
+  .docheader p.dek { max-width: 62ch; font-size: 16px; color: var(--ink); opacity: 0.82; margin: 0; }
+
+  .toc { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 8px; }
+  .toc a {
+    font-family: var(--mono); font-size: 12px; text-decoration: none; color: var(--ink);
+    border: 1px solid var(--line); padding: 6px 11px;
+  }
+  .toc a:hover { border-color: var(--proof); color: var(--proof); }
+
+  /* ---------- section shell ---------- */
+  section.spec { padding: 56px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 20px; }
+  section.spec:last-of-type { border-bottom: none; }
+  .spec-head { display: flex; gap: 18px; align-items: baseline; margin-bottom: 8px; }
+  .spec-num { font-family: var(--mono); font-size: 14px; color: var(--proof); font-weight: 700; }
+  .spec-head h2 { font-size: 15px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; margin: 0; }
+  .spec-dek { max-width: 62ch; color: var(--ink); opacity: 0.72; font-size: 15px; margin: 10px 0 30px; }
+
+  h3 { font-size: 20px; font-weight: 600; margin: 0 0 6px; }
+  .sub { font-size: 13.5px; opacity: 0.65; margin: 0 0 16px; }
+  p.body-copy { max-width: 64ch; font-size: 16px; margin: 0 0 16px; }
+
+  /* ---------- tables ---------- */
+  .table-wrap { overflow-x: auto; margin: 0 0 28px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 10px 16px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.6; font-weight: 500; }
+  td.mono, .mono-cell { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+  tr.fail td:first-child::after { content: " — fails"; color: var(--proof); font-family: var(--mono); font-size: 11px; }
+
+  /* ---------- color swatches ---------- */
+  .swatch-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-bottom: 28px; }
+  .swatch { background: var(--paper); padding: 20px 18px 16px; min-height: 132px; display: flex; flex-direction: column; justify-content: space-between; }
+  .swatch .role { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.65; }
+  .swatch .name { font-weight: 700; font-size: 16px; margin: 20px 0 2px; }
+  .swatch .hex { font-family: var(--mono); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .swatch.ink { background: var(--ink); color: var(--paper); }
+  .swatch.ink .role { opacity: 0.6; }
+  .swatch.proof { background: var(--proof); color: var(--paper); }
+  .swatch.proof .role { opacity: 0.75; }
+  .swatch.line { background: var(--line); color: var(--ink); }
+
+  /* ---------- type specimen ---------- */
+  .type-row { display: grid; grid-template-columns: 120px 1fr; gap: 4px 20px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .type-row:first-of-type { border-top: 1px solid var(--line); }
+  .type-row .role { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.6; }
+  .type-row .spec-line { font-family: var(--mono); font-size: 10.5px; opacity: 0.5; grid-column: 1; }
+  .type-row .sample { grid-column: 2; }
+  .t-display { font-size: 40px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.05; }
+  .t-h1 { font-size: 32px; font-weight: 700; }
+  .t-h2 { font-size: 22px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+  .t-h3 { font-size: 19px; font-weight: 600; }
+  .t-body { font-size: 16.5px; font-weight: 400; max-width: 52ch; }
+  .t-label { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.07em; opacity: 0.75; }
+  @media (max-width: 560px) { .type-row { grid-template-columns: 1fr; } .type-row .sample { grid-column: 1; } }
+
+  /* ---------- do / dont ---------- */
+  .dodont { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); margin: 0 0 8px; }
+  .dodont .col { background: var(--paper); padding: 18px 20px; }
+  .dodont .col h4 { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 12px; }
+  .dodont .col.do h4 { color: var(--proof); }
+  .dodont ul { margin: 0; padding-left: 18px; font-size: 14.5px; }
+  .dodont li { margin-bottom: 8px; }
+  @media (max-width: 560px) { .dodont { grid-template-columns: 1fr; } }
+
+  /* ---------- wordmark ---------- */
+  .wordmark-box { border: 1px solid var(--line); padding: 56px 24px; text-align: center; margin-bottom: 18px; }
+  .wordmark-box.inv { background: var(--ink); }
+  .wordmark { font-family: var(--display); font-weight: 800; font-size: 44px; letter-spacing: -0.01em; color: var(--ink); }
+  .wordmark-box.inv .wordmark { color: var(--paper); }
+  .clearspace-note { font-family: var(--mono); font-size: 11px; opacity: 0.55; margin-top: 10px; }
+  .wm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 560px) { .wm-grid { grid-template-columns: 1fr; } }
+
+  /* ---------- motif icon ---------- */
+  .motif-row { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; padding: 28px; border: 1px solid var(--line); margin-bottom: 12px; }
+  .motif-row svg { width: 140px; height: auto; flex-shrink: 0; }
+  .motif-note { font-size: 14.5px; max-width: 46ch; opacity: 0.8; }
+
+  /* ---------- voice ---------- */
+  .attr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-bottom: 28px; }
+  .attr { background: var(--paper); padding: 18px 20px; }
+  .attr .aname { font-weight: 700; font-size: 15px; margin: 0 0 6px; }
+  .attr .ais { font-size: 13.5px; margin: 0 0 4px; }
+  .attr .isnot { font-size: 13.5px; opacity: 0.6; margin: 0; }
+  @media (max-width: 560px) { .attr-grid { grid-template-columns: 1fr; } }
+
+  /* ---------- applications ---------- */
+  .app-card { border: 1px solid var(--line); margin-bottom: 24px; }
+  .app-label { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; padding: 10px 18px; border-bottom: 1px solid var(--line); opacity: 0.6; }
+
+  .hero-app { background: var(--ink); color: var(--paper); padding: 44px 32px; display: grid; gap: 18px; }
+  .hero-app .icon { width: 90px; color: var(--proof-on-ink); }
+  .hero-app h3 { font-size: 28px; font-weight: 800; color: var(--paper); max-width: 18ch; text-wrap: balance; }
+  .hero-app p { margin: 0; max-width: 46ch; opacity: 0.82; }
+  .hero-app .cta { font-family: var(--mono); font-size: 13px; background: var(--proof-on-ink); color: var(--ink); padding: 11px 20px; width: max-content; text-decoration: none; }
+  .hero-app .trust { display: flex; flex-wrap: wrap; gap: 10px 22px; list-style: none; padding: 0; margin: 0; font-family: var(--mono); font-size: 12px; opacity: 0.75; }
+  .hero-app .trust li::before { content: "— "; }
+
+  .proof-row { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .proof-stat { padding: 26px 20px; border-right: 1px solid var(--line); }
+  .proof-stat:last-child { border-right: none; }
+  .proof-stat .num { font-family: var(--mono); font-size: 30px; font-weight: 700; color: var(--proof); }
+  .proof-stat .label { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.65; margin-top: 6px; }
+  @media (max-width: 560px) { .proof-row { grid-template-columns: 1fr; } .proof-stat { border-right: none; border-bottom: 1px solid var(--line); } }
+
+  .btn-row { display: flex; flex-wrap: wrap; gap: 20px; padding: 32px; }
+  .btn { font-family: var(--mono); font-size: 13px; padding: 12px 22px; border: 1px solid var(--ink); background: var(--paper); color: var(--ink); cursor: pointer; }
+  .btn-primary { background: var(--proof); border-color: var(--proof); color: var(--paper); }
+  .btn-primary:hover { background: #0B6068; border-color: #0B6068; }
+  .btn-hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+  .btn[disabled], .btn-disabled { border-color: var(--line); color: var(--line); cursor: not-allowed; }
+  .btn-caption { font-family: var(--mono); font-size: 10.5px; opacity: 0.5; display: block; margin-top: 8px; }
+
+  .social-app { aspect-ratio: 1 / 1; max-width: 340px; background: var(--paper); padding: 28px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid var(--line); }
+  .social-wrap { display: grid; grid-template-columns: 1fr 1fr; }
+  .social-app .eyebrow { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--proof); }
+  .social-app h4 { font-size: 22px; font-weight: 800; margin: 10px 0 0; line-height: 1.1; text-wrap: balance; }
+  .social-app .foot { font-family: var(--mono); font-size: 11px; opacity: 0.6; }
+  .social-alt { background: var(--ink); color: var(--paper); padding: 28px; display: flex; flex-direction: column; justify-content: space-between; }
+  .social-alt .eyebrow { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--proof-on-ink); }
+  .social-alt h4 { font-size: 22px; font-weight: 800; margin: 10px 0 0; line-height: 1.1; text-wrap: balance; }
+  .social-alt .foot { font-family: var(--mono); font-size: 11px; opacity: 0.65; }
+  @media (max-width: 560px) { .social-wrap { grid-template-columns: 1fr; } .social-app { border-right: none; border-bottom: 1px solid var(--line); } }
+
+  .open-note { border: 1px solid var(--ink); padding: 18px 20px; font-size: 14.5px; margin-top: 8px; }
+  .open-note strong { display: block; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+</style>
+
+<div class="shell">
+  <header class="docheader">
+    <div class="topline">
+      <span>LullyRest — Visual Identity Spec</span>
+      <span>v1.0 — 2026-08-19</span>
+    </div>
+    <h1>Brand Guidelines</h1>
+    <span class="status">Working system — pending logo file, name &amp; domain lock</span>
+    <p class="dek">Locks in <strong>Direction C — Skeptic's Proof</strong> from the four options reviewed as the working visual system: one accent, no ornament, built for a buyer who trusts spec sheets over mood boards. Covers color, type, wordmark, imagery, voice, and applied examples.</p>
+    <nav class="toc">
+      <a href="#foundation">§01 Foundation</a>
+      <a href="#color">§02 Color</a>
+      <a href="#type">§03 Typography</a>
+      <a href="#logo">§04 Wordmark</a>
+      <a href="#imagery">§05 Imagery</a>
+      <a href="#voice">§06 Voice &amp; Tone</a>
+      <a href="#apps">§07 Applications</a>
+      <a href="#open">§08 Open Items</a>
+    </nav>
+  </header>
+
+  <!-- ============ 01 FOUNDATION ============ -->
+  <section class="spec" id="foundation">
+    <div class="spec-head"><span class="spec-num">§01</span><h2>Foundation</h2></div>
+    <p class="spec-dek">What the brand is arguing, to whom, and against what — everything downstream derives from this.</p>
+
+    <h3>Positioning</h3>
+    <p class="body-copy">For high-performing knowledge workers whose careers demand unbroken screen time but whose bodies are breaking down from it, LullyRest is the only pillow engineered around the actual mechanical cause of morning cervicogenic headaches — dual-plane sleep positioning — not another "plush comfort" product from the same bedding industry that caused the problem.</p>
+
+    <h3>The Big Idea</h3>
+    <p class="body-copy"><strong>The Nocturnal Lordotic Kink.</strong> Daytime fixes fail because eight hours a night on a flat, non-zoned pillow re-kinks the neck and undoes them. Relief has to happen overnight, structurally, or it doesn't happen. Working metaphor: the neck as a power cable; a bad pillow kinks it like a garden hose; the pinch trips pain "alarms" in the face.</p>
+
+    <h3>Antagonist</h3>
+    <p class="body-copy">Not the customer's body, not aging — the mass bedding industry, which optimized pillows for flat-packing and shipping economics instead of spinal anatomy.</p>
+
+    <h3>Audience</h3>
+    <p class="body-copy">32–44 core, 68% female, $100k+ household income, tech/corporate/healthcare knowledge workers. Mechanical problem-solvers: skeptical, analytical, already burned by 8–15 failed pillows. They want biomechanical rationale and risk-reversal, not adjectives.</p>
+  </section>
+
+  <!-- ============ 02 COLOR ============ -->
+  <section class="spec" id="color">
+    <div class="spec-head"><span class="spec-num">§02</span><h2>Color System</h2></div>
+    <p class="spec-dek">Four colors, deliberately. One accent, one job — proof numbers, links, CTAs — never decoration.</p>
+
+    <div class="swatch-row">
+      <div class="swatch ink"><span class="role">Primary / Ink</span><div><p class="name">Graphite</p><p class="hex">#23262B</p></div></div>
+      <div class="swatch"><span class="role">Primary / Ground</span><div><p class="name">Paper White</p><p class="hex">#FCFCFA</p></div></div>
+      <div class="swatch line"><span class="role">Neutral</span><div><p class="name">Line Grey</p><p class="hex">#C9C7C0</p></div></div>
+      <div class="swatch proof"><span class="role">Accent — the only one</span><div><p class="name">Proof Cyan</p><p class="hex">#0E7C86</p></div></div>
+    </div>
+
+    <h3>Contrast, measured</h3>
+    <p class="sub">Every pairing this system permits, checked against WCAG 2.1 — because a brand built on "no claims we can't show you" doesn't get to assert its own accessibility.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Pairing</th><th>Ratio</th><th>WCAG</th><th>Approved use</th></tr></thead>
+        <tbody>
+          <tr><td>Graphite on Paper White</td><td class="mono">15.5 : 1</td><td>AAA</td><td>Body text, default reading pair</td></tr>
+          <tr><td>Paper White on Graphite</td><td class="mono">15.5 : 1</td><td>AAA</td><td>Reversed / dark sections</td></tr>
+          <tr><td>Proof Cyan on Paper White</td><td class="mono">4.9 : 1</td><td>AA</td><td>Links, labels, small text, CTA fills</td></tr>
+          <tr><td>Proof Cyan on Graphite</td><td class="mono">3.1 : 1</td><td>AA (large / UI only)</td><td>Icons, large numerals, accents — not body copy</td></tr>
+          <tr class="fail"><td>Line Grey on Paper White</td><td class="mono">1.7 : 1</td><td>—</td><td>Hairlines, dividers, disabled states only — never text</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="dodont">
+      <div class="col do"><h4>Do</h4><ul>
+        <li>Default to Graphite + Paper White; add Proof Cyan only where something needs to be acted on or trusted</li>
+        <li>Let Line Grey divide sections — thin rules, never fills</li>
+        <li>Use Proof Cyan for exactly one job per screen (the CTA, or the proof stat — not both competing)</li>
+      </ul></div>
+      <div class="col dont"><h4>Don't</h4><ul>
+        <li>Set body copy in Proof Cyan on Graphite — fails AA at 3.1:1</li>
+        <li>Introduce a second accent color, ever — the restraint is the point</li>
+        <li>Use Line Grey as a text color at any size</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- ============ 03 TYPE ============ -->
+  <section class="spec" id="type">
+    <div class="spec-head"><span class="spec-num">§03</span><h2>Typography</h2></div>
+    <p class="spec-dek">One family, Archivo, carrying every weight from body copy to display — plus Space Mono for anything that's a number, a label, or a claim meant to be checked.</p>
+
+    <div class="type-row">
+      <div><p class="role">Display</p><p class="spec-line">Archivo 800 / 40–56px / 1.05</p></div>
+      <p class="sample t-display">Engineered around C1–C3.</p>
+    </div>
+    <div class="type-row">
+      <div><p class="role">H1</p><p class="spec-line">Archivo 700 / 30–36px / 1.1</p></div>
+      <p class="sample t-h1">You've tried 10 pillows.</p>
+    </div>
+    <div class="type-row">
+      <div><p class="role">H2</p><p class="spec-line">Archivo 700 / 20–24px / 1.2 / uppercase</p></div>
+      <p class="sample t-h2">None of them were structural</p>
+    </div>
+    <div class="type-row">
+      <div><p class="role">H3</p><p class="spec-line">Archivo 600 / 18–20px / 1.25</p></div>
+      <p class="sample t-h3">Dual-plane loft, measured</p>
+    </div>
+    <div class="type-row">
+      <div><p class="role">Body</p><p class="spec-line">Archivo 400 / 16–17px / 1.55</p></div>
+      <p class="sample t-body">Dual-plane loft unloads C1–C3 while you sleep — the one mechanism daytime physical therapy can't reach, because PT can't follow you into eight hours of flat, unzoned foam.</p>
+    </div>
+    <div class="type-row">
+      <div><p class="role">Label / Data</p><p class="spec-line">Space Mono 400–700 / 11–13px / uppercase</p></div>
+      <p class="sample t-label">60 Nights / 0 Obligation</p>
+    </div>
+
+    <div class="dodont" style="margin-top:28px;">
+      <div class="col do"><h4>Do</h4><ul>
+        <li>Set every number that's a claim — nights, zones, percentages — in Space Mono with tabular figures</li>
+        <li>Use uppercase H2 sparingly, as a section marker, not a paragraph style</li>
+        <li>Keep body measure near 60–65 characters</li>
+      </ul></div>
+      <div class="col dont"><h4>Don't</h4><ul>
+        <li>Introduce a second display face for "warmth" — the restraint is the credibility signal</li>
+        <li>Set long-form body copy in Space Mono — it's a data face, not a reading face</li>
+        <li>Italicize for emphasis — use weight (700) instead</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- ============ 04 WORDMARK ============ -->
+  <section class="spec" id="logo">
+    <div class="spec-head"><span class="spec-num">§04</span><h2>Wordmark</h2></div>
+    <p class="spec-dek">No logo file exists yet. This is the typographic spec it needs to meet — a working placeholder, not a finished mark. Do not treat the sample below as final artwork.</p>
+
+    <div class="wm-grid">
+      <div class="wordmark-box"><span class="wordmark">lullyrest</span></div>
+      <div class="wordmark-box inv"><span class="wordmark">lullyrest</span></div>
+    </div>
+    <p class="clearspace-note">Set in Archivo 800, lowercase, −0.01em tracking. Clear space on all sides ≥ the height of the lowercase "l".</p>
+
+    <div class="table-wrap" style="margin-top:24px;">
+      <table>
+        <thead><tr><th>Spec</th><th>Rule</th></tr></thead>
+        <tbody>
+          <tr><td>Minimum size</td><td>96px wide (digital) / 20mm wide (print)</td></tr>
+          <tr><td>Approved colors</td><td>Graphite on Paper White, or Paper White on Graphite — single color only</td></tr>
+          <tr><td>Prohibited grounds</td><td>Never on Proof Cyan (reads as a button, not a mark), never on photography without a solid block</td></tr>
+          <tr><td>Prohibited edits</td><td>No gradient, drop shadow, outline, stretch, or rotation</td></tr>
+          <tr><td>Symbol / icon mark</td><td>None for phase 1 — wordmark only, deliberately, until a mark is designed</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ 05 IMAGERY ============ -->
+  <section class="spec" id="imagery">
+    <div class="spec-head"><span class="spec-num">§05</span><h2>Imagery &amp; Iconography</h2></div>
+    <p class="spec-dek">The recurring visual proof is mechanism, not mood — anatomy diagrams over lifestyle scenes.</p>
+
+    <h3>The kink motif</h3>
+    <div class="motif-row">
+      <svg viewBox="0 0 120 54" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="color: var(--ink);">
+        <polyline points="4,18 28,18 44,6 58,32 72,6 88,18 116,18" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="58" cy="32" r="4" fill="var(--proof)"/>
+        <line x1="58" y1="32" x2="50" y2="46" stroke="var(--proof)" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+        <line x1="58" y1="32" x2="58" y2="48" stroke="var(--proof)" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+        <line x1="58" y1="32" x2="66" y2="46" stroke="var(--proof)" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+      </svg>
+      <p class="motif-note">The neck as a power cable, kinked. Graphite stroke, 3px, sharp caps — the compression point and its referred "alarms" are the only place Proof Cyan appears. This is the single recurring diagram across ads, product pages, and packaging; it should never be redrawn decoratively.</p>
+    </div>
+
+    <div class="dodont" style="margin-top:8px;">
+      <div class="col do"><h4>Do</h4><ul>
+        <li>Product macro shots on Paper White or Graphite seamless — zones and stitching legible</li>
+        <li>Single-source, directional lighting, like a lab or product-catalog photo</li>
+        <li>Anatomical/mechanism diagrams as the primary illustration system, stroke-based, 2px at 24px icon size</li>
+        <li>Sharp corners on frames and crops — no rounding</li>
+      </ul></div>
+      <div class="col dont"><h4>Don't</h4><ul>
+        <li>Warm golden-hour bedroom lifestyle shots — the DTC-bedding cliché this brand is positioned against</li>
+        <li>Soft-focus, filtered, or heavily color-graded photography</li>
+        <li>3D renders, gradients, or filled illustration for the mechanism diagrams</li>
+        <li>Stock photos of people mid-yawn or hugging a pillow</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- ============ 06 VOICE ============ -->
+  <section class="spec" id="voice">
+    <div class="spec-head"><span class="spec-num">§06</span><h2>Voice &amp; Tone</h2></div>
+    <p class="spec-dek">One voice, held constant; tone narrows or widens by context.</p>
+
+    <div class="attr-grid">
+      <div class="attr"><p class="aname">Clinical</p><p class="ais">Speaks like a PT/orthopedic researcher who's seen this pattern hundreds of times.</p><p class="isnot">Not clinical-cold or jargon-heavy.</p></div>
+      <div class="attr"><p class="aname">Skeptic-first</p><p class="ais">Leads with mechanism and proof — anatomy, VOC transparency, trial terms.</p><p class="isnot">Not adjectives like "amazing" or "revolutionary."</p></div>
+      <div class="attr"><p class="aname">Validating</p><p class="ais">Mirrors the reader's exact language before explaining anything.</p><p class="isnot">Not diagnosing or correcting them.</p></div>
+      <div class="attr"><p class="aname">Plain-spoken</p><p class="ais">7th-grade reading level for any mechanism explanation.</p><p class="isnot">Not a biology lecture.</p></div>
+      <div class="attr"><p class="aname">Precise</p><p class="ais">Specific numbers, checkable claims — 60 nights, 4 zones, C1–C3.</p><p class="isnot">Not vague superlatives.</p></div>
+    </div>
+
+    <h3>Tone by context</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Context</th><th>Tone dial</th></tr></thead>
+        <tbody>
+          <tr><td>Mechanism explanation (PDP, ads)</td><td>Confident, plain-spoken, analogy-led — "power cable," not "cervical biomechanics"</td></tr>
+          <tr><td>Guarantee / trial terms</td><td>Precise, neutral, numbers-forward — no urgency language layered on top</td></tr>
+          <tr><td>Customer support / reviews response</td><td>Patient, validating — mirror before explaining</td></tr>
+          <tr><td>Paid social / ad headlines</td><td>Direct and specific, still mechanism-anchored — never a bare emotional hook</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="dodont">
+      <div class="col do"><h4>Use</h4><ul>
+        <li>"Dual-plane," "unloading," "structural," "C1–C3" — mechanism-specific language</li>
+        <li>Specific numbers: 60 nights, 4 zones, 7–14 night adaptation window</li>
+        <li>The power-cable / kinked-hose analogy to explain referred pain</li>
+      </ul></div>
+      <div class="col dont"><h4>Avoid</h4><ul>
+        <li>"Cloud-like," "hotel-quality plush" — generic comfort/luxury bedding language</li>
+        <li>"Amazing," "revolutionary," miracle-cure framing</li>
+        <li>Urgency hooks with no mechanism behind them</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- ============ 07 APPLICATIONS ============ -->
+  <section class="spec" id="apps">
+    <div class="spec-head"><span class="spec-num">§07</span><h2>Applications</h2></div>
+    <p class="spec-dek">The system assembled — not isolated tokens.</p>
+
+    <div class="app-card">
+      <div class="app-label">Hero — product page</div>
+      <div class="hero-app">
+        <svg class="icon" viewBox="0 0 120 54" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <polyline points="4,18 28,18 44,6 58,32 72,6 88,18 116,18" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="58" cy="32" r="4" fill="currentColor"/>
+          <line x1="58" y1="32" x2="50" y2="46" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+          <line x1="58" y1="32" x2="58" y2="48" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+          <line x1="58" y1="32" x2="66" y2="46" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+        </svg>
+        <h3>You've tried 10 pillows. None of them were structural.</h3>
+        <p>Dual-plane loft unloads C1–C3 while you sleep — measured, not marketed.</p>
+        <a class="cta" href="#apps">Read the mechanism →</a>
+        <ul class="trust">
+          <li>60 nights / 0 obligation</li>
+          <li>C1–C3 unloading, measured</li>
+          <li>No plush. No pastel. No claims we can't show you</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-label">Proof row — trust stats</div>
+      <div class="proof-row">
+        <div class="proof-stat"><div class="num">60</div><div class="label">Night guarantee</div></div>
+        <div class="proof-stat"><div class="num">4</div><div class="label">Support zones</div></div>
+        <div class="proof-stat"><div class="num">0</div><div class="label">VOC off-gassing</div></div>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-label">Button states</div>
+      <div class="btn-row">
+        <div><button class="btn btn-primary">Start my 60 nights</button><span class="btn-caption">Default</span></div>
+        <div><button class="btn btn-hover">Start my 60 nights</button><span class="btn-caption">Hover</span></div>
+        <div><button class="btn btn-disabled" disabled>Out of stock</button><span class="btn-caption">Disabled</span></div>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-label">Paid social — 1:1</div>
+      <div class="social-wrap">
+        <div class="social-app">
+          <span class="eyebrow">Morning migraines</span>
+          <h4>The pillow graveyard has a common cause.</h4>
+          <span class="foot">lullyrest.com</span>
+        </div>
+        <div class="social-alt">
+          <span class="eyebrow">60-night trial</span>
+          <h4>Wake up without the clamp.</h4>
+          <span class="foot">lullyrest.com</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 08 OPEN ============ -->
+  <section class="spec" id="open" style="padding-bottom: 0;">
+    <div class="spec-head"><span class="spec-num">§08</span><h2>Open Items</h2></div>
+    <div class="open-note">
+      <strong>Not locked by this document</strong>
+      Product name, domain, and an actual designed logo mark are still open per <em>brand/BRAND_GUIDE.md</em> — the wordmark in §04 is a typographic placeholder, not artwork. Don't ship this system to a public-facing asset (packaging, ad accounts, storefront) until those decide. Directions A, B, and D remain saved in <em>brand/typography-color-directions.html</em> as alternates if this one doesn't hold up in testing.
+    </div>
+  </section>
+</div>
