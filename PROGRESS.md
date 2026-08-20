@@ -4,6 +4,18 @@ Audit log of every API call and file change made to the store or this project. N
 
 ---
 
+## 2026-08-20 — Placeholder proof added to PDP; presell/navigation diagnosis
+
+- **Placeholder social proof added at user request**, reversing the earlier "keep slots empty" decision. All copy is explicitly labelled so it cannot be mistaken for real data:
+  - `trustpilot_rating` restored to the top of the buy box — `rating_text` reads "[PLACEHOLDER — replace before publish] Rating shown is sample layout data, not a real score", score `4.9`.
+  - `customer_review` restored to the bottom of the buy box — "[PLACEHOLDER REVIEWER]" / "[PLACEHOLDER REVIEW — layout only] No LullyRest customer has written this."
+  - New `customer-reviews-carousel` section after the comparison table with 3 labelled placeholder cards, verified badges **off**.
+  - **These must be replaced or removed before publish.** Still tracked in `lullyrest-proof-placeholder`.
+- Verified by pulling back from the theme: 60,236 bytes, 11 sections, `main` with 15 blocks.
+- **Presell page "blank" diagnosed — not a build fault.** `templates/page.presell.json` is fully populated (17 blocks, real copy) and its `listicle-sticky-atc` already links to `/products/lullyrest-orthopedic-cervical-pillow`. Two reasons it renders blank: page `136591114498` is `isPublished: false`, and the `presell` template exists **only on the draft theme** — on Horizon (live) Shopify falls back to the default page template and renders the page's empty body. Must be previewed via the draft theme.
+- **"Have to click catalog to reach the product" diagnosed:** the `frontpage` ("Home page") collection is a **manual** collection (`ruleSet: null`) and is **empty**, so the homepage features nothing and the only path to the product is `/collections/all`. Fix is to add the product to that collection — **not done**, as the store is live on `trywasha.com` and this is a customer-visible change (rule 4). Awaiting confirmation.
+- Draft theme still UNPUBLISHED; Horizon untouched; no product status changed.
+
 ## 2026-08-20 — PDP push was silently failing; fixed and verified
 
 The earlier "pushed successfully" for the rebuilt PDP was wrong. `shopify theme push` prints a generic success box **and** a separate error box; my output filter (`tail -8`) discarded the error. A rejected JSON template leaves the *previous* version on the theme, so the theme kept serving the old 6-section template while the CLI reported success. My verification was also too weak — I confirmed the file *existed* (21,188 bytes) rather than that it had *changed*.

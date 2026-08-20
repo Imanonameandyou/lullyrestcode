@@ -158,8 +158,12 @@ main = prod["sections"]["main"]
 # Blocks dropped because they render social proof LullyRest does not have. Not
 # populated with placeholder text: a star widget or review carousel reads as real
 # proof regardless of what its copy says. Tracked in lullyrest-proof-placeholder.
-DROP_BLOCKS = {"trustpilot_rating", "number_one_award", "customer_review",
-               "replica_warning", "carousel_default_video", "video_carousel_standalone"}
+# trustpilot_rating and customer_review are now KEPT and filled with explicitly
+# labelled placeholder copy at the user's request, so the layout can be reviewed.
+# They contain NO real rating or customer words and must be replaced or removed
+# before publish — tracked in lullyrest-proof-placeholder.
+DROP_BLOCKS = {"number_one_award", "replica_warning",
+               "carousel_default_video", "video_carousel_standalone"}
 kept = [b for b in main.get("block_order", []) if main["blocks"][b]["type"] not in DROP_BLOCKS]
 main["blocks"] = {k: main["blocks"][k] for k in kept}
 main["block_order"] = kept
@@ -188,6 +192,16 @@ put(block_of(main, "guarantee_badges"),
 put(block_of(main, "money_back_guarantee"),
     text_small="60-Night Painless Morning Guarantee",
     text_large="Full refund if your mornings aren't better.")
+
+# --- placeholder proof (LABELLED — not real data) ---
+PH_NOTE = "PLACEHOLDER — replace before publish"
+put(block_of(main, "trustpilot_rating"),
+    rating_text=f"[{PH_NOTE}] Rating shown is sample layout data, not a real score",
+    rating_score="4.9")
+put(block_of(main, "customer_review"),
+    reviewer_name="[PLACEHOLDER REVIEWER]", rating=5,
+    review_text=("[PLACEHOLDER REVIEW — layout only] No LullyRest customer has written this. "
+                 "Replace with a real verified review, or remove this block, before publish."))
 
 # --- pack tiers. Free-gift TEXT ONLY: quantity_break renders the label, it does not
 # add anything to the cart. Fulfilment needs a bundle app or Shopify Function. ---
@@ -324,6 +338,21 @@ if cmp_ is not None:
          "value_1": "yes", "value_2": "no", "value_3": "no"},
     ])
 add("comparison", cmp_)
+
+# 5b. placeholder review carousel (LABELLED — not real customers)
+rev = stock("customer-reviews-carousel")
+if rev is not None:
+    rev["settings"].update({"title_text": "[PLACEHOLDER] Customer reviews",
+                            "accent_text": "sample layout only"})
+    rebuild_blocks(rev, "review", [
+        {"reviewer_name": "[PLACEHOLDER NAME 1]", "rating": 5, "show_verified_badge": False,
+         "review_text": "[PLACEHOLDER REVIEW 1 — layout only] Replace with a real verified customer review before publish. No LullyRest customer has written this text."},
+        {"reviewer_name": "[PLACEHOLDER NAME 2]", "rating": 5, "show_verified_badge": False,
+         "review_text": "[PLACEHOLDER REVIEW 2 — layout only] Replace with a real verified customer review before publish. No LullyRest customer has written this text."},
+        {"reviewer_name": "[PLACEHOLDER NAME 3]", "rating": 4, "show_verified_badge": False,
+         "review_text": "[PLACEHOLDER REVIEW 3 — layout only] Replace with a real verified customer review before publish. No LullyRest customer has written this text."},
+    ])
+add("reviews_carousel", rev)
 
 # 6. guarantee (our own section, already on-brand)
 add("lullyrest_guarantee", {"type": "lullyrest-guarantee", "settings": {}})
