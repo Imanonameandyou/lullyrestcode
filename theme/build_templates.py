@@ -18,14 +18,14 @@ for sub in ("sections", "blocks", "snippets", "assets", "templates"):
 # ---------- 2. register our blocks with Elixir's container sections ----------
 def register(path, new_types):
     p = os.path.join(THEME, path)
-    s = open(p).read()
+    s = open(p, encoding="utf-8").read()
     m = re.search(r'({%\s*schema\s*%})(.*?)({%\s*endschema\s*%})', s, re.S)
     d = json.loads(m.group(2))
     have = {b.get("type") for b in d.get("blocks", [])}
     added = [t for t in new_types if t not in have]
     d.setdefault("blocks", []).extend({"type": t} for t in added)
     s = s[:m.start(2)] + "\n" + json.dumps(d, indent=2) + "\n" + s[m.end(2):]
-    open(p, "w").write(s)
+    open(p, "w", encoding="utf-8").write(s)
     print("registered", added, "->", path)
 
 register("sections/listicle.liquid", ["lullyrest-mechanism", "lullyrest-zones"])
@@ -142,12 +142,12 @@ presell = {"sections": {"listicle": {"type": "listicle", "blocks": blocks, "bloc
                                      "settings": {"section_max_width": 900}}},
            "order": ["listicle"]}
 
-with open(os.path.join(THEME, "templates/page.presell.json"), "w") as f:
+with open(os.path.join(THEME, "templates/page.presell.json"), "w", encoding="utf-8") as f:
     json.dump(presell, f, indent=2, ensure_ascii=False)
 print("wrote templates/page.presell.json —", len(order), "blocks")
 
 # ---------- 4. PDP template ----------
-raw = re.sub(r'/\*.*?\*/', '', open(os.path.join(THEME, "templates/product.json")).read(), flags=re.S)
+raw = re.sub(r'/\*.*?\*/', '', open(os.path.join(THEME, "templates/product.json"), encoding="utf-8").read(), flags=re.S)
 prod = json.loads(raw)
 main = prod["sections"]["main"]
 
@@ -194,6 +194,6 @@ for key in prod.get("order", []):
         pdp_sections[key] = prod["sections"][key]
         pdp_order.append(key)
 
-with open(os.path.join(THEME, "templates/product.lullyrest.json"), "w") as f:
+with open(os.path.join(THEME, "templates/product.lullyrest.json"), "w", encoding="utf-8") as f:
     json.dump({"sections": pdp_sections, "order": pdp_order}, f, indent=2, ensure_ascii=False)
 print("wrote templates/product.lullyrest.json —", pdp_order)

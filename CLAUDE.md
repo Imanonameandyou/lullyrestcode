@@ -15,13 +15,13 @@ This file records the standing rules for how Claude Code operates on this Shopif
 ## Store access
 
 - Connection method: Shopify CLI v4.6.1. Store-scoped API operations run via `shopify store auth --store <domain> --scopes <scopes>` + `shopify store execute --store <domain> --query '...'` — no custom app / manually-generated Admin API token needed.
-- Store domain: eug1kz-w0.myshopify.com ("My Store", Basic plan, admin: https://admin.shopify.com/store/eug1kz-w0)
-- **CLI is not guaranteed present.** On 2026-08-19 the working machine had no `shopify` binary and no cached auth despite this file claiming otherwise. Installing to the npm global prefix fails with EACCES (`/usr/local/lib` is root-owned); install to a user prefix instead: `npm install -g --prefix ~/.npm-global @shopify/cli@latest`, then use `~/.npm-global/bin/shopify`.
-- Themes on the store (verified 2026-08-19):
-  - **Horizon** (`162844639446`) — role **MAIN** (live). Never written to.
-  - `elixir-1-6-1-{bodysculpt,clinical,electrolytes,matcha,pillow}` (`162845098198`, `162845130966`, `162845163734`, `162845196502`, `162845229270`) — UNPUBLISHED. Elixir is a DTC/advertorial theme; the `pillow` variant ships `page.advertorial.json`, `page.listicle.json` and a conversion PDP.
-  - **`LullyRest — Presell + PDP (draft)`** (`162852077782`) — UNPUBLISHED. Duplicated from `elixir-1-6-1-pillow`. **This is the working theme.** See `theme/README.md`.
-- Store objects: product `9482045522134` (DRAFT, `templateSuffix: lullyrest`), page `139003166934` handle `presell` (unpublished, `templateSuffix: presell`).
+- **Store domain: gcvy0q-cb.myshopify.com** ("Washa", Basic plan, admin: https://admin.shopify.com/store/gcvy0q-cb). **Active store as of 2026-08-19** — the project migrated here from `eug1kz-w0.myshopify.com`, which is no longer used but was not deleted; its draft theme/product/page were read as the migration source and are not touched going forward.
+- Themes on the store (verified 2026-08-19, post-migration):
+  - **Horizon** (`163498262786`) — role **MAIN** (live). Never written to.
+  - `elixir-1-6-1-pillow` (`163498426626`) — UNPUBLISHED. Elixir is a DTC/advertorial theme shipping `page.advertorial.json`, `page.listicle.json` and a conversion PDP; added directly to this store by the user (not via API).
+  - **`LullyRest — Presell + PDP (draft)`** (`163498656002`) — UNPUBLISHED. Duplicated from `elixir-1-6-1-pillow`. **This is the working theme.** See `theme/README.md`.
+- Store objects: product `9589261009154` (DRAFT, `templateSuffix: lullyrest`), page `136591114498` handle `presell` (unpublished, `templateSuffix: presell`).
+- **Windows gotchas hit during the 2026-08-19 migration** (this machine runs Windows, prior session notes above were from a Mac): a `shopify theme pull` run immediately after `themeDuplicate` can return an incomplete/assets-only tree — re-run pull (optionally scoped with repeated `--only "<dir>/*"` flags) if `sections/`, `blocks/`, etc. are missing after a pull that reported success. `theme/build_templates.py`'s file opens needed explicit `encoding="utf-8"` — Python's default `open()` uses the OS codepage (cp1252) on Windows and raises `UnicodeEncodeError` on the file's em-dashes/arrows without it (already fixed in the script).
 
 ## Swipe files
 

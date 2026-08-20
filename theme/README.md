@@ -6,9 +6,10 @@ Custom LullyRest theme code. **Only our own files live here** — the base theme
 
 | | |
 |---|---|
-| Draft theme | `LullyRest — Presell + PDP (draft)` — `gid://shopify/OnlineStoreTheme/162852077782` |
-| Base | Duplicated from `elixir-1-6-1-pillow` (`162845229270`) on 2026-08-19 |
-| Live theme | **Horizon** (`162844639446`) — never written to, per `CLAUDE.md` rule 2 |
+| Store | `gcvy0q-cb.myshopify.com` — migrated here 2026-08-19 from `eug1kz-w0.myshopify.com` (source of the original build; no longer used) |
+| Draft theme | `LullyRest — Presell + PDP (draft)` — `gid://shopify/OnlineStoreTheme/163498656002` |
+| Base | Duplicated from `elixir-1-6-1-pillow` (`163498426626`) on 2026-08-19 |
+| Live theme | **Horizon** (`163498262786`) — never written to, per `CLAUDE.md` rule 2 |
 
 ## Files
 
@@ -32,9 +33,9 @@ Custom LullyRest theme code. **Only our own files live here** — the base theme
 ## Deploying
 
 ```bash
-shopify theme pull  --store eug1kz-w0.myshopify.com --theme 162852077782 --path /tmp/draft-theme
+shopify theme pull  --store gcvy0q-cb.myshopify.com --theme 163498656002 --path /tmp/draft-theme
 python3 build_templates.py          # copies our files in, patches vendor schemas, regenerates templates
-shopify theme push  --store eug1kz-w0.myshopify.com --theme 162852077782 --path /tmp/draft-theme --nodelete \
+shopify theme push  --store gcvy0q-cb.myshopify.com --theme 163498656002 --path /tmp/draft-theme --nodelete \
   --only "templates/page.presell.json" --only "templates/product.lullyrest.json" \
   --only "sections/lullyrest-*" --only "blocks/lullyrest-*" --only "snippets/lullyrest-*" \
   --only "assets/lullyrest*" --only "sections/listicle.liquid" --only "blocks/cs-content.liquid"
@@ -42,9 +43,13 @@ shopify theme push  --store eug1kz-w0.myshopify.com --theme 162852077782 --path 
 
 Push blocks **before** templates that reference them — Shopify rejects a template whose block types don't yet exist on the theme.
 
+`build_templates.py`'s `THEME`/`REPO` constants are machine-specific absolute paths (currently set for a prior Mac session) — update them to your local pull directory and this `theme/` folder's path before running.
+
 ## Gotchas hit while building this
 
 - Theme block/preset `name` is capped at **25 characters**. "LullyRest mechanism diagram" (27) was rejected.
 - `listicle-item.image` and `cs-image.image` are `image_picker` — they resolve **Shopify Files**, not theme assets. The four product renders are uploaded to Files as `lullyrest-{hero,side,top,cross}.png` and referenced as `shopify://shop_images/…`. The same PNGs also exist in `assets/` for our own sections, which use `asset_url` instead.
 - `themeDuplicate` returns `newTheme`, not `theme`.
 - `shopify theme pull --path` requires the directory to already exist.
+- A `theme pull` run immediately after `themeDuplicate` can silently return an incomplete (assets-only) tree even though it reports success — the server-side duplicate may not be fully copied yet. Re-run the pull (scoping with repeated `--only "<dir>/*"` flags helped) and verify `config/`, `layout/`, `sections/`, etc. actually landed before running `build_templates.py`.
+- On Windows, `open()` without `encoding="utf-8"` in `build_templates.py` raises `UnicodeEncodeError` on the em-dashes/arrows in the copy (Python defaults to the OS codepage, not UTF-8) — already fixed in the script.

@@ -4,6 +4,24 @@ Audit log of every API call and file change made to the store or this project. N
 
 ---
 
+## 2026-08-19 (continued) — Store migration: eug1kz-w0 → gcvy0q-cb
+
+Project moved to a new Shopify store, `gcvy0q-cb.myshopify.com` ("Washa", Basic plan). Old store `eug1kz-w0.myshopify.com` is not deleted/touched further; only read from as the migration source. User added `elixir-1-6-1-pillow` to the new store directly (not via API) before this work started.
+
+- `shopify store auth --store gcvy0q-cb.myshopify.com --scopes read_themes,read_products,read_online_store_pages` then re-auth with `write_products,write_themes,write_content,read_themes,read_products,read_online_store_pages` — browser consent granted both times.
+- `shopify store execute` (read-only) on both stores to confirm state: new store's `shop`/`themes`, old store's `product`/`page` full field values (title, descriptionHtml, seo, tags, templateSuffix, status, variant price/compareAtPrice/sku, media alt text) — used as the authoritative source for recreation rather than the `marketing/` docs (which carry `[VERIFY]` markers and aren't necessarily verbatim shipped copy).
+- `themeDuplicate` → new draft theme **`LullyRest — Presell + PDP (draft)`** (`gid://shopify/OnlineStoreTheme/163498656002`), UNPUBLISHED, duplicated from the new store's `elixir-1-6-1-pillow` (`163498426626`). Horizon (`163498262786`, MAIN) confirmed untouched afterward.
+- `shopify theme pull` of the new draft theme — first attempt returned an incomplete/assets-only tree (35, then 262 files) even though it reported success; re-pulled scoped with repeated `--only "<dir>/*"` flags to get the full ~627-file tree (config/layout/locales/sections/blocks/snippets/templates), confirmed via a paginated `theme { files }` GraphQL query. Logged as a gotcha in `theme/README.md`.
+- Fixed `theme/build_templates.py`: added `encoding="utf-8"` to its file opens (Windows' default `open()` uses the OS codepage and raised `UnicodeEncodeError` on the copy's em-dashes/arrows). Ran it (via a scratch copy with `THEME`/`REPO` pointed at this machine's paths) to regenerate `templates/page.presell.json` and `templates/product.lullyrest.json` and re-patch `sections/listicle.liquid` / `blocks/cs-content.liquid`.
+- `shopify theme push` (two passes: blocks/sections/snippets/assets first, then the two templates) onto the new draft theme — matches `theme/README.md`'s documented deploy flow, now pointed at the new store.
+- `productCreate` → **LullyRest Orthopedic Cervical Pillow** (`gid://shopify/Product/9589261009154`), status **DRAFT**, handle `lullyrest-orthopedic-cervical-pillow`, `templateSuffix: lullyrest` — descriptionHtml/tags/SEO copied verbatim from the old store's product.
+- `productVariantsBulkUpdate` → price **$149.00**, compareAt **$199.00**, SKU `LR-OCP-001` (matches old store).
+- `stagedUploadsCreate` (×2 batches of 4) + direct HTTP POST of the local PNGs (`theme/assets/lullyrest-{hero,side,top,cross}.png`) to the returned GCS staged-upload URLs, then `productCreateMedia` (attached to the product, same alt text as the old store) and `fileCreate` (uploaded to Shopify Files under the same filenames, for the templates' `image_picker` references).
+- `pageCreate` → hidden page `presell` (`gid://shopify/Page/136591114498`), `isPublished: false`, `templateSuffix: presell`, same title as the old store's page.
+- Verified via read-only queries: new product/page field values match what was read from the old store; Horizon's role/id unchanged.
+- Updated `CLAUDE.md`'s "Store access" section (new domain, new theme/product/page IDs, Windows-specific gotchas) and `theme/README.md`'s "Where this deploys"/"Deploying" sections to point at the new store.
+- **Nothing customer-visible.** Product DRAFT, page unpublished, all theme work confined to the new unpublished draft theme; Horizon (new store's live theme) never written to.
+
 ## 2026-08-19
 
 ### Presell listicle + PDP build (session 2)
