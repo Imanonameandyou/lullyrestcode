@@ -15,11 +15,14 @@ This file records the standing rules for how Claude Code operates on this Shopif
 ## Store access
 
 - Connection method: Shopify CLI v4.6.1. Store-scoped API operations run via `shopify store auth --store <domain> --scopes <scopes>` + `shopify store execute --store <domain> --query '...'` — no custom app / manually-generated Admin API token needed.
-- **Store domain: gcvy0q-cb.myshopify.com** ("Washa", Basic plan, admin: https://admin.shopify.com/store/gcvy0q-cb). **Active store as of 2026-08-19** — the project migrated here from `eug1kz-w0.myshopify.com`, which is no longer used but was not deleted; its draft theme/product/page were read as the migration source and are not touched going forward.
+- **Store domain: gcvy0q-cb.myshopify.com** ("LullyRest" — renamed from "Washa", Basic plan, admin: https://admin.shopify.com/store/gcvy0q-cb). **Active store as of 2026-08-19** — the project migrated here from `eug1kz-w0.myshopify.com`, which is no longer used but was not deleted; its draft theme/product/page were read as the migration source and are not touched going forward.
 - Themes on the store (verified 2026-08-19, post-migration):
   - **Horizon** (`163498262786`) — role **MAIN** (live). Never written to.
   - `elixir-1-6-1-pillow` (`163498426626`) — UNPUBLISHED. Elixir is a DTC/advertorial theme shipping `page.advertorial.json`, `page.listicle.json` and a conversion PDP; added directly to this store by the user (not via API).
   - **`LullyRest — Presell + PDP (draft)`** (`163498656002`) — UNPUBLISHED. Duplicated from `elixir-1-6-1-pillow`. **This is the working theme.** See `theme/README.md`.
+- Bonus/GWP products (created 2026-08-20, all DRAFT): Cooling Migraine Wrap `9591781064962` ($29, `LR-CMW-001`), Contoured Blackout Sleep Mask `9591783981314` ($24, `LR-CBM-001`), Filtered Sleep Earplugs `9591784243458` ($19, `LR-FSE-001`). Rationale/tiers in `marketing/BONUS_PRODUCTS.md`.
+- **`shopify store execute` returns the raw result object, not wrapped in a GraphQL `data` key** — parsers assuming `data` will silently miss `userErrors` and crash after a mutation has already committed.
+- **Store auth is per-machine.** A machine with no `~/.config/shopify` needs `shopify auth login` + `shopify store auth` again, regardless of consent granted elsewhere.
 - Store objects: product `9589261009154` (DRAFT, `templateSuffix: lullyrest`), page `136591114498` handle `presell` (unpublished, `templateSuffix: presell`).
 - **Windows gotchas hit during the 2026-08-19 migration** (this machine runs Windows, prior session notes above were from a Mac): a `shopify theme pull` run immediately after `themeDuplicate` can return an incomplete/assets-only tree — re-run pull (optionally scoped with repeated `--only "<dir>/*"` flags) if `sections/`, `blocks/`, etc. are missing after a pull that reported success. `theme/build_templates.py`'s file opens needed explicit `encoding="utf-8"` — Python's default `open()` uses the OS codepage (cp1252) on Windows and raises `UnicodeEncodeError` on the file's em-dashes/arrows without it (already fixed in the script).
 

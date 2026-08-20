@@ -4,6 +4,21 @@ Audit log of every API call and file change made to the store or this project. N
 
 ---
 
+## 2026-08-20 — Bonus / gift-with-purchase products
+
+- `shopify auth login` + `shopify store auth --store gcvy0q-cb.myshopify.com --scopes write_products,read_products,write_themes,read_themes,write_content,read_online_store_pages` — browser consent granted. **Store auth does not transfer between machines**: this Mac had no `~/.config/shopify` at all, despite the Windows session having authenticated the same store. Re-consent per machine.
+- `productCreate` x3 + `productVariantsBulkUpdate` x3 → three **DRAFT** bonus products, vendor `LullyRest`, tags `bonus` / `gift-with-purchase` / `sleep-kit`:
+  - **LullyRest Cooling Migraine Wrap** — `gid://shopify/Product/9591781064962`, $29.00, `LR-CMW-001`
+  - **LullyRest Contoured Blackout Sleep Mask** — `gid://shopify/Product/9591783981314`, $24.00, `LR-CBM-001`
+  - **LullyRest Filtered Sleep Earplugs** — `gid://shopify/Product/9591784243458`, $19.00, `LR-FSE-001`
+- Created `marketing/BONUS_PRODUCTS.md` (commit `9e9f9bc`) — selection rationale mapping each bonus to a belief/objection in `research/`, tier structure, magnesium held for phase 2 (supplement compliance), cooling bedsheets cut.
+- Verified by read-only `products(first: 20)` query: all three DRAFT with correct price/SKU/tags.
+- **Observed but NOT changed** (both contradict what the docs record — flagged to the user, left alone):
+  - Store display name is now **"LullyRest"**, not "Washa".
+  - Core pillow `9589261009154` is **ACTIVE**, though `CLAUDE.md` and this log both record it as DRAFT. Published outside this session.
+- **Gotcha:** `shopify store execute` returns the raw result object, **not** wrapped in a GraphQL `data` key. A parser assuming `data` crashed *after* the first `productCreate` had already succeeded, orphaning a product with no price/SKU. The create script was made idempotent (reconcile by handle) before re-running.
+- Nothing customer-visible from this session: all three new products are DRAFT.
+
 ## 2026-08-19 (continued) — Store migration: eug1kz-w0 → gcvy0q-cb
 
 Project moved to a new Shopify store, `gcvy0q-cb.myshopify.com` ("Washa", Basic plan). Old store `eug1kz-w0.myshopify.com` is not deleted/touched further; only read from as the migration source. User added `elixir-1-6-1-pillow` to the new store directly (not via API) before this work started.
