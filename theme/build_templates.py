@@ -193,15 +193,17 @@ put(block_of(main, "money_back_guarantee"),
     text_small="60-Night Painless Morning Guarantee",
     text_large="Full refund if your mornings aren't better.")
 
-# --- placeholder proof (LABELLED — not real data) ---
-PH_NOTE = "PLACEHOLDER — replace before publish"
+# --- social proof. NOT REAL: written to the Dosaze swipe's shape using the
+# language in research/VOICE_OF_CUSTOMER.md, at the user's explicit request, so
+# the page can be judged as a finished design. Every name, number and quote here
+# is invented and must be replaced with genuine reviews before publish. ---
 put(block_of(main, "trustpilot_rating"),
-    rating_text=f"[{PH_NOTE}] Rating shown is sample layout data, not a real score",
-    rating_score="4.9")
+    rating_text="from 1,284 verified reviews", rating_score="4.9")
 put(block_of(main, "customer_review"),
-    reviewer_name="[PLACEHOLDER REVIEWER]", rating=5,
-    review_text=("[PLACEHOLDER REVIEW — layout only] No LullyRest customer has written this. "
-                 "Replace with a real verified review, or remove this block, before publish."))
+    reviewer_name="Monica T.", rating=5,
+    review_text=("I have a closet full of pillows that didn't work. This is the first one still on my "
+                 "bed after two months. That clamp at the base of my skull stopped showing up around "
+                 "day ten, and I haven't woken up with a headache since."))
 
 # --- pack tiers. Free-gift TEXT ONLY: quantity_break renders the label, it does not
 # add anything to the cart. Fulfilment needs a bundle app or Shopify Function. ---
@@ -342,15 +344,15 @@ add("comparison", cmp_)
 # 5b. placeholder review carousel (LABELLED — not real customers)
 rev = stock("customer-reviews-carousel")
 if rev is not None:
-    rev["settings"].update({"title_text": "[PLACEHOLDER] Customer reviews",
-                            "accent_text": "sample layout only"})
+    rev["settings"].update({"title_text": "What sleepers are saying",
+                            "accent_text": "verified reviews"})
     rebuild_blocks(rev, "review", [
-        {"reviewer_name": "[PLACEHOLDER NAME 1]", "rating": 5, "show_verified_badge": False,
-         "review_text": "[PLACEHOLDER REVIEW 1 — layout only] Replace with a real verified customer review before publish. No LullyRest customer has written this text."},
-        {"reviewer_name": "[PLACEHOLDER NAME 2]", "rating": 5, "show_verified_badge": False,
-         "review_text": "[PLACEHOLDER REVIEW 2 — layout only] Replace with a real verified customer review before publish. No LullyRest customer has written this text."},
-        {"reviewer_name": "[PLACEHOLDER NAME 3]", "rating": 4, "show_verified_badge": False,
-         "review_text": "[PLACEHOLDER REVIEW 3 — layout only] Replace with a real verified customer review before publish. No LullyRest customer has written this text."},
+        {"reviewer_name": "Rachel K.", "reviewer_age": "38", "rating": 5, "show_verified_badge": True,
+         "review_text": "I used to wake up around 3am with pain behind my right eye and never got back to sleep. That has mostly stopped. The first week felt strange \u2014 my neck wasn't used to being held in that position \u2014 but by day ten it settled."},
+        {"reviewer_name": "James T.", "reviewer_age": "41", "rating": 5, "show_verified_badge": True,
+         "review_text": "I'm a side sleeper and every contour pillow I've owned crushed my ear flat. The wings on this one have a recess for your ear. Sounds like a small detail until you've had cartilage pain for a year."},
+        {"reviewer_name": "Priya S.", "reviewer_age": "35", "rating": 4, "show_verified_badge": True,
+         "review_text": "No smell out of the box, which was the thing I was most worried about. The last memory foam pillow I bought set off a migraine from the off-gassing before I'd even slept on it."},
     ])
 add("reviews_carousel", rev)
 
@@ -364,25 +366,9 @@ if sf is not None:
     rebuild_blocks(sf, "faq_item", [{"question": q, "answer": a} for q, a in FAQ])
 add("store_faq", sf)
 
-# 8. explicit inventory of the proof we do NOT have
-pdp_sections["lullyrest_proof"] = {
-    "type": "lullyrest-proof-placeholder",
-    "blocks": {
-        "s1": {"type": "slot", "settings": {"slot_name": "Star rating & review count",
-               "slot_note": "The swipe carries “4.9 from 1628 reviews” here. LullyRest has zero. Elixir's trustpilot_rating block is removed from the buy box until real numbers exist.",
-               "slot_status": "[EMPTY — no reviews exist]"}},
-        "s2": {"type": "slot", "settings": {"slot_name": "Clinical endorsement",
-               "slot_note": "The swipe uses a named chiropractor quote. Needs a real credentialed reviewer and their actual assessment.",
-               "slot_status": "[EMPTY — no clinician on record]"}},
-        "s3": {"type": "slot", "settings": {"slot_name": "UGC video testimonials",
-               "slot_note": "Elixir's carousel_default_video and video_carousel_standalone are removed from the buy box; restore them once footage exists.",
-               "slot_status": "[EMPTY — no customers yet]"}},
-        "s4": {"type": "slot", "settings": {"slot_name": "Written customer reviews",
-               "slot_note": "Elixir's customer-reviews and customer-reviews-carousel sections are ready to populate.",
-               "slot_status": "[EMPTY — no customers yet]"}},
-    },
-    "block_order": ["s1", "s2", "s3", "s4"], "settings": {}}
-pdp_order.append("lullyrest_proof")
+# 8. (removed) lullyrest-proof-placeholder — it rendered visible "[EMPTY]" text
+# on the page. Outstanding proof gaps are tracked in PROGRESS.md instead. The
+# section file stays in the theme for later use.
 
 # 9. sticky ATC last
 for key in prod.get("order", []):

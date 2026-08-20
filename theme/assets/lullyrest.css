@@ -10,8 +10,6 @@
    against a background that did not move with it.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
-
 .lr {
   --lr-ink: #23262B;
   --lr-paper: #FCFCFA;
@@ -20,17 +18,20 @@
   --lr-proof-ink: #0A5F67;      /* darker cyan for text on paper — meets AA */
   --lr-wash: #F2F1ED;
 
-  --lr-display: Archivo, ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --lr-mono: "Space Mono", ui-monospace, SFMono-Regular, monospace;
+  /* Inherit the theme's typeface so our sections sit flush with Elixir's.
+     Imposing Archivo/Space Mono here made line heights and cap heights
+     disagree with every section above and below. */
+  --lr-display: inherit;
+  --lr-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --lr-measure: 68ch;
   --lr-gutter: clamp(1.25rem, 4vw, 3rem);
 
   color: var(--lr-ink);
   background: var(--lr-paper);
-  font-family: var(--lr-display);
-  font-size: 1.0625rem;
-  line-height: 1.65;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -41,9 +42,9 @@
 /* ---------- layout ---------- */
 
 .lr__wrap {
-  max-width: 78rem;
+  max-width: var(--page-width, 78rem);
   margin-inline: auto;
-  padding-inline: var(--lr-gutter);
+  padding-inline: var(--page-desktop-horizontal-padding, var(--lr-gutter));
 }
 
 .lr__col {

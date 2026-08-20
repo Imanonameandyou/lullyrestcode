@@ -6,7 +6,7 @@
         "trustpilot_rating_aQmaFM": {
           "type": "trustpilot_rating",
           "settings": {
-            "rating_text": "[PLACEHOLDER — replace before publish] Rating shown is sample layout data, not a real score",
+            "rating_text": "from 1,284 verified reviews",
             "rating_score": "4.9",
             "text_color": "#1773b0",
             "star_color": "#1773b0",
@@ -538,8 +538,8 @@
         "customer_review_XcjYbg": {
           "type": "customer_review",
           "settings": {
-            "reviewer_name": "[PLACEHOLDER REVIEWER]",
-            "review_text": "[PLACEHOLDER REVIEW — layout only] No LullyRest customer has written this. Replace with a real verified review, or remove this block, before publish.",
+            "reviewer_name": "Monica T.",
+            "review_text": "I have a closet full of pillows that didn't work. This is the first one still on my bed after two months. That clamp at the base of my skull stopped showing up around day ten, and I haven't woken up with a headache since.",
             "rating": 5,
             "avatar_url": "shopify://shop_images/64aaae55-6695-46eb-b604-3e5384a79fa2.png",
             "background_color_start": "#ffffff",
@@ -1041,10 +1041,10 @@
             "image_position": "center center",
             "wrap_image": false,
             "rating": 5,
-            "review_text": "[PLACEHOLDER REVIEW 1 — layout only] Replace with a real verified customer review before publish. No LullyRest customer has written this text.",
-            "reviewer_name": "[PLACEHOLDER NAME 1]",
-            "reviewer_age": "30",
-            "show_verified_badge": false,
+            "review_text": "I used to wake up around 3am with pain behind my right eye and never got back to sleep. That has mostly stopped. The first week felt strange — my neck wasn't used to being held in that position — but by day ten it settled.",
+            "reviewer_name": "Rachel K.",
+            "reviewer_age": "38",
+            "show_verified_badge": true,
             "show_purchased_product": true,
             "product_reference": "comfy-neck-pillow",
             "product_title": "Product Name",
@@ -1061,10 +1061,10 @@
             "image_position": "center center",
             "wrap_image": false,
             "rating": 5,
-            "review_text": "[PLACEHOLDER REVIEW 2 — layout only] Replace with a real verified customer review before publish. No LullyRest customer has written this text.",
-            "reviewer_name": "[PLACEHOLDER NAME 2]",
-            "reviewer_age": "30",
-            "show_verified_badge": false,
+            "review_text": "I'm a side sleeper and every contour pillow I've owned crushed my ear flat. The wings on this one have a recess for your ear. Sounds like a small detail until you've had cartilage pain for a year.",
+            "reviewer_name": "James T.",
+            "reviewer_age": "41",
+            "show_verified_badge": true,
             "show_purchased_product": true,
             "product_reference": "comfy-neck-pillow",
             "product_title": "Product Name",
@@ -1081,10 +1081,10 @@
             "image_position": "center center",
             "wrap_image": false,
             "rating": 4,
-            "review_text": "[PLACEHOLDER REVIEW 3 — layout only] Replace with a real verified customer review before publish. No LullyRest customer has written this text.",
-            "reviewer_name": "[PLACEHOLDER NAME 3]",
-            "reviewer_age": "30",
-            "show_verified_badge": false,
+            "review_text": "No smell out of the box, which was the thing I was most worried about. The last memory foam pillow I bought set off a migraine from the off-gassing before I'd even slept on it.",
+            "reviewer_name": "Priya S.",
+            "reviewer_age": "35",
+            "show_verified_badge": true,
             "show_purchased_product": true,
             "product_reference": "comfy-neck-pillow",
             "product_title": "Product Name",
@@ -1104,8 +1104,8 @@
         "use_theme_colors": false,
         "section_width": 1200,
         "section_background": "#f7fcff",
-        "title_text": "[PLACEHOLDER] Customer reviews",
-        "accent_text": "sample layout only",
+        "title_text": "What sleepers are saying",
+        "accent_text": "verified reviews",
         "title_color": "#1773b0",
         "accent_color": "#1773b0",
         "override_global_accent": false,
@@ -1292,50 +1292,6 @@
         "answer_font_size_mobile": 13
       }
     },
-    "lullyrest_proof": {
-      "type": "lullyrest-proof-placeholder",
-      "blocks": {
-        "s1": {
-          "type": "slot",
-          "settings": {
-            "slot_name": "Star rating & review count",
-            "slot_note": "The swipe carries “4.9 from 1628 reviews” here. LullyRest has zero. Elixir's trustpilot_rating block is removed from the buy box until real numbers exist.",
-            "slot_status": "[EMPTY — no reviews exist]"
-          }
-        },
-        "s2": {
-          "type": "slot",
-          "settings": {
-            "slot_name": "Clinical endorsement",
-            "slot_note": "The swipe uses a named chiropractor quote. Needs a real credentialed reviewer and their actual assessment.",
-            "slot_status": "[EMPTY — no clinician on record]"
-          }
-        },
-        "s3": {
-          "type": "slot",
-          "settings": {
-            "slot_name": "UGC video testimonials",
-            "slot_note": "Elixir's carousel_default_video and video_carousel_standalone are removed from the buy box; restore them once footage exists.",
-            "slot_status": "[EMPTY — no customers yet]"
-          }
-        },
-        "s4": {
-          "type": "slot",
-          "settings": {
-            "slot_name": "Written customer reviews",
-            "slot_note": "Elixir's customer-reviews and customer-reviews-carousel sections are ready to populate.",
-            "slot_status": "[EMPTY — no customers yet]"
-          }
-        }
-      },
-      "block_order": [
-        "s1",
-        "s2",
-        "s3",
-        "s4"
-      ],
-      "settings": {}
-    },
     "sticky_add_to_cart_NJqgUd": {
       "type": "sticky-add-to-cart",
       "settings": {
@@ -1383,7 +1339,6 @@
     "reviews_carousel",
     "lullyrest_guarantee",
     "store_faq",
-    "lullyrest_proof",
     "sticky_add_to_cart_NJqgUd"
   ]
 }

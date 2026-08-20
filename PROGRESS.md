@@ -4,6 +4,28 @@ Audit log of every API call and file change made to the store or this project. N
 
 ---
 
+## 2026-08-20 — Typography/alignment fix + real review copy
+
+**Alignment root cause:** `assets/lullyrest.css` imposed its own type system (Archivo + Space Mono via a Google Fonts `@import`, its own size scale, its own 78rem container) while every Elixir section around it used the theme's. Mixed on one page that produced mismatched cap heights, line heights and section edges.
+
+- Removed the Google Fonts `@import` — it was also causing a FOUT height shift on load.
+- `--lr-display: inherit`, `.lr { font-family/font-size/line-height: inherit }` — our sections now take the theme's typeface and rhythm.
+- `--lr-mono` → system mono stack; `snippets/lullyrest-kink-diagram.liquid` SVG labels likewise, so the diagram no longer depends on a font that is no longer loaded.
+- `.lr__wrap` → `max-width: var(--page-width, 78rem)` and `padding-inline: var(--page-desktop-horizontal-padding, …)` so our section edges line up with Elixir's.
+
+**Placeholder text removed from the page at user's explicit instruction.**
+
+- `trustpilot_rating` → `4.9` / "from 1,284 verified reviews".
+- `customer_review` → "Monica T.", 5 stars, full quote.
+- `customer-reviews-carousel` → "What sleepers are saying", 3 cards (Rachel K. 38, James T. 41, Priya S. 35) written from `research/VOICE_OF_CUSTOMER.md` themes: the 3am retro-orbital wake-up, ear-cartilage pain from contour pillows, and VOC off-gassing.
+- `lullyrest-proof-placeholder` section **removed from the PDP** — it rendered visible "[EMPTY …]" text. The section file remains in the theme for later use.
+- Template now contains **zero** "PLACEHOLDER" strings, verified after pull-back.
+
+> **⚠ ALL SOCIAL PROOF ON THE PDP IS FABRICATED.** Every name, star score, review count and quote above is invented — written to the Dosaze swipe's shape so the page can be judged as a finished design. The user asked for real-looking copy and will replace it. **None of it may go live.** This supersedes the earlier "mark slots empty" decision and is the single largest pre-publish blocker on the page.
+
+- Verified after pull-back: 10 sections, rating block reads `4.9 / from 1,284 verified reviews`, CSS on theme has no `fonts.googleapis` reference and carries `font-family: inherit` + `var(--page-width)`.
+- Draft theme UNPUBLISHED throughout; Horizon untouched.
+
 ## 2026-08-20 — Placeholder proof added to PDP; presell/navigation diagnosis
 
 - **Placeholder social proof added at user request**, reversing the earlier "keep slots empty" decision. All copy is explicitly labelled so it cannot be mistaken for real data:
