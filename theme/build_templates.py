@@ -177,7 +177,7 @@ def put(block, **kw):
 
 # --- buy box copy (marketing/PDP_COPY.md) ---
 put(block_of(main, "custom_text", 0),
-    text="Four-zone dual-loft core. Engineered for the two positions you actually sleep in.")
+    text="<p>Four-zone dual-loft core. Engineered for the two positions you actually sleep in.</p>")
 put(block_of(main, "custom_text", 1), show_description=True,
     description=("<p><strong>Included:</strong> ThermaFlow&trade; Phase-Change Cooling Cover &middot; "
                  "5-Minute Craniocervical Reset Protocol (video + printable routine)</p>"))
@@ -198,14 +198,14 @@ put(block_of(main, "quantity_break"),
     option_1_show_free_gift=True, option_1_free_gift_count=1,
     option_1_free_gift_text="+ Cooling Migraine Wrap",
     show_option_2=True, option_2_title="2 Pillows", option_2_quantity=2,
-    enable_option_2_custom_price=True, option_2_custom_price_amount=249,
-    option_2_compare_at_price=298,
+    enable_option_2_custom_price=True, option_2_custom_price_amount="249",
+    option_2_compare_at_price="298",
     option_2_show_free_gift=True, option_2_free_gift_count=3,
     option_2_free_gift_text="+ Wrap, Blackout Sleep Mask & Filtered Earplugs",
     enable_option_2_badge=True, option_2_badge="BEST VALUE",
     show_option_3=True, option_3_title="3 Pillows", option_3_quantity=3,
-    enable_option_3_custom_price=True, option_3_custom_price_amount=329,
-    option_3_compare_at_price=447,
+    enable_option_3_custom_price=True, option_3_custom_price_amount="329",
+    option_3_compare_at_price="447",
     option_3_show_free_gift=True, option_3_free_gift_count=3,
     option_3_free_gift_text="+ Full Sleep Kit for every pillow")
 
@@ -301,9 +301,9 @@ for key, stype in [("lullyrest_mechanism", "lullyrest-mechanism"), ("lullyrest_z
 # 5. comparison  (Dosaze: "Why we're different")
 cmp_ = stock("product-comparison")
 if cmp_ is not None:
-    cmp_["settings"].update({"show_heading": True, "column_count": 3,
+    cmp_["settings"].update({"show_heading": True, "column_count": "3",
                              "title_part_1": "Why we're", "title_part_2": "different",
-                             "subheading": "Compared against the two pillow types in most people's graveyard."})
+                             "subheading": "<p>Compared against the two pillow types in most people's graveyard.</p>"})
     rebuild_blocks(cmp_, "product_column", [
         {"product_name": "LullyRest", "product_subtitle": "4-zone dual-loft", "highlight_column": True},
         {"product_name": "Standard contour pillow", "product_subtitle": "Single-height wave"},
@@ -331,7 +331,7 @@ add("lullyrest_guarantee", {"type": "lullyrest-guarantee", "settings": {}})
 # 7. store FAQ  (Dosaze: tabbed FAQ block)
 sf = stock("store-faq")
 if sf is not None:
-    sf["settings"].update({"heading": "Questions", "subtitle": "The ones that actually decide it."})
+    sf["settings"].update({"heading": "Questions", "subtitle": "<p>The ones that actually decide it.</p>"})
     rebuild_blocks(sf, "faq_item", [{"question": q, "answer": a} for q, a in FAQ])
 add("store_faq", sf)
 

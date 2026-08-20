@@ -45,7 +45,7 @@
         "custom_text_L3wXdj": {
           "type": "custom_text",
           "settings": {
-            "text": "Four-zone dual-loft core. Engineered for the two positions you actually sleep in.",
+            "text": "<p>Four-zone dual-loft core. Engineered for the two positions you actually sleep in.</p>",
             "show_description": false,
             "description": "<p>Add additional descriptive text here</p>",
             "description_font_size": 12,
@@ -214,13 +214,13 @@
             "option_2_title": "2 Pillows",
             "option_2_quantity": 2,
             "option_2_image": "shopify://shop_images/pillows3.png",
-            "option_2_compare_at_price": 298,
+            "option_2_compare_at_price": "298",
             "hide_compare_at_price_option_2": false,
             "show_option_3": true,
             "option_3_title": "3 Pillows",
             "option_3_quantity": 3,
             "option_3_image": "shopify://shop_images/3pillows.png",
-            "option_3_compare_at_price": 447,
+            "option_3_compare_at_price": "447",
             "hide_compare_at_price_option_3": false,
             "show_option_4": false,
             "option_4_title": "Buy 4",
@@ -326,12 +326,12 @@
             "option_1_free_gift_count": 1,
             "option_1_free_gift_text": "+ Cooling Migraine Wrap",
             "enable_option_2_custom_price": true,
-            "option_2_custom_price_amount": 249,
+            "option_2_custom_price_amount": "249",
             "option_2_show_free_gift": true,
             "option_2_free_gift_count": 3,
             "option_2_free_gift_text": "+ Wrap, Blackout Sleep Mask & Filtered Earplugs",
             "enable_option_3_custom_price": true,
-            "option_3_custom_price_amount": 329,
+            "option_3_custom_price_amount": "329",
             "option_3_show_free_gift": true,
             "option_3_free_gift_count": 3,
             "option_3_free_gift_text": "+ Full Sleep Kit for every pillow"
@@ -921,7 +921,7 @@
         "title_part_2": "different",
         "title_part_1_color": "#1773b0",
         "title_part_2_color": "#1773b0",
-        "subheading": "Compared against the two pillow types in most people's graveyard.",
+        "subheading": "<p>Compared against the two pillow types in most people's graveyard.</p>",
         "desktop_description": "",
         "show_description_on_mobile": false,
         "subheading_size": 13,
@@ -970,7 +970,7 @@
         "unhighlighted_icon_color": "#1773b0",
         "unhighlighted_check_color": "#1773b0",
         "unhighlighted_x_color": "#1773b0",
-        "column_count": 3
+        "column_count": "3"
       }
     },
     "lullyrest_guarantee": {
@@ -1042,7 +1042,7 @@
       "settings": {
         "use_theme_colors": false,
         "heading": "Questions",
-        "subtitle": "The ones that actually decide it.",
+        "subtitle": "<p>The ones that actually decide it.</p>",
         "heading_color": "#1773b0",
         "section_padding": 60,
         "container_padding_mobile": 15,

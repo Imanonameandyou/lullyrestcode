@@ -4,6 +4,17 @@ Audit log of every API call and file change made to the store or this project. N
 
 ---
 
+## 2026-08-20 — PDP push was silently failing; fixed and verified
+
+The earlier "pushed successfully" for the rebuilt PDP was wrong. `shopify theme push` prints a generic success box **and** a separate error box; my output filter (`tail -8`) discarded the error. A rejected JSON template leaves the *previous* version on the theme, so the theme kept serving the old 6-section template while the CLI reported success. My verification was also too weak — I confirmed the file *existed* (21,188 bytes) rather than that it had *changed*.
+
+- Three rejections, fixed in order: `custom_text.text`, `store-faq.subtitle` and `product-comparison.subheading` are **richtext** (must open with `<p>`/`<ul>`/`<ol>`/`<h1-6>`); `quantity_break.option_N_custom_price_amount` / `option_N_compare_at_price` are **text** (need strings, not ints); `product-comparison.column_count` is a **select** (needs `"3"`, not `3`).
+- Added `theme/validate_template.py` — checks every setting in a built template against the section schemas (select/text→string, checkbox→bool, range/number→number, richtext→block-tag opener). Run it from inside the pulled theme before pushing.
+- Re-pushed; CLI reported success with no error box. **Verified by pulling the template back**: 51,405 bytes, 10 sections, `main` with 13 blocks including `quantity_break` carrying all three tiers. (Previously 21,188 bytes / 6 sections.)
+- **Storefront finding:** the store has a live custom primary domain, **trywasha.com**. A `?preview_theme_id=` link on the `.myshopify.com` domain 302s to `trywasha.com` and **drops the query parameter**, serving the live Horizon theme instead of the draft. Preview the draft via the admin theme editor or an admin-generated share link, not by hand-editing storefront URLs.
+- Confirmed live-site state: `trywasha.com/products/lullyrest-orthopedic-cervical-pillow` returns HTTP 200 on theme `163498262786` (Horizon, MAIN). The product is ACTIVE, so the PDP is publicly reachable on the old brand's domain, rendered by the untouched live theme.
+- Draft theme `163498656002` remains UNPUBLISHED; Horizon never written to.
+
 ## 2026-08-20 — PDP rebuilt to match the Dosaze swipe structure
 
 Goal: bring `product.lullyrest.json` as close to the competitor PDP in `research/swipes/` as the theme allows, without shipping proof we don't have.
