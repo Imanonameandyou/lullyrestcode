@@ -2,8 +2,9 @@
 """Build LullyRest templates into the pulled draft theme and register custom blocks."""
 import json, re, shutil, os
 
-THEME = "/private/tmp/claude-501/-Users-t-Downloads-LullyRest/d0c347d9-c107-44d9-92d2-0e12e4f54b5d/scratchpad/draft-theme"
-REPO  = "/Users/t/Downloads/LullyRest/lullyrestcode/theme"
+# Machine-specific; override with LR_THEME / LR_REPO env vars rather than editing.
+THEME = os.environ.get("LR_THEME", "/private/tmp/claude-501/-Users-t-Downloads-LullyRest/d0c347d9-c107-44d9-92d2-0e12e4f54b5d/scratchpad/theme-new")
+REPO  = os.environ.get("LR_REPO",  os.path.dirname(os.path.abspath(__file__)))
 
 # ---------- 1. copy our custom files in ----------
 for sub in ("sections", "blocks", "snippets", "assets", "templates"):
@@ -146,53 +147,218 @@ with open(os.path.join(THEME, "templates/page.presell.json"), "w", encoding="utf
     json.dump(presell, f, indent=2, ensure_ascii=False)
 print("wrote templates/page.presell.json —", len(order), "blocks")
 
+
 # ---------- 4. PDP template ----------
+# Mirrors the Dosaze PDP structure captured in research/swipes/ as closely as the
+# theme allows, EXCEPT for anything that would render proof we don't have.
 raw = re.sub(r'/\*.*?\*/', '', open(os.path.join(THEME, "templates/product.json"), encoding="utf-8").read(), flags=re.S)
 prod = json.loads(raw)
 main = prod["sections"]["main"]
 
-DROP_BLOCKS = {"trustpilot_rating", "number_one_award", "customer_review", "quantity_break",
+# Blocks dropped because they render social proof LullyRest does not have. Not
+# populated with placeholder text: a star widget or review carousel reads as real
+# proof regardless of what its copy says. Tracked in lullyrest-proof-placeholder.
+DROP_BLOCKS = {"trustpilot_rating", "number_one_award", "customer_review",
                "replica_warning", "carousel_default_video", "video_carousel_standalone"}
 kept = [b for b in main.get("block_order", []) if main["blocks"][b]["type"] not in DROP_BLOCKS]
 main["blocks"] = {k: main["blocks"][k] for k in kept}
 main["block_order"] = kept
-print("PDP main blocks kept:", [main["blocks"][k]["type"] for k in kept])
 
-pdp_sections = {"main": main}
-pdp_order = ["main"]
 
-for key, stype, settings in [
-    ("lullyrest_zones", "lullyrest-zones", {}),
-    ("lullyrest_mechanism", "lullyrest-mechanism", {}),
-    ("lullyrest_guarantee", "lullyrest-guarantee", {}),
-]:
-    pdp_sections[key] = {"type": stype, "settings": settings}
-    pdp_order.append(key)
+def block_of(sec, btype, nth=0):
+    hits = [sec["blocks"][k] for k in sec["block_order"] if sec["blocks"][k]["type"] == btype]
+    return hits[nth] if len(hits) > nth else None
 
+
+def put(block, **kw):
+    if block is not None:
+        block.setdefault("settings", {}).update(kw)
+
+
+# --- buy box copy (marketing/PDP_COPY.md) ---
+put(block_of(main, "custom_text", 0),
+    text="Four-zone dual-loft core. Engineered for the two positions you actually sleep in.")
+put(block_of(main, "custom_text", 1), show_description=True,
+    description=("<p><strong>Included:</strong> ThermaFlow&trade; Phase-Change Cooling Cover &middot; "
+                 "5-Minute Craniocervical Reset Protocol (video + printable routine)</p>"))
+put(block_of(main, "shipping_notice"), notice_text_before="Order today, expect delivery by", days_ahead=5)
+put(block_of(main, "guarantee_badges"),
+    badge_1_show=True, badge_1_text="60-night in-home trial",
+    badge_2_show=True, badge_2_text="Zero-VOC vacuum-baked foam")
+put(block_of(main, "money_back_guarantee"),
+    text_small="60-Night Painless Morning Guarantee",
+    text_large="Full refund if your mornings aren't better.")
+
+# --- pack tiers. Free-gift TEXT ONLY: quantity_break renders the label, it does not
+# add anything to the cart. Fulfilment needs a bundle app or Shopify Function. ---
+put(block_of(main, "quantity_break"),
+    show_radio_buttons=True, enable_custom_pricing=True, show_savings_text=True,
+    preselected_option="2", show_option_4=False,
+    show_option_1=True, option_1_title="1 Pillow", option_1_quantity=1,
+    option_1_show_free_gift=True, option_1_free_gift_count=1,
+    option_1_free_gift_text="+ Cooling Migraine Wrap",
+    show_option_2=True, option_2_title="2 Pillows", option_2_quantity=2,
+    enable_option_2_custom_price=True, option_2_custom_price_amount=249,
+    option_2_compare_at_price=298,
+    option_2_show_free_gift=True, option_2_free_gift_count=3,
+    option_2_free_gift_text="+ Wrap, Blackout Sleep Mask & Filtered Earplugs",
+    enable_option_2_badge=True, option_2_badge="BEST VALUE",
+    show_option_3=True, option_3_title="3 Pillows", option_3_quantity=3,
+    enable_option_3_custom_price=True, option_3_custom_price_amount=329,
+    option_3_compare_at_price=447,
+    option_3_show_free_gift=True, option_3_free_gift_count=3,
+    option_3_free_gift_text="+ Full Sleep Kit for every pillow")
+
+# --- FAQ (PDP_COPY.md Section G) ---
+FAQ = [
+    ("How long until I notice a difference?",
+     "<p>Some people notice within a few nights. If your neck muscles have been contracted for years, expect 7&ndash;14 nights for the adaptation to settle. The 60-night trial exists so you have room to find out.</p>"),
+    ("I sleep on my stomach sometimes.",
+     "<p>LullyRest is engineered for back and side sleeping. Stomach sleeping forces cervical rotation no pillow can correct &mdash; if that's your primary position, this is not the right product for you.</p>"),
+    ("How is this different from the contour pillow I already tried?",
+     "<p>Standard contour pillows are a single-height wave: one bump, one dip, the same height across the whole pillow. LullyRest changes height across its <em>width</em> &mdash; taller at the outer wings than the centre &mdash; which is what makes side sleeping work.</p>"),
+    ("Will it be too firm?",
+     "<p>Firm under the neck by design &mdash; that's the part doing the work. The occipital cavity and ear recesses are where pressure is deliberately relieved.</p>"),
+    ("Does it work with an adjustable bed?",
+     "<p>Yes. The zones support the neck relative to the head, so it holds its geometry at an incline.</p>"),
+    ("What if it doesn't work for me?",
+     "<p>Return it within 60 nights for a full refund. [VERIFY: return mechanics &mdash; who pays return shipping, refund processing time.]</p>"),
+    ("Is the cover washable?",
+     "<p>[VERIFY: confirm care instructions &mdash; machine washable? removable? temperature?]</p>"),
+]
+fq = block_of(main, "product_faq")
+if fq is not None:
+    for i, (q, a) in enumerate(FAQ, 1):
+        fq["settings"][f"question_{i}"] = q
+        fq["settings"][f"answer_{i}"] = a
+        fq["settings"][f"show_faq_{i}"] = True
+
+pdp_sections, pdp_order = {"main": main}, ["main"]
+
+
+def stock(t):
+    for k in prod.get("order", []):
+        if prod["sections"][k]["type"] == t:
+            return json.loads(json.dumps(prod["sections"][k]))
+    return None
+
+
+def add(key, sec):
+    if sec is not None:
+        pdp_sections[key] = sec
+        pdp_order.append(key)
+
+
+def rebuild_blocks(sec, btype, items):
+    """Replace every block of btype with our own, preserving the stock block's
+    settings as a styling base so the section keeps Elixir's look."""
+    base = {}
+    for k in list(sec.get("block_order", [])):
+        if sec["blocks"][k]["type"] == btype:
+            if not base:
+                base = dict(sec["blocks"][k].get("settings", {}))
+            del sec["blocks"][k]
+            sec["block_order"].remove(k)
+    for i, settings in enumerate(items, 1):
+        k = f"{btype}_{i}"
+        merged = dict(base)
+        merged.update(settings)
+        sec["blocks"][k] = {"type": btype, "settings": merged}
+        sec["block_order"].append(k)
+
+
+# 1. trust bar
+bar = stock("scrolling-features-bar")
+if bar is not None:
+    rebuild_blocks(bar, "feature_item", [
+        {"text": "4-ZONE DUAL-LOFT CORE"},
+        {"text": "ENGINEERED FOR BACK & SIDE SLEEPING"},
+        {"text": "ZERO-VOC VACUUM-BAKED FOAM"},
+        {"text": "THERMAFLOW™ COOLING COVER INCLUDED"},
+        {"text": "60-NIGHT IN-HOME TRIAL"},
+    ])
+add("features_bar", bar)
+
+# 2. benefit tabs  (Dosaze: "What Can Dosaze Do For You?")
+ben = stock("product-benefits")
+if ben is not None:
+    rebuild_blocks(ben, "benefit", [
+        {"title": "Zone 01 — Lordotic Cervical Extension Roll",
+         "description": "A firmer roll under the neck that holds your natural 30°–35° arc, so the cable stays curved instead of folding."},
+        {"title": "Zone 02 — Recessed Occipital Cavity",
+         "description": "A cradle set 1.5–2in below the neck roll. On your back the skull settles in, and the base of the skull opens instead of compressing."},
+        {"title": "Zone 03 — Dual-Loft Lateral Wings",
+         "description": "Outer thirds built to 4.5–5.5in to match shoulder width, so rolling onto your side lands you on a surface that is already the right height."},
+        {"title": "Zone 04 — Integrated Ear Depressions",
+         "description": "Recesses in each wing so your outer ear isn't crushed against a firm surface all night. Ear and jaw pain is what kills most firm contour pillows by week two."},
+    ])
+add("benefits", ben)
+
+# 3-4. our mechanism + zones diagrams (Dosaze: "How it works" + annotated diagram)
+for key, stype in [("lullyrest_mechanism", "lullyrest-mechanism"), ("lullyrest_zones", "lullyrest-zones")]:
+    add(key, {"type": stype, "settings": {}})
+
+# 5. comparison  (Dosaze: "Why we're different")
+cmp_ = stock("product-comparison")
+if cmp_ is not None:
+    cmp_["settings"].update({"show_heading": True, "column_count": 3,
+                             "title_part_1": "Why we're", "title_part_2": "different",
+                             "subheading": "Compared against the two pillow types in most people's graveyard."})
+    rebuild_blocks(cmp_, "product_column", [
+        {"product_name": "LullyRest", "product_subtitle": "4-zone dual-loft", "highlight_column": True},
+        {"product_name": "Standard contour pillow", "product_subtitle": "Single-height wave"},
+        {"product_name": "Flat foam or fibre pillow", "product_subtitle": "One uniform surface"},
+    ])
+    rebuild_blocks(cmp_, "feature_row", [
+        {"feature_name": "Different height for back vs side sleeping", "value_type": "checkmark",
+         "value_1": "yes", "value_2": "no", "value_3": "no"},
+        {"feature_name": "Holds a 30°–35° cervical curve", "value_type": "checkmark",
+         "value_1": "yes", "value_2": "no", "value_3": "no"},
+        {"feature_name": "Recessed occipital cavity", "value_type": "checkmark",
+         "value_1": "yes", "value_2": "yes", "value_3": "no"},
+        {"feature_name": "Ear-pressure relief cavities", "value_type": "checkmark",
+         "value_1": "yes", "value_2": "no", "value_3": "no"},
+        {"feature_name": "Vacuum-baked to drive off residual VOCs", "value_type": "checkmark",
+         "value_1": "yes", "value_2": "no", "value_3": "no"},
+        {"feature_name": "60-night in-home trial", "value_type": "checkmark",
+         "value_1": "yes", "value_2": "no", "value_3": "no"},
+    ])
+add("comparison", cmp_)
+
+# 6. guarantee (our own section, already on-brand)
+add("lullyrest_guarantee", {"type": "lullyrest-guarantee", "settings": {}})
+
+# 7. store FAQ  (Dosaze: tabbed FAQ block)
+sf = stock("store-faq")
+if sf is not None:
+    sf["settings"].update({"heading": "Questions", "subtitle": "The ones that actually decide it."})
+    rebuild_blocks(sf, "faq_item", [{"question": q, "answer": a} for q, a in FAQ])
+add("store_faq", sf)
+
+# 8. explicit inventory of the proof we do NOT have
 pdp_sections["lullyrest_proof"] = {
     "type": "lullyrest-proof-placeholder",
     "blocks": {
         "s1": {"type": "slot", "settings": {"slot_name": "Star rating & review count",
-               "slot_note": "The swipe carries “4.9 from 1628 reviews” here. LullyRest has zero reviews.",
+               "slot_note": "The swipe carries “4.9 from 1628 reviews” here. LullyRest has zero. Elixir's trustpilot_rating block is removed from the buy box until real numbers exist.",
                "slot_status": "[EMPTY — no reviews exist]"}},
         "s2": {"type": "slot", "settings": {"slot_name": "Clinical endorsement",
-               "slot_note": "A named, credentialed reviewer and their actual assessment of the design.",
+               "slot_note": "The swipe uses a named chiropractor quote. Needs a real credentialed reviewer and their actual assessment.",
                "slot_status": "[EMPTY — no clinician on record]"}},
         "s3": {"type": "slot", "settings": {"slot_name": "UGC video testimonials",
-               "slot_note": "Elixir's video-carousel-standalone section is already in this theme, ready to populate.",
+               "slot_note": "Elixir's carousel_default_video and video_carousel_standalone are removed from the buy box; restore them once footage exists.",
                "slot_status": "[EMPTY — no customers yet]"}},
         "s4": {"type": "slot", "settings": {"slot_name": "Written customer reviews",
                "slot_note": "Elixir's customer-reviews and customer-reviews-carousel sections are ready to populate.",
                "slot_status": "[EMPTY — no customers yet]"}},
     },
-    "block_order": ["s1", "s2", "s3", "s4"],
-    "settings": {}}
+    "block_order": ["s1", "s2", "s3", "s4"], "settings": {}}
 pdp_order.append("lullyrest_proof")
 
+# 9. sticky ATC last
 for key in prod.get("order", []):
     if prod["sections"][key]["type"] == "sticky-add-to-cart":
-        pdp_sections[key] = prod["sections"][key]
-        pdp_order.append(key)
+        add(key, prod["sections"][key])
 
 with open(os.path.join(THEME, "templates/product.lullyrest.json"), "w", encoding="utf-8") as f:
     json.dump({"sections": pdp_sections, "order": pdp_order}, f, indent=2, ensure_ascii=False)

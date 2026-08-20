@@ -4,6 +4,22 @@ Audit log of every API call and file change made to the store or this project. N
 
 ---
 
+## 2026-08-20 — PDP rebuilt to match the Dosaze swipe structure
+
+Goal: bring `product.lullyrest.json` as close to the competitor PDP in `research/swipes/` as the theme allows, without shipping proof we don't have.
+
+- **Diagnosis:** the previous build discarded *every* Elixir below-fold section (kept only `sticky-add-to-cart`) plus the `quantity_break` block. Stock Elixir `product.json` has 12 sections; ours had 6, and none of the structural mid-page sections the swipe relies on.
+- Rewrote `theme/build_templates.py` section 4. `THEME`/`REPO` are now overridable via `LR_THEME` / `LR_REPO` env vars instead of hardcoded machine paths.
+- New PDP order (10 sections): `shop-product-details` → `scrolling-features-bar` → `product-benefits` → `lullyrest-mechanism` → `lullyrest-zones` → `product-comparison` → `lullyrest-guarantee` → `store-faq` → `lullyrest-proof-placeholder` → `sticky-add-to-cart`.
+- **Restored `quantity_break`** with 3 pack tiers: 1 Pillow $149 / 2 Pillows $249 (compare $298, BEST VALUE badge) / 3 Pillows $329 (compare $447). Per-tier free-gift labels reference the bonus products created earlier today.
+- Populated from `marketing/PDP_COPY.md`: buy-box subtitle + inclusions, guarantee badges, money-back text, 7 FAQ items (both the buy-box `product_faq` block and the `store-faq` section), 4 benefit blocks (the four zones), 5 trust-bar items, and a 3-column x 6-row comparison table.
+- Comparison columns are **generic categories** ("Standard contour pillow", "Flat foam or fibre pillow"), not named brands — deliberate, to avoid unsubstantiated claims about specific competitors.
+- **Deliberately NOT restored:** `trustpilot_rating`, `number_one_award`, `customer_review`, `carousel_default_video` x4, `video_carousel_standalone`, `replica_warning`. These render social proof LullyRest does not have; a star widget reads as real proof regardless of placeholder copy. Each is now itemised in `lullyrest-proof-placeholder` with what it needs.
+- `shopify theme push` x2 (blocks/sections/snippets/assets, then templates) onto draft theme `163498656002`.
+- Verified read-only: template present (21,188 bytes), theme role **UNPUBLISHED**, product `9589261009154` `templateSuffix: lullyrest`.
+- **Known gap:** `quantity_break` free-gift labels are display text only — the block does not add anything to the cart. Fulfilling those gifts needs a bundle app or Shopify Function. Do not publish these tiers until that is wired, or customers will be promised gifts the cart never adds.
+- Nothing customer-visible: all work confined to the unpublished draft theme.
+
 ## 2026-08-20 — Bonus / gift-with-purchase products
 
 - `shopify auth login` + `shopify store auth --store gcvy0q-cb.myshopify.com --scopes write_products,read_products,write_themes,read_themes,write_content,read_online_store_pages` — browser consent granted. **Store auth does not transfer between machines**: this Mac had no `~/.config/shopify` at all, despite the Windows session having authenticated the same store. Re-consent per machine.

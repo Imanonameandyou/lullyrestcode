@@ -45,7 +45,7 @@
         "custom_text_L3wXdj": {
           "type": "custom_text",
           "settings": {
-            "text": "<p><strong>Choose Your Pillow Type</strong></p>",
+            "text": "Four-zone dual-loft core. Engineered for the two positions you actually sleep in.",
             "show_description": false,
             "description": "<p>Add additional descriptive text here</p>",
             "description_font_size": 12,
@@ -148,8 +148,8 @@
           "type": "custom_text",
           "settings": {
             "text": "<p><strong>Choose Your Amount</strong></p>",
-            "show_description": false,
-            "description": "<p>Add additional descriptive text here</p>",
+            "show_description": true,
+            "description": "<p><strong>Included:</strong> ThermaFlow&trade; Phase-Change Cooling Cover &middot; 5-Minute Craniocervical Reset Protocol (video + printable routine)</p>",
             "description_font_size": 12,
             "description_spacing": 4,
             "description_color": "#666666",
@@ -191,12 +191,158 @@
             "divider_spacing": 12
           }
         },
+        "quantity_break_Vk3Y8a": {
+          "type": "quantity_break",
+          "settings": {
+            "show_radio_buttons": true,
+            "enable_variant_selection": true,
+            "enable_single_variant_selection": true,
+            "hide_images": false,
+            "hide_compare_price": false,
+            "enable_custom_pricing": true,
+            "selected_custom_price_format": "amount",
+            "show_savings_text": true,
+            "custom_savings_font_size": 12,
+            "custom_savings_text_color": "#666666",
+            "show_option_1": true,
+            "option_1_title": "1 Pillow",
+            "option_1_quantity": 1,
+            "option_1_image": "shopify://shop_images/Screenshot_2025-05-05_at_9.31.07_AM-removebg-preview.png",
+            "option_1_compare_at_price": "0",
+            "hide_compare_at_price_option_1": false,
+            "show_option_2": true,
+            "option_2_title": "2 Pillows",
+            "option_2_quantity": 2,
+            "option_2_image": "shopify://shop_images/pillows3.png",
+            "option_2_compare_at_price": 298,
+            "hide_compare_at_price_option_2": false,
+            "show_option_3": true,
+            "option_3_title": "3 Pillows",
+            "option_3_quantity": 3,
+            "option_3_image": "shopify://shop_images/3pillows.png",
+            "option_3_compare_at_price": 447,
+            "hide_compare_at_price_option_3": false,
+            "show_option_4": false,
+            "option_4_title": "Buy 4",
+            "option_4_quantity": 4,
+            "option_4_compare_at_price": "",
+            "hide_compare_at_price_option_4": false,
+            "option_1_badge": "",
+            "option_2_badge": "BEST VALUE",
+            "option_3_badge": "",
+            "option_4_badge": "",
+            "enable_option_1_badge": false,
+            "option_1_badge_color": "#ffa500",
+            "option_1_badge_text_color": "#ffffff",
+            "enable_option_2_badge": true,
+            "option_2_badge_color": "#83d7f9",
+            "option_2_badge_text_color": "#ffffff",
+            "enable_option_3_badge": false,
+            "option_3_badge_color": "#00c851",
+            "option_3_badge_text_color": "#ffffff",
+            "enable_option_4_badge": false,
+            "option_4_badge_color": "#ff4444",
+            "option_4_badge_text_color": "#ffffff",
+            "enable_badge_shine": true,
+            "enable_option_1_badge_border": false,
+            "option_1_badge_border_color": "#e5e5e5",
+            "option_1_badge_border_width": 1,
+            "option_1_badge_border_style": "solid",
+            "enable_option_2_badge_border": true,
+            "option_2_badge_border_color": "#1773b0",
+            "option_2_badge_border_width": 1,
+            "option_2_badge_border_style": "solid",
+            "enable_option_3_badge_border": false,
+            "option_3_badge_border_color": "#e5e5e5",
+            "option_3_badge_border_width": 1,
+            "option_3_badge_border_style": "solid",
+            "enable_option_4_badge_border": false,
+            "option_4_badge_border_color": "#e5e5e5",
+            "option_4_badge_border_width": 1,
+            "option_4_badge_border_style": "solid",
+            "include_variant_option_1": true,
+            "include_variant_option_2": true,
+            "include_variant_option_3": true,
+            "swatch_size": 24,
+            "variant_select_height": 24,
+            "swatch_border_radius": 50,
+            "swatch_selected_border_color": "#000000",
+            "hide_product_title_in_variants": false,
+            "hide_quantity_break_variant_images": false,
+            "stack_variant_layout": false,
+            "show_swatch_container_border": true,
+            "swatch_container_border_color": "#cccccc",
+            "color_swatch_mapping": "",
+            "swatch_container_border_radius": 8,
+            "variant_select_border_radius": 8,
+            "max_swatches_per_row": 4,
+            "variant_image_size": 30,
+            "variant_label_font_size": 10,
+            "variant_label_font_size_mobile": 10,
+            "show_variant_selection_border_top": false,
+            "variant_selection_border_top_color": "#e0e0e0",
+            "quantity_circle_size": 24,
+            "quantity_circle_size_mobile": 20,
+            "quantity_circle_bg_color": "#f5f5f5",
+            "quantity_circle_text_color": "#333333",
+            "quantity_circle_font_size": 11,
+            "quantity_circle_font_size_mobile": 10,
+            "best_deal_border_color": "#1773b0",
+            "best_deal_background_color": "#f5fdff",
+            "enable_selected_gradient": true,
+            "selected_gradient_start": "#e7f5fd",
+            "selected_gradient_end": "#f7fcff",
+            "selected_gradient_direction": "to bottom",
+            "title_color": "#1773b0",
+            "price_color": "#1773b0",
+            "compare_price_color": "#999999",
+            "title_font_size": 16,
+            "unselected_border_color": "#e5e5e5",
+            "unselected_background_color": "#ffffff",
+            "option_hover_background_color": "#f8f9fa",
+            "save_badge_background_color": "#fdeeee",
+            "save_badge_text_color": "#ff0029",
+            "save_badge_text": "SAVE",
+            "show_save_badge": true,
+            "save_badge_format": "dollar",
+            "save_badge_border_radius": 50,
+            "option_container_border_radius": 8,
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "savings_text_format": "You save {savings}",
+            "enable_individual_savings_text": false,
+            "show_individual_savings_text": false,
+            "option_1_savings_text": "",
+            "option_2_savings_text": "",
+            "option_3_savings_text": "",
+            "badge_border_radius": 4,
+            "variant_selector_border_color": "#1773b0",
+            "variant_selector_background_color": "#ffffff",
+            "variant_selector_text_color": "#1773b0",
+            "variant_container_background_color": "rgba(0,0,0,0)",
+            "variant_label_color": "#1773b0",
+            "preselected_option": "2",
+            "option_1_show_free_gift": true,
+            "option_1_free_gift_count": 1,
+            "option_1_free_gift_text": "+ Cooling Migraine Wrap",
+            "enable_option_2_custom_price": true,
+            "option_2_custom_price_amount": 249,
+            "option_2_show_free_gift": true,
+            "option_2_free_gift_count": 3,
+            "option_2_free_gift_text": "+ Wrap, Blackout Sleep Mask & Filtered Earplugs",
+            "enable_option_3_custom_price": true,
+            "option_3_custom_price_amount": 329,
+            "option_3_show_free_gift": true,
+            "option_3_free_gift_count": 3,
+            "option_3_free_gift_text": "+ Full Sleep Kit for every pillow"
+          }
+        },
         "shipping_notice": {
           "type": "shipping_notice",
           "settings": {
-            "notice_text_before": "In Stock, Order Today To Receive It By",
+            "notice_text_before": "Order today, expect delivery by",
             "notice_text_after": "",
-            "days_ahead": 2,
+            "days_ahead": 5,
             "show_suffix": true,
             "custom_shipping_text": "#1773b0",
             "custom_date_color": "#1773b0",
@@ -242,11 +388,11 @@
           "type": "guarantee_badges",
           "settings": {
             "badge_1_show": true,
-            "badge_1_text": "30-Day Money-Back Guarantee",
+            "badge_1_text": "60-night in-home trial",
             "badge_1_icon": "shield",
             "badge_1_custom_icon": "",
             "badge_2_show": true,
-            "badge_2_text": "90 Day Returns",
+            "badge_2_text": "Zero-VOC vacuum-baked foam",
             "badge_2_icon": "checkmark",
             "badge_2_custom_icon": "",
             "icon_color": "#83d7f9",
@@ -276,8 +422,8 @@
         "money_back_guarantee_kbK7cN": {
           "type": "money_back_guarantee",
           "settings": {
-            "text_small": "Less than 1%",
-            "text_large": "of customers claim our 30-Day Money Back Guarantee",
+            "text_small": "60-Night Painless Morning Guarantee",
+            "text_large": "Full refund if your mornings aren't better.",
             "container_bg_color": "#e4f9ff",
             "border_color": "#1773b0",
             "enable_container_border": true,
@@ -331,27 +477,34 @@
             "answer_color": "#1773b0",
             "answer_bg_color": "#ffffff",
             "accordion_mode": true,
-            "question_1": "Description",
+            "question_1": "How long until I notice a difference?",
             "use_product_description_for_question_1": false,
-            "answer_1": "<p>Product description goes here.</p>",
-            "question_2": "How to use",
-            "answer_2": "<p>Usage instructions go here.</p>",
-            "question_3": "Features",
-            "answer_3": "<p>Key features go here.</p>",
-            "question_4": "Frequently Asked Questions",
-            "answer_4": "<p>Common questions and answers go here.</p>",
-            "question_5": "Shipping & Returns",
-            "answer_5": "<p>Shipping and return policy details go here.</p>",
-            "question_6": "",
-            "answer_6": "",
-            "question_7": "",
-            "answer_7": "",
+            "answer_1": "<p>Some people notice within a few nights. If your neck muscles have been contracted for years, expect 7&ndash;14 nights for the adaptation to settle. The 60-night trial exists so you have room to find out.</p>",
+            "question_2": "I sleep on my stomach sometimes.",
+            "answer_2": "<p>LullyRest is engineered for back and side sleeping. Stomach sleeping forces cervical rotation no pillow can correct &mdash; if that's your primary position, this is not the right product for you.</p>",
+            "question_3": "How is this different from the contour pillow I already tried?",
+            "answer_3": "<p>Standard contour pillows are a single-height wave: one bump, one dip, the same height across the whole pillow. LullyRest changes height across its <em>width</em> &mdash; taller at the outer wings than the centre &mdash; which is what makes side sleeping work.</p>",
+            "question_4": "Will it be too firm?",
+            "answer_4": "<p>Firm under the neck by design &mdash; that's the part doing the work. The occipital cavity and ear recesses are where pressure is deliberately relieved.</p>",
+            "question_5": "Does it work with an adjustable bed?",
+            "answer_5": "<p>Yes. The zones support the neck relative to the head, so it holds its geometry at an incline.</p>",
+            "question_6": "What if it doesn't work for me?",
+            "answer_6": "<p>Return it within 60 nights for a full refund. [VERIFY: return mechanics &mdash; who pays return shipping, refund processing time.]</p>",
+            "question_7": "Is the cover washable?",
+            "answer_7": "<p>[VERIFY: confirm care instructions &mdash; machine washable? removable? temperature?]</p>",
             "question_8": "",
             "answer_8": "",
             "question_9": "",
             "answer_9": "",
             "question_10": "",
-            "answer_10": ""
+            "answer_10": "",
+            "show_faq_1": true,
+            "show_faq_2": true,
+            "show_faq_3": true,
+            "show_faq_4": true,
+            "show_faq_5": true,
+            "show_faq_6": true,
+            "show_faq_7": true
           }
         }
       },
@@ -361,6 +514,7 @@
         "custom_text_L3wXdj",
         "simple_variant_picker_dyEyJX",
         "custom_text_YhyUiB",
+        "quantity_break_Vk3Y8a",
         "shipping_notice",
         "add_to_cart",
         "guarantee_badges_adYTNU",
@@ -410,17 +564,522 @@
         "main_image_portrait_adaptation": false
       }
     },
-    "lullyrest_zones": {
-      "type": "lullyrest-zones",
-      "settings": {}
+    "features_bar": {
+      "type": "scrolling-features-bar",
+      "blocks": {
+        "feature_item_1": {
+          "type": "feature_item",
+          "settings": {
+            "text": "4-ZONE DUAL-LOFT CORE",
+            "icon_type": "svg",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\"><path d=\"M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z\"></path></svg>"
+          }
+        },
+        "feature_item_2": {
+          "type": "feature_item",
+          "settings": {
+            "text": "ENGINEERED FOR BACK & SIDE SLEEPING",
+            "icon_type": "svg",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\"><path d=\"M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z\"></path></svg>"
+          }
+        },
+        "feature_item_3": {
+          "type": "feature_item",
+          "settings": {
+            "text": "ZERO-VOC VACUUM-BAKED FOAM",
+            "icon_type": "svg",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\"><path d=\"M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z\"></path></svg>"
+          }
+        },
+        "feature_item_4": {
+          "type": "feature_item",
+          "settings": {
+            "text": "THERMAFLOW™ COOLING COVER INCLUDED",
+            "icon_type": "svg",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\"><path d=\"M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z\"></path></svg>"
+          }
+        },
+        "feature_item_5": {
+          "type": "feature_item",
+          "settings": {
+            "text": "60-NIGHT IN-HOME TRIAL",
+            "icon_type": "svg",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\"><path d=\"M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z\"></path></svg>"
+          }
+        }
+      },
+      "block_order": [
+        "feature_item_1",
+        "feature_item_2",
+        "feature_item_3",
+        "feature_item_4",
+        "feature_item_5"
+      ],
+      "settings": {
+        "vertical_padding": 15,
+        "item_gap": 60,
+        "mobile_item_gap": 30,
+        "font_size": 14,
+        "mobile_font_size": 12,
+        "letter_spacing": 1,
+        "uppercase_text": true,
+        "icon_size": 20,
+        "mobile_icon_size": 16,
+        "icon_spacing": 10,
+        "slider_direction": "left",
+        "scrolling_velocity": 15,
+        "pause_on_hover": true,
+        "background_color": "#1773b0",
+        "text_color": "#ffffff",
+        "icon_color": "#ffffff",
+        "use_gradient_background": false,
+        "background_gradient": ""
+      }
+    },
+    "benefits": {
+      "type": "product-benefits",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Zone 01 — Lordotic Cervical Extension Roll",
+            "description": "A firmer roll under the neck that holds your natural 30°–35° arc, so the cable stays curved instead of folding.",
+            "benefit_color": "",
+            "benefit_description_color": "",
+            "use_image": false,
+            "preset_icon": "check",
+            "use_custom_icon": false,
+            "custom_icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\"></path></svg>"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Zone 02 — Recessed Occipital Cavity",
+            "description": "A cradle set 1.5–2in below the neck roll. On your back the skull settles in, and the base of the skull opens instead of compressing.",
+            "benefit_color": "",
+            "benefit_description_color": "",
+            "use_image": false,
+            "preset_icon": "check",
+            "use_custom_icon": false,
+            "custom_icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\"></path></svg>"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Zone 03 — Dual-Loft Lateral Wings",
+            "description": "Outer thirds built to 4.5–5.5in to match shoulder width, so rolling onto your side lands you on a surface that is already the right height.",
+            "benefit_color": "",
+            "benefit_description_color": "",
+            "use_image": false,
+            "preset_icon": "check",
+            "use_custom_icon": false,
+            "custom_icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\"></path></svg>"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "title": "Zone 04 — Integrated Ear Depressions",
+            "description": "Recesses in each wing so your outer ear isn't crushed against a firm surface all night. Ear and jaw pain is what kills most firm contour pillows by week two.",
+            "benefit_color": "",
+            "benefit_description_color": "",
+            "use_image": false,
+            "preset_icon": "check",
+            "use_custom_icon": false,
+            "custom_icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\"></path></svg>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4"
+      ],
+      "settings": {
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_left": 25,
+        "padding_right": 25,
+        "image_position_desktop": "right",
+        "heading_size_mobile": 34,
+        "heading_size_desktop": 35,
+        "subtitle_size_mobile": 13,
+        "subtitle_size_desktop": 13,
+        "benefit_title_size_mobile": 14,
+        "benefit_title_size_desktop": 14,
+        "benefit_description_size_mobile": 12,
+        "benefit_description_size_desktop": 12,
+        "accent_color": "#1773b0",
+        "use_theme_colors": false,
+        "override_global_accent": true,
+        "accent_font_family": "inherit",
+        "accent_font_style": "italic",
+        "accent_font_weight": "300",
+        "use_accent_gradient": false,
+        "accent_text_gradient": "linear-gradient(45deg, rgba(131, 215, 249, 1), rgba(23, 115, 176, 1) 96%)",
+        "accent_text_margin_left": 0,
+        "list_background": "linear-gradient(180deg, rgba(228, 249, 255, 1), rgba(255, 255, 255, 0.37) 100%)",
+        "list_border_radius": 8,
+        "border_color": "#298dce",
+        "heading_accent": "Premium",
+        "heading_regular": "Product Features",
+        "subtitle": "Discover the outstanding features that make our product stand out from the competition.",
+        "show_image": true,
+        "media_type": "image",
+        "feature_image": "shopify://shop_images/ChatGPT_Image_May_4_2025_10_06_11_AM.png",
+        "image_alt": "Feature product image",
+        "video_autoplay": true,
+        "video_muted": true,
+        "video_loop": true,
+        "video_controls": false,
+        "heading_color": "#1773b0",
+        "subtitle_color": "#1773b0",
+        "description_color": "#1773b0",
+        "section_background": "linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.4196) 99%)"
+      }
     },
     "lullyrest_mechanism": {
       "type": "lullyrest-mechanism",
       "settings": {}
     },
+    "lullyrest_zones": {
+      "type": "lullyrest-zones",
+      "settings": {}
+    },
+    "comparison": {
+      "type": "product-comparison",
+      "blocks": {
+        "product_column_1": {
+          "type": "product_column",
+          "settings": {
+            "product_name": "LullyRest",
+            "product_subtitle": "4-zone dual-loft",
+            "product_image": "shopify://shop_images/Screenshot_2025-05-05_at_9.31.07_AM-removebg-preview.png",
+            "product_image_size": 80,
+            "product_image_size_mobile": 75,
+            "subtitle_custom_icon": "",
+            "show_subtitle_icon": true,
+            "use_subtitle_background": true,
+            "subtitle_border_color": "#ffffff",
+            "highlight_column": true,
+            "highlight_color": "#c2e9fb",
+            "use_highlight_gradient": true,
+            "highlight_gradient_start_color": "#e4f9ff",
+            "highlight_gradient_end_color": "#ffffff",
+            "highlight_gradient_angle": 90,
+            "subtitle_glass_color": "#ffffff",
+            "subtitle_icon_color": "#000000"
+          }
+        },
+        "product_column_2": {
+          "type": "product_column",
+          "settings": {
+            "product_name": "Standard contour pillow",
+            "product_subtitle": "Single-height wave",
+            "product_image": "shopify://shop_images/Screenshot_2025-05-05_at_9.31.07_AM-removebg-preview.png",
+            "product_image_size": 80,
+            "product_image_size_mobile": 75,
+            "subtitle_custom_icon": "",
+            "show_subtitle_icon": true,
+            "use_subtitle_background": true,
+            "subtitle_border_color": "#ffffff",
+            "highlight_column": true,
+            "highlight_color": "#c2e9fb",
+            "use_highlight_gradient": true,
+            "highlight_gradient_start_color": "#e4f9ff",
+            "highlight_gradient_end_color": "#ffffff",
+            "highlight_gradient_angle": 90,
+            "subtitle_glass_color": "#ffffff",
+            "subtitle_icon_color": "#000000"
+          }
+        },
+        "product_column_3": {
+          "type": "product_column",
+          "settings": {
+            "product_name": "Flat foam or fibre pillow",
+            "product_subtitle": "One uniform surface",
+            "product_image": "shopify://shop_images/Screenshot_2025-05-05_at_9.31.07_AM-removebg-preview.png",
+            "product_image_size": 80,
+            "product_image_size_mobile": 75,
+            "subtitle_custom_icon": "",
+            "show_subtitle_icon": true,
+            "use_subtitle_background": true,
+            "subtitle_border_color": "#ffffff",
+            "highlight_column": true,
+            "highlight_color": "#c2e9fb",
+            "use_highlight_gradient": true,
+            "highlight_gradient_start_color": "#e4f9ff",
+            "highlight_gradient_end_color": "#ffffff",
+            "highlight_gradient_angle": 90,
+            "subtitle_glass_color": "#ffffff",
+            "subtitle_icon_color": "#000000"
+          }
+        },
+        "feature_row_1": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "Different height for back vs side sleeping",
+            "show_icon": false,
+            "feature_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M12 8v8\"></path><path d=\"M8 12h8\"></path></svg>",
+            "value_type": "checkmark",
+            "value_1": "yes",
+            "text_value_1": "Yes",
+            "value_2": "no",
+            "text_value_2": "No",
+            "value_3": "no"
+          }
+        },
+        "feature_row_2": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "Holds a 30°–35° cervical curve",
+            "show_icon": false,
+            "feature_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M12 8v8\"></path><path d=\"M8 12h8\"></path></svg>",
+            "value_type": "checkmark",
+            "value_1": "yes",
+            "text_value_1": "Yes",
+            "value_2": "no",
+            "text_value_2": "No",
+            "value_3": "no"
+          }
+        },
+        "feature_row_3": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "Recessed occipital cavity",
+            "show_icon": false,
+            "feature_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M12 8v8\"></path><path d=\"M8 12h8\"></path></svg>",
+            "value_type": "checkmark",
+            "value_1": "yes",
+            "text_value_1": "Yes",
+            "value_2": "yes",
+            "text_value_2": "No",
+            "value_3": "no"
+          }
+        },
+        "feature_row_4": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "Ear-pressure relief cavities",
+            "show_icon": false,
+            "feature_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M12 8v8\"></path><path d=\"M8 12h8\"></path></svg>",
+            "value_type": "checkmark",
+            "value_1": "yes",
+            "text_value_1": "Yes",
+            "value_2": "no",
+            "text_value_2": "No",
+            "value_3": "no"
+          }
+        },
+        "feature_row_5": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "Vacuum-baked to drive off residual VOCs",
+            "show_icon": false,
+            "feature_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M12 8v8\"></path><path d=\"M8 12h8\"></path></svg>",
+            "value_type": "checkmark",
+            "value_1": "yes",
+            "text_value_1": "Yes",
+            "value_2": "no",
+            "text_value_2": "No",
+            "value_3": "no"
+          }
+        },
+        "feature_row_6": {
+          "type": "feature_row",
+          "settings": {
+            "feature_name": "60-night in-home trial",
+            "show_icon": false,
+            "feature_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M12 8v8\"></path><path d=\"M8 12h8\"></path></svg>",
+            "value_type": "checkmark",
+            "value_1": "yes",
+            "text_value_1": "Yes",
+            "value_2": "no",
+            "text_value_2": "No",
+            "value_3": "no"
+          }
+        }
+      },
+      "block_order": [
+        "product_column_1",
+        "product_column_2",
+        "product_column_3",
+        "feature_row_1",
+        "feature_row_2",
+        "feature_row_3",
+        "feature_row_4",
+        "feature_row_5",
+        "feature_row_6"
+      ],
+      "settings": {
+        "use_theme_colors": false,
+        "show_heading": true,
+        "title_part_1": "Why we're",
+        "title_part_2": "different",
+        "title_part_1_color": "#1773b0",
+        "title_part_2_color": "#1773b0",
+        "subheading": "Compared against the two pillow types in most people's graveyard.",
+        "desktop_description": "",
+        "show_description_on_mobile": false,
+        "subheading_size": 13,
+        "heading_line_height": 1.2,
+        "subheading_color": "#1773b0",
+        "desktop_description_size_mobile": 14,
+        "desktop_description_size_desktop": 16,
+        "override_global_accent": false,
+        "accent_text_margin_left": 4,
+        "use_accent_gradient": false,
+        "accent_text_gradient": "linear-gradient(45deg, rgba(239, 74, 101, 1), rgba(255, 107, 157, 1) 100%)",
+        "accent_font_family": "inherit",
+        "accent_font_style": "italic",
+        "accent_font_weight": "300",
+        "table_column_width": 47,
+        "center_text_column_desktop": true,
+        "table_width": 1200,
+        "text_column_padding_mobile": 20,
+        "text_column_padding_desktop": 40,
+        "product_title_size": 18,
+        "subtitle_size": 10,
+        "feature_name_size": 17,
+        "text_value_size": 14,
+        "product_title_size_mobile": 16,
+        "subtitle_size_mobile": 10,
+        "feature_name_size_mobile": 12,
+        "text_value_size_mobile": 11,
+        "use_gradient_background": false,
+        "background_color": "#ffffff",
+        "text_color": "#1773b0",
+        "subtitle_color": "#1773b0",
+        "highlighted_text_color": "#1773b0",
+        "highlighted_subtitle_color": "#1773b0",
+        "highlighted_check_color": "#1773b0",
+        "highlighted_x_color": "#1773b0",
+        "border_color": "#eeeeee",
+        "icon_color": "#1773b0",
+        "check_color": "#1773b0",
+        "x_color": "#000000",
+        "highlight_border_radius": 8,
+        "use_highlight_border": true,
+        "highlight_border_color": "#1773b0",
+        "highlight_border_width": 1,
+        "unhighlighted_text_color": "#1773b0",
+        "unhighlighted_subtitle_color": "#1773b0",
+        "unhighlighted_icon_color": "#1773b0",
+        "unhighlighted_check_color": "#1773b0",
+        "unhighlighted_x_color": "#1773b0",
+        "column_count": 3
+      }
+    },
     "lullyrest_guarantee": {
       "type": "lullyrest-guarantee",
       "settings": {}
+    },
+    "store_faq": {
+      "type": "store-faq",
+      "blocks": {
+        "faq_item_1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long until I notice a difference?",
+            "answer": "<p>Some people notice within a few nights. If your neck muscles have been contracted for years, expect 7&ndash;14 nights for the adaptation to settle. The 60-night trial exists so you have room to find out.</p>"
+          }
+        },
+        "faq_item_2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "I sleep on my stomach sometimes.",
+            "answer": "<p>LullyRest is engineered for back and side sleeping. Stomach sleeping forces cervical rotation no pillow can correct &mdash; if that's your primary position, this is not the right product for you.</p>"
+          }
+        },
+        "faq_item_3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How is this different from the contour pillow I already tried?",
+            "answer": "<p>Standard contour pillows are a single-height wave: one bump, one dip, the same height across the whole pillow. LullyRest changes height across its <em>width</em> &mdash; taller at the outer wings than the centre &mdash; which is what makes side sleeping work.</p>"
+          }
+        },
+        "faq_item_4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Will it be too firm?",
+            "answer": "<p>Firm under the neck by design &mdash; that's the part doing the work. The occipital cavity and ear recesses are where pressure is deliberately relieved.</p>"
+          }
+        },
+        "faq_item_5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Does it work with an adjustable bed?",
+            "answer": "<p>Yes. The zones support the neck relative to the head, so it holds its geometry at an incline.</p>"
+          }
+        },
+        "faq_item_6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What if it doesn't work for me?",
+            "answer": "<p>Return it within 60 nights for a full refund. [VERIFY: return mechanics &mdash; who pays return shipping, refund processing time.]</p>"
+          }
+        },
+        "faq_item_7": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is the cover washable?",
+            "answer": "<p>[VERIFY: confirm care instructions &mdash; machine washable? removable? temperature?]</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_1",
+        "faq_item_2",
+        "faq_item_3",
+        "faq_item_4",
+        "faq_item_5",
+        "faq_item_6",
+        "faq_item_7"
+      ],
+      "settings": {
+        "use_theme_colors": false,
+        "heading": "Questions",
+        "subtitle": "The ones that actually decide it.",
+        "heading_color": "#1773b0",
+        "section_padding": 60,
+        "container_padding_mobile": 15,
+        "container_padding_desktop": 15,
+        "section_bg_color": "#ffffff",
+        "border_radius": 8,
+        "border_color": "#1773b0",
+        "border_style": "full",
+        "question_color": "#1773b0",
+        "question_bg_color": "#ffffff",
+        "answer_color": "#1773b0",
+        "answer_bg_color": "#ffffff",
+        "accordion_mode": true,
+        "image_border_radius": 8,
+        "center_when_no_image": true,
+        "center_max_width": 600,
+        "two_column_desktop": false,
+        "column_gap": 30,
+        "faq_item_spacing": 0,
+        "individual_item_borders": false,
+        "question_padding_top": 15,
+        "question_padding_bottom": 15,
+        "question_padding_left": 20,
+        "question_padding_right": 20,
+        "answer_padding_top": 15,
+        "answer_padding_bottom": 15,
+        "answer_padding_left": 20,
+        "answer_padding_right": 20,
+        "heading_font_size": 36,
+        "heading_font_size_mobile": 30,
+        "subtitle_font_size": 16,
+        "subtitle_font_size_mobile": 14,
+        "question_font_size": 16,
+        "question_font_size_mobile": 14,
+        "answer_font_size": 14,
+        "answer_font_size_mobile": 13
+      }
     },
     "lullyrest_proof": {
       "type": "lullyrest-proof-placeholder",
@@ -429,7 +1088,7 @@
           "type": "slot",
           "settings": {
             "slot_name": "Star rating & review count",
-            "slot_note": "The swipe carries “4.9 from 1628 reviews” here. LullyRest has zero reviews.",
+            "slot_note": "The swipe carries “4.9 from 1628 reviews” here. LullyRest has zero. Elixir's trustpilot_rating block is removed from the buy box until real numbers exist.",
             "slot_status": "[EMPTY — no reviews exist]"
           }
         },
@@ -437,7 +1096,7 @@
           "type": "slot",
           "settings": {
             "slot_name": "Clinical endorsement",
-            "slot_note": "A named, credentialed reviewer and their actual assessment of the design.",
+            "slot_note": "The swipe uses a named chiropractor quote. Needs a real credentialed reviewer and their actual assessment.",
             "slot_status": "[EMPTY — no clinician on record]"
           }
         },
@@ -445,7 +1104,7 @@
           "type": "slot",
           "settings": {
             "slot_name": "UGC video testimonials",
-            "slot_note": "Elixir's video-carousel-standalone section is already in this theme, ready to populate.",
+            "slot_note": "Elixir's carousel_default_video and video_carousel_standalone are removed from the buy box; restore them once footage exists.",
             "slot_status": "[EMPTY — no customers yet]"
           }
         },
@@ -505,9 +1164,13 @@
   },
   "order": [
     "main",
-    "lullyrest_zones",
+    "features_bar",
+    "benefits",
     "lullyrest_mechanism",
+    "lullyrest_zones",
+    "comparison",
     "lullyrest_guarantee",
+    "store_faq",
     "lullyrest_proof",
     "sticky_add_to_cart_NJqgUd"
   ]
