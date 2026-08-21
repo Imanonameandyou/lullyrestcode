@@ -17,21 +17,16 @@ REPO = os.path.dirname(os.path.abspath(__file__))
 
 
 def ph(text):
-    """One inline-styled image-placeholder box. Same single font treatment
-    (mono, .72rem) on every use -- no per-section type variation -- and no
-    external stylesheet dependency, since this page uses no custom lullyrest-*
-    blocks/sections and therefore never loads lullyrest.css. Labelled
-    "IMAGE PLACEHOLDER" up top, matching this repo's existing [EMPTY]/[VERIFY]
-    convention for unfilled slots (lullyrest-proof-placeholder, .lr__verify)."""
-    return (
-        '<div style="margin:1.5rem 0;border:1px dashed #C9C7C0;background:#F2F1ED;'
-        'aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;'
-        'padding:1.25rem;">'
-        '<span style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;'
-        'font-size:.72rem;letter-spacing:.03em;line-height:1.5;text-align:center;'
-        'opacity:.7;max-width:42ch;display:block;">'
-        '<strong style="letter-spacing:.08em;">IMAGE PLACEHOLDER</strong><br>' + text + '</span></div>'
-    )
+    """One image-placeholder paragraph. Shopify's richtext setting sanitizer
+    only permits <p>/<ul>/<ol>/<h1-6> as top-level nodes and strips style
+    attributes and <div>/<span> entirely (confirmed by a rejected push --
+    styled placeholder boxes are not renderable in this field type). Falls
+    back to plain bracketed text, matching this repo's existing convention for
+    unfilled slots elsewhere in the copy (e.g. "[AWAITING CLINICAL REVIEW]" in
+    the older presell page) -- same single treatment (one <strong> label,
+    inherited body type) on every one of the 8 uses, so typography stays
+    coherent without needing any custom styling."""
+    return '<p><strong>[IMAGE PLACEHOLDER]</strong> ' + text + '</p>'
 
 
 items = [

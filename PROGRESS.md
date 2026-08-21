@@ -4,6 +4,21 @@ Audit log of every API call and file change made to the store or this project. N
 
 ---
 
+## 2026-08-21 (continued) — Neck-pain listicle page deployed to draft theme
+
+User ran `shopify auth login` + `shopify store auth` themselves (interactive, done outside this session). Continuing the work logged below: deployed `page.neck-pain-listicle.json` to the draft theme and created its Page object. **Draft theme still UNPUBLISHED, Horizon still MAIN/untouched — nothing customer-visible.**
+
+- `shopify theme pull --theme 163498656002` — full tree (98 sections, 42 blocks, 25 templates, etc.), verified complete.
+- **Schema check found the generator's assumptions were close but not exact:** `listicle-header`/`listicle-item`/`listicle-summary`/`listicle-callout-quote`/`listicle-sticky-atc`/`advertorial-footer` are theme *blocks* (`blocks/listicle-*.liquid`), not inline section-block schemas — `sections/listicle.liquid` only lists bare `{"type": ...}` refs. Dumped the real schemas and confirmed every field name/type the generator used (`title`, `author_name`, `author_date`, `content`, `button_text`, `button_link`, `subtext`, `disclaimer_text`, etc., and `customer-reviews-carousel`'s `review` block: `reviewer_name`, `rating`, `review_text`, `show_verified_badge`) matches exactly. Wrote a one-off validator (mirrors `theme/validate_template.py` but resolves theme-block schemas too) — reported all settings valid.
+- **First push attempt was rejected** (visible error, not a silent one this time): Shopify's `richtext` setting sanitizer only allows `<p>/<ul>/<ol>/<h1-6>` as top-level nodes and strips `style` attributes and `<div>`/`<span>` outright. The 8 inline-styled image-placeholder boxes violated this. Fixed `build_listicle_neckpain.py`'s `ph()` helper to emit plain `<p><strong>[IMAGE PLACEHOLDER]</strong> {description}</p>` instead — matches this repo's existing plain-bracket convention for unfilled slots elsewhere in the copy. Regenerated, re-validated, re-pushed.
+- **Second push reported success; verified by pulling the file back and diffing against the local source** (per the standing lesson in this log that a generic success box doesn't guarantee the content landed) — byte-identical except for Shopify's own auto-added "auto-generated" header comment. Confirmed genuinely deployed.
+- `pageCreate` (after explicit user confirmation, since this mutates the store) → new Page **`gid://shopify/Page/136642101506`**, handle `neck-pain-listicle`, `templateSuffix: neck-pain-listicle`, `isPublished: false`.
+- Final read-only verification: theme roles unchanged (Horizon MAIN, both others UNPUBLISHED), new page confirmed hidden with correct template binding.
+- Updated `theme/README.md`'s deploy note with the page ID and the richtext-sanitizer gotcha for future edits to this file.
+- **Still not done / not this session's scope:** no visual QA in the theme editor/preview link, no legal review of the disclaimer footer, and the byline/testimonial verification caveat from the entry below still stands — this page must not be published until that's resolved.
+
+---
+
 ## 2026-08-21 — Second listicle page built (neck-pain/migraine angle); no store calls this session
 
 **No store or Shopify CLI calls this session — repo files only.** This machine has no cached `shopify auth` (no `~/.config/shopify`), and `shopify auth login` is interactive-only and can't run here. Draft theme and live theme both untouched; nothing customer-visible.

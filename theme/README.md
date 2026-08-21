@@ -44,7 +44,7 @@ shopify theme push  --store gcvy0q-cb.myshopify.com --theme 163498656002 --path 
 
 Push blocks **before** templates that reference them — Shopify rejects a template whose block types don't yet exist on the theme.
 
-To also deploy `page.neck-pain-listicle.json`, add `--only "templates/page.neck-pain-listicle.json"` to the push command above, then `pageCreate` a new, unpublished Page with `templateSuffix: neck-pain-listicle` (do not reuse the `presell` page/handle — this is deliberately a second page). Not yet deployed as of the file's creation — see `PROGRESS.md`.
+`page.neck-pain-listicle.json` is deployed: pushed to the draft theme, and bound to page `gid://shopify/Page/136642101506` (handle `neck-pain-listicle`, `isPublished: false`). See `PROGRESS.md` (2026-08-21) for the deploy log. Note for future edits to this template: Shopify's `richtext` setting sanitizer only permits `<p>/<ul>/<ol>/<h1-6>` as top-level nodes and strips `style` attributes and `<div>`/`<span>` entirely — a first push attempt with inline-styled placeholder boxes was rejected for this reason; the generator now uses plain `<p><strong>[LABEL]</strong> ...</p>` instead.
 
 `build_templates.py`'s `THEME`/`REPO` constants are machine-specific absolute paths (currently set for a prior Mac session) — update them to your local pull directory and this `theme/` folder's path before running.
 
