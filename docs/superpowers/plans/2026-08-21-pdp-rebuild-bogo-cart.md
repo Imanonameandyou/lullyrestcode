@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build a brand-new Shopify product template (`product.lullyrest-close.json`, template suffix `lullyrest-close`) for the LullyRest pillow using only Elixir's native section/block library, wire up a real BOGO discount and a native free-cooling-case gift widget, and configure the existing (previously unpulled) Elixir cart drawer with a free-shipping/free-gift progress bar and an upsell rail — all landed in Draft/inactive state pending one final go-ahead.
+**Goal:** Build a brand-new Shopify product template (`product.lullyrest-close.json`, template suffix `lullyrest-close`) for the LullyRest pillow using only Elixir's native section/block library, wire up a real BOGO discount plus a free-gift discount on the existing Charcoal Satin Pillowcase (kept at its real $28 price, made free at checkout via a real Buy-X-Get-Y discount, not a $0-priced product), and configure the existing (previously unpulled) Elixir cart drawer with a free-shipping progress bar and an upsell rail that surfaces the pillowcase as the free gift — all landed in Draft/inactive state pending one final go-ahead.
 
 **Architecture:** A new Python generator script (`theme/build_pdp2.py`, sibling to `theme/build_templates.py`, reusing its `stock()`/`add()`/`rebuild_blocks()`/`block_of()`/`put()` helpers) assembles the new template JSON from stock Elixir section types, most content copied verbatim from the existing `product.lullyrest.json`. Cart-drawer configuration is a direct edit to `config/settings_data.json`'s `current.sections["cart-drawer"]` entry (it currently has no block instances at all). All offer mechanics (BOGO, free shipping) are real Shopify automatic discounts created via `shopify store execute`, not theme-only cosmetics — the theme's own schema `info` text confirms the display widgets require a backing discount to actually apply anything at checkout.
 
@@ -15,7 +15,7 @@
 - Store domain: `gcvy0q-cb.myshopify.com`. Draft theme: `LullyRest — Presell + PDP (draft)` (`163498656002`). Live theme Horizon (`163498262786`) is **never** written to.
 - Core pillow product: `gid://shopify/Product/9589261009154`, $149.00 / compare-at $199.00, SKU `LR-OCP-001`.
 - Bonus product GIDs (existing, DRAFT): Cooling Migraine Wrap `gid://shopify/Product/9591781064962` ($29), Blackout Sleep Mask `gid://shopify/Product/9591783981314` ($24), Filtered Earplugs `gid://shopify/Product/9591784243458` ($19).
-- Cooling case product GID: **not yet available** — being built in a parallel Claude Code session. Tasks that need it are written to check for it and to ship safely without it if it's still missing (block/setting simply omitted — Elixir's own Liquid checks `if has_free_gifts` / `if current_product.id` before rendering, so an unset product reference safely no-ops rather than erroring).
+- **Free-gift product (revised 2026-08-21, mid-execution): LullyRest Charcoal Satin Pillowcase**, `gid://shopify/Product/9593716834562`, handle `lullyrest-charcoal-satin-pillowcase`, $28.00 / compare-at $38.00, SKU `LR-SPC-001`, DRAFT. Built in a parallel session as a standalone paid accessory (see `PROGRESS.md` 2026-08-21 "New product" entry) — **its real price is not changed by this plan.** The theme's native zero-click free-gift auto-add (`premium_attachment_kit` / `cart_progress_bar`'s `product_free_amount` goal) requires the product to actually be priced $0 to work, which would kill its standalone sale value — so that native mechanic is **not used**. Instead: a real "Buy 1 pillow, get 1 pillowcase free" automatic discount (Task 9) makes it free at checkout once both are in cart, surfaced as a one-click "claim your free gift" `cart_upsell` card (Task 11) and shown with a struck-through $28 value in the PDP's `premium_attachment_kit` block (Task 2) — display-only pricing there, independent of the product's real price.
 - Everything (new template, discounts, cart-drawer block instances) ships **Draft/inactive**. Do not set the product's live template to the new one, do not activate any discount, do not publish the draft theme, until the user gives one more explicit go-ahead (CLAUDE.md rule 4) — that confirmation is Task 14, the last task, not implied by earlier approval.
 - Log every mutating action (theme push, discount create, settings_data.json push) to `PROGRESS.md` per CLAUDE.md rule 5. Commit and `git push origin main` after every repo change per CLAUDE.md rule 7.
 - Claim integrity: no fabricated reviews/ratings/testimonials anywhere in the new template. Social-proof slots without real content ship as `[EMPTY]`-labeled via the existing `lullyrest-proof-placeholder` section, not invented copy.
@@ -157,22 +157,30 @@ def build_main():
         enable_option_2_custom_price=True,
         option_2_bogo_multiplier=1,
         option_2_show_free_gift=True,
-        option_2_free_gift_text="+ Free ThermaFlow Cooling Case",
+        option_2_free_gift_text="+ Free Charcoal Satin Pillowcase",
         option_1_show_free_gift=True,
-        option_1_free_gift_text="+ Free ThermaFlow Cooling Case",
+        option_1_free_gift_text="+ Free Charcoal Satin Pillowcase",
         show_option_3=False,
         show_option_4=False,
         preselected_option=2,
         show_savings_text=True,
     )
 
+    # premium_attachment_kit is used for its DISPLAY only (the "included free" list
+    # with struck-through value) — it is NOT used as the add-to-cart delivery
+    # mechanism, since that would require the pillowcase to be priced $0 (see
+    # Global Constraints). Delivery is the real Buy-X-Get-Y discount (Task 9) +
+    # the cart-drawer's "claim your free gift" upsell card (Task 11).
     kit = block_of(main, "premium_attachment_kit")
     put(kit,
         apply_to_product="lullyrest-orthopedic-cervical-pillow",
         title="Included Free With Your Order",
         show_item_count=False,
-        item_1_name="ThermaFlow Cooling Case",
-        item_1_product="",  # filled in by Task 13 once the parallel session's product exists
+        original_price=True,
+        item_1_name="Charcoal Satin Pillowcase",
+        item_1_price=0,
+        item_1_compare_price=28,
+        item_1_product="lullyrest-charcoal-satin-pillowcase",
     )
 
     put(block_of(main, "add_to_cart"), button_text="ADD TO CART — 2ND PILLOW FREE")
@@ -566,7 +574,7 @@ def build_urgency():
     end = datetime.date.today() + datetime.timedelta(days=30)
     sec["settings"].update({
         "heading_text": "BUY 1, GET 1 FREE",
-        "highlight_text": "+ FREE COOLING CASE",
+        "highlight_text": "+ FREE SATIN PILLOWCASE",
         "show_icon": False,
         "show_days": True,
         "end_year": end.year, "end_month": end.month, "end_day": end.day,
@@ -735,16 +743,43 @@ Same activation check and deactivation-if-needed as Step 1.
 
 Expected: a second discount GID, confirmed not active.
 
-- [ ] **Step 3: Update `build_urgency()`'s placeholder date to the real BOGO end date**
+- [ ] **Step 3: Create the free-pillowcase Buy-X-Get-Y automatic discount, inactive**
+
+This is the real delivery mechanism for the free gift (see Global Constraints — the pillowcase keeps its real $28 price, this discount is what actually zeroes it at checkout when bundled with the pillow):
+```bash
+shopify store execute --store gcvy0q-cb.myshopify.com --query '
+mutation {
+  discountAutomaticBasicCreate(automaticBasicDiscount: {
+    title: "LullyRest Free Pillowcase With Pillow Purchase"
+    startsAt: "2026-08-21T00:00:00Z"
+    endsAt: "2026-09-20T23:59:00Z"
+    customerGets: {
+      value: { percentage: 1.0 }
+      items: { products: { productsToAdd: ["gid://shopify/Product/9593716834562"] } }
+    }
+    minimumRequirement: {
+      quantity: { greaterThanOrEqualToQuantity: "1", itemsToRecommend: { products: { productsToAdd: ["gid://shopify/Product/9589261009154"] } } }
+    }
+  }) {
+    automaticDiscountNode { id }
+    userErrors { field message }
+  }
+}'
+```
+Same mutation-shape caution as Step 1 (verify against `shopify-plugin:shopify-admin`/`shopify-dev` if rejected — do not guess a second time), and same activation check/deactivation-if-needed.
+
+Expected: a third discount GID, confirmed not active.
+
+- [ ] **Step 4: Update `build_urgency()`'s placeholder date to the real BOGO end date**
 
 In `theme/build_pdp2.py`, replace the `datetime.date.today() + datetime.timedelta(days=30)` placeholder in `build_urgency()` with the literal end date used in Step 1 (`2026-09-20`, 23:59), so the on-page countdown matches the actual discount's real expiry — not a decorative date. Regenerate (Task 8 Step 2's command) to confirm the settings updated.
 
-- [ ] **Step 4: Log to PROGRESS.md and commit**
+- [ ] **Step 5: Log to PROGRESS.md and commit**
 
-Append an entry to `PROGRESS.md` recording both discount GIDs, their inactive status, and the end date used, following the existing log format in that file. Then:
+Append an entry to `PROGRESS.md` recording all three discount GIDs, their inactive status, and the end date used, following the existing log format in that file. Then:
 ```bash
 git add PROGRESS.md theme/build_pdp2.py
-git commit -m "Create BOGO and free-shipping automatic discounts (inactive), sync countdown date"
+git commit -m "Create BOGO, free-shipping, and free-pillowcase automatic discounts (inactive), sync countdown date"
 git push origin main
 ```
 
@@ -789,8 +824,8 @@ Note: this does **not** make the new template live-facing on the product — the
 - Modify (in the pulled theme working copy): `config/settings_data.json`
 
 **Interfaces:**
-- Consumes: bonus-product GIDs from Global Constraints; the $160 threshold from Task 9.
-- Produces: `current.sections["cart-drawer"].blocks` populated with `cart_progress_bar` (1), `cart_upsell` (3, cooling-case-ready for a 4th in Task 13), `cart_timer_bar` (1).
+- Consumes: bonus-product GIDs and the pillowcase GID from Global Constraints; the $160 threshold and the free-pillowcase discount from Task 9.
+- Produces: `current.sections["cart-drawer"].blocks` populated with `cart_progress_bar` (1, free-shipping goal only), `cart_upsell` (4 — the pillowcase first, framed as the free gift, then the 3 bonus products), `cart_timer_bar` (1).
 
 - [ ] **Step 1: Write a small Python script to patch `settings_data.json` in place**
 
@@ -807,6 +842,12 @@ cart["blocks"] = {
     "cart_progress_bar": {
         "type": "cart_progress_bar",
         "settings": {
+            # Free-shipping goal only. Not using product_free_amount/
+            # progress_bar_free_product here — that native "free gift" goal
+            # expects the gift product to be priced $0 (see Global Constraints),
+            # which we deliberately did NOT do to the pillowcase. Its free-gift
+            # framing is delivered via cart_upsell_1 below + the real discount
+            # from Task 9 Step 3, not this progress-bar mechanic.
             "product_free_shipping": 160,
             "shipping_away_text": "Add [missingAmount] more for free shipping!",
             "shipping_earn_text": "You've unlocked free shipping!",
@@ -815,12 +856,24 @@ cart["blocks"] = {
     "cart_upsell_1": {
         "type": "cart_upsell",
         "settings": {
+            "upsell_product_1": "gid://shopify/Product/9593716834562",
+            "upsell_button_text": "Claim Free Gift",
+            "upsell_show_price": True,
+            "show_upsell_description": True,
+            "upsell_description_text": "Free with your pillow order — a $28 value.",
+            "show_upsell_best_seller_tag": True,
+            "upsell_best_seller_text": "YOUR FREE GIFT",
+        },
+    },
+    "cart_upsell_2": {
+        "type": "cart_upsell",
+        "settings": {
             "upsell_product_1": "gid://shopify/Product/9591781064962",
             "upsell_button_text": "Add +",
             "upsell_show_price": True,
         },
     },
-    "cart_upsell_2": {
+    "cart_upsell_3": {
         "type": "cart_upsell",
         "settings": {
             "upsell_product_1": "gid://shopify/Product/9591783981314",
@@ -828,7 +881,7 @@ cart["blocks"] = {
             "upsell_show_price": True,
         },
     },
-    "cart_upsell_3": {
+    "cart_upsell_4": {
         "type": "cart_upsell",
         "settings": {
             "upsell_product_1": "gid://shopify/Product/9591784243458",
@@ -844,7 +897,7 @@ cart["blocks"] = {
         },
     },
 }
-cart["block_order"] = ["cart_progress_bar", "cart_timer_bar", "cart_upsell_1", "cart_upsell_2", "cart_upsell_3"]
+cart["block_order"] = ["cart_progress_bar", "cart_timer_bar", "cart_upsell_1", "cart_upsell_2", "cart_upsell_3", "cart_upsell_4"]
 
 with open(path, "w", encoding="utf-8") as f:
     json.dump(data, f, indent=2, ensure_ascii=False)
@@ -857,7 +910,7 @@ $env:LR_THEME="C:\...\scratchpad\draft-theme-pull"
 python theme/patch_cart_drawer.py
 ```
 
-Expected: prints the 5 block keys, and `config/settings_data.json` parses as valid JSON afterward (`python -m json.tool config/settings_data.json > $null` exits 0).
+Expected: prints 6 block keys, and `config/settings_data.json` parses as valid JSON afterward (`python -m json.tool config/settings_data.json > $null` exits 0).
 
 Note: `upsell_product_1` (type `product`) — set to the product's GID string as shown; if the theme editor's stored format for `product`-type settings turns out to be a handle rather than a GID when inspected after push (theme editor UI will show broken picker if wrong), switch to the product handle instead and re-push. Verify by opening the draft theme's cart drawer in the theme editor after Task 11 Step 2's push and confirming the upsell cards render with real product names/images, not blank.
 
@@ -872,13 +925,13 @@ Read the full output per Task 10 Step 2's caution about truncated success messag
 
 - [ ] **Step 3: Verify in the theme editor**
 
-Open `https://gcvy0q-cb.myshopify.com/admin/themes/163498656002/editor` (draft theme preview), open the cart drawer (add any product to cart on the preview storefront), and visually confirm: the progress bar renders with "add $X more for free shipping" text, and the 3 upsell cards show real product names/images/prices (not blank/broken pickers — if broken, revisit the GID-vs-handle note in Step 1).
+Open `https://gcvy0q-cb.myshopify.com/admin/themes/163498656002/editor` (draft theme preview), open the cart drawer (add any product to cart on the preview storefront), and visually confirm: the progress bar renders with "add $X more for free shipping" text, and all 4 upsell cards show real product names/images/prices (not blank/broken pickers — if broken, revisit the GID-vs-handle note in Step 1), with the pillowcase card showing the "YOUR FREE GIFT" tag and "Claim Free Gift" button.
 
 - [ ] **Step 4: Log to PROGRESS.md and commit**
 
 ```bash
 git add theme/patch_cart_drawer.py PROGRESS.md
-git commit -m "Configure cart drawer: free-shipping progress bar, 3-product upsell rail, timer bar"
+git commit -m "Configure cart drawer: free-shipping progress bar, 4-product upsell rail (pillowcase framed as free gift), timer bar"
 git push origin main
 ```
 
@@ -905,52 +958,13 @@ git push origin main
 
 ---
 
-### Task 13: Wire in the cooling case product once the parallel session finishes it
-
-**Files:**
-- Modify: `theme/build_pdp2.py`, `theme/patch_cart_drawer.py` (or its already-run output, `config/settings_data.json`)
-
-**Interfaces:**
-- Consumes: the cooling case product's GID/handle (from the other session).
-
-- [ ] **Step 1: Check whether the cooling case product exists yet**
-
-```bash
-shopify store execute --store gcvy0q-cb.myshopify.com --query '
-query { products(first: 10, query: "title:*Cooling Case* OR title:*ThermaFlow*") {
-  edges { node { id handle title status variants(first: 5) { edges { node { id price } } } } } } }'
-```
-If no matching product is returned, stop here — this task is not yet unblockable. Note in `PROGRESS.md` that Tasks 1–12 shipped without the free-gift product wired in, and that this task is pending the parallel session. Do not block the rest of the plan on this.
-
-- [ ] **Step 2: If found, confirm its price supports the native free-gift mechanic**
-
-Per the theme's own schema `info` text (Task discovery, spec §Offer mechanics point 3), the Premium Attachment Kit / progress-bar free-gift auto-add expects the gift product to actually be priced $0 (or have a dedicated always-free variant) — it is not zeroed by a discount. Check the queried variant price. If it is not $0.00, flag this explicitly to the user before proceeding — do not silently change another session's product pricing.
-
-- [ ] **Step 3: Update `build_main()`'s `premium_attachment_kit` block**
-
-In `theme/build_pdp2.py`, set `item_1_product` in the `kit = block_of(main, "premium_attachment_kit")` call (Task 2 Step 1) to the confirmed product handle. Regenerate (Task 8 Step 2's command), re-validate (Task 8 Step 3), re-push (Task 10 Step 1).
-
-- [ ] **Step 4: Update the cart-drawer progress bar and add the 4th upsell slot**
-
-In `theme/patch_cart_drawer.py` (Task 11 Step 1): set `product_free_amount` and `progress_bar_free_product` on the `cart_progress_bar` block to the cooling case's price/handle, and add a `cart_upsell_4` block (following the same pattern as `cart_upsell_1..3`) pointing at the cooling case for when it's not already gifted. Re-run the patch script, re-push `config/settings_data.json` (Task 11 Step 2), re-verify in the theme editor (Task 11 Step 3).
-
-- [ ] **Step 5: Log to PROGRESS.md and commit**
-
-```bash
-git add theme/build_pdp2.py theme/patch_cart_drawer.py PROGRESS.md
-git commit -m "Wire cooling case product into free-gift kit, progress bar, and upsell rail"
-git push origin main
-```
-
----
-
-### Task 14: Final go-ahead checkpoint (not implied by earlier approval)
+### Task 13: Final go-ahead checkpoint (not implied by earlier approval)
 
 **Files:** None — this is a confirmation checkpoint, not a code task.
 
 - [ ] **Step 1: Summarize current state to the user**
 
-Report: new template built/validated/pushed (Task 10) but product still serves the old `lullyrest` template; BOGO and free-shipping discounts created but confirmed inactive (Task 9); cart drawer configured on the draft theme only (Task 11); cooling case wired in if Task 13 completed, otherwise flagged as still pending.
+Report: new template built/validated/pushed (Task 10) but product still serves the old `lullyrest` template; all three discounts (BOGO, free shipping, free pillowcase) created but confirmed inactive (Task 9); cart drawer configured on the draft theme only, pillowcase framed as the free gift (Task 11); the pillowcase's own $28/$38 standalone pricing was left untouched throughout.
 
 - [ ] **Step 2: Ask explicitly, one question per irreversible action, per CLAUDE.md rule 4**
 
@@ -958,6 +972,7 @@ Do not bundle these into one yes/no — each is independently reversible-or-not 
 1. Switch the product's live `templateSuffix` from `lullyrest` to `lullyrest-close`? (Product is currently ACTIVE per PROGRESS.md 2026-08-20 — this makes the new PDP the one real customers see.)
 2. Activate the BOGO discount?
 3. Activate the free-shipping discount?
-4. Publish the draft theme as the store's live theme? (CLAUDE.md rule 2 — this is the only step that touches "never edit the Live theme directly"; everything through Task 13 stayed on the draft theme.)
+4. Activate the free-pillowcase discount?
+5. Publish the draft theme as the store's live theme? (CLAUDE.md rule 2 — this is the only step that touches "never edit the Live theme directly"; everything through Task 12 stayed on the draft theme.)
 
 - [ ] **Step 3: Execute only the specific actions the user confirms**, each as its own logged, committed `PROGRESS.md` entry.
