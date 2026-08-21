@@ -42,6 +42,38 @@ ATC.
 - **Nothing customer-visible changed.** Draft theme still UNPUBLISHED, Horizon still
   MAIN/untouched, core product still on its old template.
 
+## 2026-08-21 (continued) — Cart drawer configured on draft theme (unverified visually)
+
+Continuing the above work. `theme/patch_cart_drawer.py` (new script) edits
+`config/settings_data.json`'s `current.sections["cart-drawer"]` block list — that
+entry previously had zero block instances of any type. Had to fix the script first:
+`settings_data.json` ships with a leading `/* ... */` comment block (same pattern as
+`templates/product.json`) that isn't valid JSON — first run failed on `json.load`;
+fixed to strip-and-reprepend the comment header, matching the existing `stock()`
+convention elsewhere in this repo.
+
+- Added: `cart_progress_bar` (free-shipping goal only, $160 threshold — deliberately
+  NOT using the native `product_free_amount`/`progress_bar_free_product` free-gift
+  goal, since that requires the gift product priced $0 and the pillowcase's real price
+  is being kept intact), `cart_timer_bar` (15-min BOGO reservation framing),
+  `cart_upsell_1..4` (pillowcase framed as "YOUR FREE GIFT" / "Claim Free Gift" first,
+  then the 3 existing bonus products).
+- `shopify theme push --only "config/settings_data.json"` → **success**, full output
+  read, no error box.
+- **Not visually verified.** Attempted an anonymous fetch of the product page with
+  `?view=lullyrest-close&preview_theme_id=163498656002` to sanity-check rendering;
+  the request hit a 301 redirect from `gcvy0q-cb.myshopify.com` to the store's connected
+  domain `trywasha.com` and the resulting page showed no BOGO/kit content — most likely
+  the redirect dropped the query params, or the preview needs an authenticated admin
+  session an anonymous fetch doesn't have. Not treating this as a real verification
+  either way. **Needs a human check in an actual logged-in browser** (theme editor:
+  `https://gcvy0q-cb.myshopify.com/admin/themes/163498656002/editor`) before this is
+  considered done.
+- Discount creation (BOGO, free shipping, free pillowcase) still blocked on the
+  `write_discounts` OAuth scope — user handling the browser consent step themselves.
+- **Nothing customer-visible changed.** Draft theme still UNPUBLISHED, Horizon still
+  MAIN/untouched.
+
 ## 2026-08-21 (continued) — New product: LullyRest Charcoal Satin Pillowcase
 
 User supplied an Alibaba supplier listing (`FireShot Capture 018 - 2025 New Style 100% Satin Polyester Pillowcase...pdf`, screenshot PDF with no text layer — rendered via PyMuPDF at 4x zoom and sliced into readable chunks, since `pdftoppm` is not installed on this machine) and asked to create it as a product with branded images, picking whichever supplier color best fits the brand. Planned first per rule 1 (plan saved to `C:\Users\jomat_nweuhlk\.claude\plans\piped-dazzling-storm.md`), approved by user before any mutation.
