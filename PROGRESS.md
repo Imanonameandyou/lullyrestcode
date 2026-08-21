@@ -4,6 +4,20 @@ Audit log of every API call and file change made to the store or this project. N
 
 ---
 
+## 2026-08-21 (continued) — New product: LullyRest Charcoal Satin Pillowcase
+
+User supplied an Alibaba supplier listing (`FireShot Capture 018 - 2025 New Style 100% Satin Polyester Pillowcase...pdf`, screenshot PDF with no text layer — rendered via PyMuPDF at 4x zoom and sliced into readable chunks, since `pdftoppm` is not installed on this machine) and asked to create it as a product with branded images, picking whichever supplier color best fits the brand. Planned first per rule 1 (plan saved to `C:\Users\jomat_nweuhlk\.claude\plans\piped-dazzling-storm.md`), approved by user before any mutation.
+
+- **Sourced from:** Xuzhou Golden Eagle Silk Home Textile Factory (Jiangsu, CN) — 100% polyester satin, Oeko-Tex Standard 100 (supplier-claimed, not independently verified). Colors shown on the listing: charcoal grey, silver-grey, steel blue-grey, dusty blush pink.
+- **Color chosen: charcoal graphite grey** — closest match to the brand's locked Graphite `#23262B` ink color; blush pink (closest to competitor swipe aesthetics) was rejected as it cuts against `BRAND_GUIDE.md`'s explicit ban on "cloud-like / hotel-quality plush" bedding language.
+- **Positioning decision:** created as a standalone paid accessory (tags `accessory`/`add-on`/`satin`), **not** folded into the `bonus`/`gift-with-purchase` tier structure in `marketing/BONUS_PRODUCTS.md` — a pillowcase doesn't map to a specific belief in `research/BELIEF_CHAIN.md` the way the Cooling Migraine Wrap / Blackout Mask / Earplugs do, and that doc already cut "cooling bedsheets" for the same reason (weak belief-chain fit). Flagged to user, not gated on.
+- Generated 3 branded product renders via Higgsfield `generate_image_batch` (`marketing_studio_image` model): hero drape shot, fabric texture close-up, on-pillow shot (includes a subtle Proof Cyan ribbon accent). Saved to `brand/assets/product-photos/pillowcase-{hero,texture,on-pillow}.png`.
+- `productCreate` → **LullyRest Charcoal Satin Pillowcase** (`gid://shopify/Product/9593716834562`), status **DRAFT**, handle `lullyrest-charcoal-satin-pillowcase`, vendor `LullyRest`, productType `Pillowcase`, `templateSuffix: null`. Description is structural/mechanism-adjacent copy only; the Oeko-Tex claim ships with an inline `[VERIFY: ...]` marker per the Claim Integrity rule, not stated as fact.
+- `productVariantsBulkUpdate` → price **$28.00**, compareAt **$38.00**, SKU `LR-SPC-001`.
+- `stagedUploadsCreate` (3 files) + direct HTTP POST to the returned GCS staged-upload URLs, then `productCreateMedia` → all 3 images attached, status READY.
+- Verified via read-only `product(id:...)` query: DRAFT, correct vendor/type/tags/price/SKU, all 3 media READY.
+- **Nothing customer-visible.** Product is DRAFT; no theme, page, or Live-theme changes made.
+
 ## 2026-08-21 (continued) — Neck-pain listicle page deployed to draft theme
 
 User ran `shopify auth login` + `shopify store auth` themselves (interactive, done outside this session). Continuing the work logged below: deployed `page.neck-pain-listicle.json` to the draft theme and created its Page object. **Draft theme still UNPUBLISHED, Horizon still MAIN/untouched — nothing customer-visible.**
