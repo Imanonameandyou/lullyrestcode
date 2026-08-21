@@ -6,7 +6,8 @@ reports "pushed successfully" for a rejected JSON template unless you read its
 full output, and a rejected template leaves the PREVIOUS version live on the
 theme — so a push can silently no-op. This catches the type errors that cause it.
 
-Usage:  cd <pulled-theme>  &&  python3 <repo>/theme/validate_template.py
+Usage:  cd <pulled-theme>  &&  python3 <repo>/theme/validate_template.py [templates/foo.json]
+        (defaults to templates/product.lullyrest.json if no path is given)
 """
 import json,re,os,sys
 TH="."
@@ -35,7 +36,8 @@ def check(val,t,where,out):
     elif t=="richtext":
         if not (isinstance(val,str) and re.match(r'^\s*<(p|ul|ol|h[1-6])\b',val)):
             out.append(f"{where}: richtext must open with <p>/<ul>/<ol>/<h1-6>, got {str(val)[:50]!r}")
-tpl=re.sub(r'/\*.*?\*/','',open("templates/product.lullyrest.json",encoding="utf-8").read(),flags=re.S)
+target=sys.argv[1] if len(sys.argv)>1 else "templates/product.lullyrest.json"
+tpl=re.sub(r'/\*.*?\*/','',open(target,encoding="utf-8").read(),flags=re.S)
 d=json.loads(tpl); out=[]
 for key in d["order"]:
     sec=d["sections"][key]; st=sec["type"]
