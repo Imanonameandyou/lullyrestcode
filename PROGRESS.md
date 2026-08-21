@@ -4,6 +4,22 @@ Audit log of every API call and file change made to the store or this project. N
 
 ---
 
+## 2026-08-21 — Second listicle page built (neck-pain/migraine angle); no store calls this session
+
+**No store or Shopify CLI calls this session — repo files only.** This machine has no cached `shopify auth` (no `~/.config/shopify`), and `shopify auth login` is interactive-only and can't run here. Draft theme and live theme both untouched; nothing customer-visible.
+
+- User supplied `LullyRest_Listicle_First_Half.md` / `LullyRest_Listicle_Second_Half.md` (repo root) — a full rewrite of the presell listicle, with instruction to input the copy **verbatim, unedited** into a Shopify page. Per the user's explicit choice, this is a **second, separate hidden page** — the existing `presell` page and `theme/templates/page.presell.json` (older copy, from `marketing/PRESELL_LISTICLE.md`) are untouched.
+- **User's explicit representation, logged per the claim-integrity rule:** the byline ("Dr. Brady Menoles, DPT") and all six reader testimonials in the new copy are stated by the user to be verifiable through real company documents they intentionally did not share with this session (stated privacy/confidentiality concern). Per their direct instruction, this was not challenged or re-litigated. Flagging here for the record — this is a data point future sessions/reviewers should be aware of before this page is published.
+- New generator script `theme/build_listicle_neckpain.py` → `theme/templates/page.neck-pain-listicle.json`. Uses only proven, already-working Elixir block types (`listicle-header`, `listicle-summary`, `listicle-item`, `listicle-callout-quote`, `listicle-sticky-atc`, `advertorial-footer`, `customer-reviews-carousel`'s `review` block) — the same ones already validated via successful push/pull-back on `page.presell.json` and `product.lullyrest.json`. No new Liquid or CSS; no vendor-block patching needed, since this page uses none of the custom `lullyrest-*` blocks.
+- 10 numbered items, all built from the same `listicle-item` block type so typography is identical section-to-section (per user's explicit ask for typographic coherence — no per-section font-size variation).
+- 8 of the 10 items call for an image; each becomes an inline-styled, dashed-border placeholder box embedded directly in that item's content, labelled "IMAGE PLACEHOLDER" plus the full art-direction description from the source file — one font treatment (mono, `.72rem`) reused for all 8, no new stylesheet dependency. Matches this repo's existing `[EMPTY]`/`[VERIFY]` labelled-slot convention.
+- **Two known schema-driven gaps** (not content edits — the theme simply has no field for these): `listicle-header` has no separate credential/subtitle field, so the byline's "Verified Spine & Sleep Biomechanics Specialist" line was placed in the block's `author_date` setting. `customer-reviews-carousel`'s `review` block has no like-count/reply field, so the 👍-counts in the source testimonials were dropped (star rating, verified badge, and full quote text are all preserved).
+- Verified locally: `json.load()` round-trip on the generated file succeeds; spot-checked several distinctive phrases (incl. the source's own "entoxicating" typo, preserved verbatim) against the source `.md` files.
+- **Not done, deferred to a follow-up session:** `shopify theme pull`/`push`, `theme/validate_template.py` (needs a live pull to check against real section schemas), and `pageCreate` for the new page (unpublished, `templateSuffix: neck-pain-listicle`). All blocked on the user running `shopify auth login` + `shopify store auth` themselves first.
+- Updated `theme/README.md`: new file listed under "Files", a note under "Deploying" with the extra `--only` flag needed and the pending `pageCreate` step.
+
+---
+
 ## 2026-08-21 — Dosaze PDP reference captured; palette/demo-value repair pass
 
 **No store calls this session — repo files only.** Draft theme untouched, nothing customer-visible.
